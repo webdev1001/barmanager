@@ -1,0 +1,298 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DAFF7554162D82F1001A9E0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7553162D82F1001A9E0F /* UIKit.framework */; };
+		DAFF7556162D82F1001A9E0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7555162D82F1001A9E0F /* Foundation.framework */; };
+		DAFF7558162D82F1001A9E0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7557162D82F1001A9E0F /* CoreGraphics.framework */; };
+		DAFF755E162D82F1001A9E0F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAFF755C162D82F1001A9E0F /* InfoPlist.strings */; };
+		DAFF7560162D82F1001A9E0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFF755F162D82F1001A9E0F /* main.m */; };
+		DAFF7564162D82F1001A9E0F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFF7563162D82F1001A9E0F /* AppDelegate.m */; };
+		DAFF7566162D82F1001A9E0F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DAFF7565162D82F1001A9E0F /* Default.png */; };
+		DAFF7568162D82F1001A9E0F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAFF7567162D82F1001A9E0F /* Default@2x.png */; };
+		DAFF756A162D82F1001A9E0F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DAFF7569162D82F1001A9E0F /* Default-568h@2x.png */; };
+		DAFF756D162D82F1001A9E0F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAFF756B162D82F1001A9E0F /* MainStoryboard.storyboard */; };
+		DAFF7570162D82F1001A9E0F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFF756F162D82F1001A9E0F /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DAFF754F162D82F1001A9E0F /* barmanager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barmanager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAFF7553162D82F1001A9E0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DAFF7555162D82F1001A9E0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DAFF7557162D82F1001A9E0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DAFF755B162D82F1001A9E0F /* barmanager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "barmanager-Info.plist"; sourceTree = "<group>"; };
+		DAFF755D162D82F1001A9E0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DAFF755F162D82F1001A9E0F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DAFF7561162D82F1001A9E0F /* barmanager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "barmanager-Prefix.pch"; sourceTree = "<group>"; };
+		DAFF7562162D82F1001A9E0F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DAFF7563162D82F1001A9E0F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DAFF7565162D82F1001A9E0F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		DAFF7567162D82F1001A9E0F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		DAFF7569162D82F1001A9E0F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		DAFF756C162D82F1001A9E0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		DAFF756E162D82F1001A9E0F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		DAFF756F162D82F1001A9E0F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DAFF754C162D82F1001A9E0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAFF7554162D82F1001A9E0F /* UIKit.framework in Frameworks */,
+				DAFF7556162D82F1001A9E0F /* Foundation.framework in Frameworks */,
+				DAFF7558162D82F1001A9E0F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DAFF7544162D82F1001A9E0F = {
+			isa = PBXGroup;
+			children = (
+				DAFF7559162D82F1001A9E0F /* barmanager */,
+				DAFF7552162D82F1001A9E0F /* Frameworks */,
+				DAFF7550162D82F1001A9E0F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DAFF7550162D82F1001A9E0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DAFF754F162D82F1001A9E0F /* barmanager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DAFF7552162D82F1001A9E0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DAFF7553162D82F1001A9E0F /* UIKit.framework */,
+				DAFF7555162D82F1001A9E0F /* Foundation.framework */,
+				DAFF7557162D82F1001A9E0F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DAFF7559162D82F1001A9E0F /* barmanager */ = {
+			isa = PBXGroup;
+			children = (
+				DAFF7562162D82F1001A9E0F /* AppDelegate.h */,
+				DAFF7563162D82F1001A9E0F /* AppDelegate.m */,
+				DAFF756B162D82F1001A9E0F /* MainStoryboard.storyboard */,
+				DAFF756E162D82F1001A9E0F /* ViewController.h */,
+				DAFF756F162D82F1001A9E0F /* ViewController.m */,
+				DAFF755A162D82F1001A9E0F /* Supporting Files */,
+			);
+			path = barmanager;
+			sourceTree = "<group>";
+		};
+		DAFF755A162D82F1001A9E0F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DAFF755B162D82F1001A9E0F /* barmanager-Info.plist */,
+				DAFF755C162D82F1001A9E0F /* InfoPlist.strings */,
+				DAFF755F162D82F1001A9E0F /* main.m */,
+				DAFF7561162D82F1001A9E0F /* barmanager-Prefix.pch */,
+				DAFF7565162D82F1001A9E0F /* Default.png */,
+				DAFF7567162D82F1001A9E0F /* Default@2x.png */,
+				DAFF7569162D82F1001A9E0F /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DAFF754E162D82F1001A9E0F /* barmanager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAFF7573162D82F1001A9E0F /* Build configuration list for PBXNativeTarget "barmanager" */;
+			buildPhases = (
+				DAFF754B162D82F1001A9E0F /* Sources */,
+				DAFF754C162D82F1001A9E0F /* Frameworks */,
+				DAFF754D162D82F1001A9E0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = barmanager;
+			productName = barmanager;
+			productReference = DAFF754F162D82F1001A9E0F /* barmanager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DAFF7546162D82F1001A9E0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = ITflows;
+			};
+			buildConfigurationList = DAFF7549162D82F1001A9E0F /* Build configuration list for PBXProject "barmanager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DAFF7544162D82F1001A9E0F;
+			productRefGroup = DAFF7550162D82F1001A9E0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DAFF754E162D82F1001A9E0F /* barmanager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DAFF754D162D82F1001A9E0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAFF755E162D82F1001A9E0F /* InfoPlist.strings in Resources */,
+				DAFF7566162D82F1001A9E0F /* Default.png in Resources */,
+				DAFF7568162D82F1001A9E0F /* Default@2x.png in Resources */,
+				DAFF756A162D82F1001A9E0F /* Default-568h@2x.png in Resources */,
+				DAFF756D162D82F1001A9E0F /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DAFF754B162D82F1001A9E0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAFF7560162D82F1001A9E0F /* main.m in Sources */,
+				DAFF7564162D82F1001A9E0F /* AppDelegate.m in Sources */,
+				DAFF7570162D82F1001A9E0F /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DAFF755C162D82F1001A9E0F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAFF755D162D82F1001A9E0F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DAFF756B162D82F1001A9E0F /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAFF756C162D82F1001A9E0F /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DAFF7571162D82F1001A9E0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		DAFF7572162D82F1001A9E0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DAFF7574162D82F1001A9E0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "barmanager/barmanager-Prefix.pch";
+				INFOPLIST_FILE = "barmanager/barmanager-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DAFF7575162D82F1001A9E0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "barmanager/barmanager-Prefix.pch";
+				INFOPLIST_FILE = "barmanager/barmanager-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DAFF7549162D82F1001A9E0F /* Build configuration list for PBXProject "barmanager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAFF7571162D82F1001A9E0F /* Debug */,
+				DAFF7572162D82F1001A9E0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAFF7573162D82F1001A9E0F /* Build configuration list for PBXNativeTarget "barmanager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAFF7574162D82F1001A9E0F /* Debug */,
+				DAFF7575162D82F1001A9E0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DAFF7546162D82F1001A9E0F /* Project object */;
+}
