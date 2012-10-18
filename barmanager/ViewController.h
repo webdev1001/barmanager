@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <XMLRPC/XMLRPC.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <XMLRPCConnectionDelegate>
 
 @property (strong, nonatomic) UINavigationController *navController;
 

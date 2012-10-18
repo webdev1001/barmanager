@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09ECC0EA0BAD47608C81E677 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8626067EA2604DB5841B937F /* libPods.a */; };
 		DAFF7554162D82F1001A9E0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7553162D82F1001A9E0F /* UIKit.framework */; };
 		DAFF7556162D82F1001A9E0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7555162D82F1001A9E0F /* Foundation.framework */; };
 		DAFF7558162D82F1001A9E0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7557162D82F1001A9E0F /* CoreGraphics.framework */; };
@@ -28,10 +29,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23EE8D7293D74C4B899AE1E8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		8626067EA2604DB5841B937F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFF754F162D82F1001A9E0F /* barmanager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barmanager.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAFF7553162D82F1001A9E0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		DAFF7555162D82F1001A9E0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		DAFF7557162D82F1001A9E0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DAFF7553162D82F1001A9E0F /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DAFF7555162D82F1001A9E0F /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DAFF7557162D82F1001A9E0F /* CoreGraphics.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		DAFF755B162D82F1001A9E0F /* barmanager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "barmanager-Info.plist"; sourceTree = "<group>"; };
 		DAFF755D162D82F1001A9E0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DAFF755F162D82F1001A9E0F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -44,12 +47,12 @@
 		DAFF756C162D82F1001A9E0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DAFF756E162D82F1001A9E0F /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DAFF756F162D82F1001A9E0F /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		DAFF757E162D87EB001A9E0F /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		DAFF757E162D87EB001A9E0F /* FacebookSDK.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		DAFF7580162D880A001A9E0F /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		DAFF7582162D8828001A9E0F /* FBUserSettingsViewResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBUserSettingsViewResources.bundle; path = ../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FBUserSettingsViewResources.bundle; sourceTree = "<group>"; };
-		DAFF7584162D8846001A9E0F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		DAFF7585162D8846001A9E0F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		DAFF7588162D8870001A9E0F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		DAFF7584162D8846001A9E0F /* Accounts.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		DAFF7585162D8846001A9E0F /* AdSupport.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		DAFF7588162D8870001A9E0F /* Social.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		DAFF758A162D91EC001A9E0F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		DAFF758B162D91EC001A9E0F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +69,7 @@
 				DAFF7556162D82F1001A9E0F /* Foundation.framework in Frameworks */,
 				DAFF7558162D82F1001A9E0F /* CoreGraphics.framework in Frameworks */,
 				DAFF757F162D87EB001A9E0F /* FacebookSDK.framework in Frameworks */,
+				09ECC0EA0BAD47608C81E677 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +82,7 @@
 				DAFF7559162D82F1001A9E0F /* barmanager */,
 				DAFF7552162D82F1001A9E0F /* Frameworks */,
 				DAFF7550162D82F1001A9E0F /* Products */,
+				23EE8D7293D74C4B899AE1E8 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +106,7 @@
 				DAFF7553162D82F1001A9E0F /* UIKit.framework */,
 				DAFF7555162D82F1001A9E0F /* Foundation.framework */,
 				DAFF7557162D82F1001A9E0F /* CoreGraphics.framework */,
+				8626067EA2604DB5841B937F /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -144,6 +150,7 @@
 				DAFF754B162D82F1001A9E0F /* Sources */,
 				DAFF754C162D82F1001A9E0F /* Frameworks */,
 				DAFF754D162D82F1001A9E0F /* Resources */,
+				B0B57D170DFA4DF1A338D34E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,6 +203,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B0B57D170DFA4DF1A338D34E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DAFF754B162D82F1001A9E0F /* Sources */ = {
@@ -282,6 +306,7 @@
 		};
 		DAFF7574162D82F1001A9E0F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23EE8D7293D74C4B899AE1E8 /* Pods.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -291,7 +316,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "barmanager/barmanager-Prefix.pch";
 				INFOPLIST_FILE = "barmanager/barmanager-Info.plist";
-				"OTHER_LDFLAGS[arch=*]" = "-lsqlite3.0";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3.0",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -299,6 +327,7 @@
 		};
 		DAFF7575162D82F1001A9E0F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23EE8D7293D74C4B899AE1E8 /* Pods.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -308,7 +337,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "barmanager/barmanager-Prefix.pch";
 				INFOPLIST_FILE = "barmanager/barmanager-Info.plist";
-				"OTHER_LDFLAGS[arch=*]" = "-lsqlite3.0";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lsqlite3.0",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

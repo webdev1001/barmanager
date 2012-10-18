@@ -61,7 +61,6 @@
             [self.navController topViewController];
             if ([[topViewController presentedViewController]
                  isKindOfClass:[LoginViewController class]]) {
-//                [topViewController dismissModalViewControllerAnimated:YES];
                 [topViewController dismissViewControllerAnimated:YES completion:nil];
             }
         }

@@ -6,8 +6,9 @@
 //  Copyright (c) 2012 ITflows. All rights reserved.
 //
 
-#import "ViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
+
+#import "ViewController.h"
 #import "LoginViewController.h"
 
 @interface ViewController ()
@@ -36,6 +37,17 @@
                                               style:UIBarButtonItemStyleBordered
                                               target:self
                                               action:@selector(logoutButtonWasPressed:)];
+    
+    //NSURL *URL = [NSURL URLWithString: @"http://127.0.0.1:8080"];
+    NSURL *URL = [NSURL URLWithString: @"http://barmanager.herokuapp.com/api/xmlrpc?auth_token=xnirhtxYhs8d6xYrrrKN"];
+    XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL: URL];
+    XMLRPCConnectionManager *manager = [XMLRPCConnectionManager sharedManager];
+    
+    [request setMethod: @"barmanager.listBars"];
+    
+    NSLog(@"Request body: %@", [request body]);
+    
+    [manager spawnConnectionWithXMLRPCRequest: request delegate: self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,6 +74,45 @@
 
 -(void)logoutButtonWasPressed:(id)sender {
     [FBSession.activeSession closeAndClearTokenInformation];
+}
+
+- (void)request: (XMLRPCRequest *)request didReceiveResponse: (XMLRPCResponse *)response {
+    if ([response isFault]) {
+        NSLog(@"Fault code: %@", [response faultCode]);
+        
+        NSLog(@"Fault string: %@", [response faultString]);
+    } else {
+        NSLog(@"Parsed response: %@", [response object]);
+        
+    }
+    
+    //NSLog(@"Response body: %@", [response body]);
+}
+
+
+- (void)request: (XMLRPCRequest *)request didFailWithError: (NSError *)error
+{
+    
+}
+
+- (BOOL)request: (XMLRPCRequest *)request canAuthenticateAgainstProtectionSpace: (NSURLProtectionSpace *)protectionSpace
+{
+    return YES;
+}
+
+- (void)request: (XMLRPCRequest *)request didReceiveAuthenticationChallenge: (NSURLAuthenticationChallenge *)challenge
+{
+    
+}
+
+- (void)request: (XMLRPCRequest *)request didCancelAuthenticationChallenge: (NSURLAuthenticationChallenge *)challenge
+{
+    
+}
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
+{
+    NSLog(@"%@", elementName);
 }
 
 @end
