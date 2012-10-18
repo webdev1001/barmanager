@@ -30,6 +30,12 @@
         // No, display the login page.
         [self showLoginView];
     }
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithTitle:@"Logout"
+                                              style:UIBarButtonItemStyleBordered
+                                              target:self
+                                              action:@selector(logoutButtonWasPressed:)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,6 +58,10 @@
         LoginViewController* loginViewController = (LoginViewController*)modalViewController;
         [loginViewController loginFailed];
     }
+}
+
+-(void)logoutButtonWasPressed:(id)sender {
+    [FBSession.activeSession closeAndClearTokenInformation];
 }
 
 @end
