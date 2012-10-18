@@ -10,4 +10,8 @@
 
 @interface ViewController : UIViewController
 
+@property (strong, nonatomic) UINavigationController *navController;
+
+- (void)showLoginView;
+
 @end
