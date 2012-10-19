@@ -11,13 +11,22 @@
 
 @implementation AppDelegate
 
+NSString *const FBSessionStateChangedNotification =
+@"ITflows.barmanager.Login:FBSessionStateChangedNotification";
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.navController = (UINavigationController *)self.window.rootViewController;
     self.mainController = (ViewController *)self.navController.topViewController;
     self.mainController.navController = self.navController;
     
-    [RKClient clientWithBaseURL:[NSURL URLWithString:API_URL]];
+    RKObjectManager* manager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:API_URL]];
+    
+    [manager.router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
+    [manager.router routeClass:[User class] toResourcePath:@"/users/:userId"];
+
+    [[RKObjectManager sharedManager].mappingProvider setMapping:[Bar objectMapping] forKeyPath:@"bar"];
+    [[RKObjectManager sharedManager].mappingProvider setMapping:[User objectMapping] forKeyPath:@"user"];
     
     return YES;
 }
@@ -51,6 +60,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    [FBSession.activeSession close];
 }
 
 - (void)sessionStateChanged:(FBSession *)session
@@ -59,8 +70,7 @@
 {
     switch (state) {
         case FBSessionStateOpen: {
-            UIViewController *topViewController =
-            [self.navController topViewController];
+            UIViewController *topViewController = [self.navController topViewController];
             if ([[topViewController presentedViewController]
                  isKindOfClass:[LoginViewController class]]) {
                 [topViewController dismissViewControllerAnimated:YES completion:nil];
@@ -81,6 +91,10 @@
             break;
     }
     
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:FBSessionStateChangedNotification
+     object:session];
+    
     if (error) {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"Error"
@@ -94,15 +108,21 @@
 
 - (void)openSession
 {
-    [FBSession openActiveSessionWithReadPermissions:nil
+    NSArray *permissions = [[NSArray alloc] initWithObjects:
+                            @"email",
+                            nil];
+    [FBSession openActiveSessionWithReadPermissions:permissions
                                        allowLoginUI:YES
                                   completionHandler:
-     ^(FBSession *session,
-       FBSessionState state, NSError *error) {
+     ^(FBSession *session, FBSessionState state, NSError *error) {
          [self sessionStateChanged:session state:state error:error];
      }];
 }
 
+/*
+ * If we have a valid session at the time of openURL call, we handle
+ * Facebook transitions by passing the url argument to handleOpenURL
+ */
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication

@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 
-@interface ViewController : UIViewController <RKRequestDelegate>
+#import "Bar.h"
+
+@interface ViewController : UIViewController <RKObjectLoaderDelegate>
 
 @property (strong, nonatomic) UINavigationController *navController;
+
+- (IBAction)loadBars:(id)sender;
 
 - (void)showLoginView;
 

@@ -12,11 +12,16 @@
 
 #import <RestKit/RestKit.h>
 
+#import "Bar.h"
+#import "User.h"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navController;
 @property (strong, nonatomic) ViewController *mainController;
+
+extern NSString *const FBSessionStateChangedNotification;
 
 - (void)openSession;
 

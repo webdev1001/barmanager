@@ -32,19 +32,32 @@
         [self showLoginView];
     }
     
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(sessionStateChanged:)
+     name:FBSessionStateChangedNotification
+     object:nil];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                               initWithTitle:@"Logout"
                                               style:UIBarButtonItemStyleBordered
                                               target:self
                                               action:@selector(logoutButtonWasPressed:)];
-    
-    [[RKClient sharedClient] get:@"/api/user.xml?auth_token=yJJmqUvraDgzfUw7XUTt" delegate:self];
+}
+
+- (IBAction)loadBars:(id)sender
+{
+    NSDictionary *queryParams = [NSDictionary dictionaryWithObject:@"yJJmqUvraDgzfUw7XUTt" forKey:@"auth_token"];
+    NSString *resourcePath = [@"/bars" stringByAppendingQueryParameters:queryParams];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:resourcePath delegate:self];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)showLoginView
@@ -67,29 +80,47 @@
     [FBSession.activeSession closeAndClearTokenInformation];
 }
 
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    if ([request isGET]) {
-        // Handling GET /foo.xml
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
+    Bar *bar = [objects objectAtIndex:0];
+    NSLog(@"Loaded Bar ID #%@ -> Name: %@, Capacity: %@", bar.barId, bar.name, bar.capacity);
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSLog(@"Encountered an error: %@", error);
+}
+
+- (void)sessionStateChanged:(NSNotification*)notification {
+    if (FBSession.activeSession.isOpen) {
+        NSLog(@"Logged in!");
         
-        if ([response isOK]) {
-            // Success! Let's take a look at the data
-            NSLog(@"Retrieved XML: %@", [response bodyAsString]);
-            NSData *tmp = [response body];
-        }
-        
-    } else if ([request isPOST]) {
-        
-        // Handling POST /other.json
-        if ([response isJSON]) {
-            NSLog(@"Got a JSON response back from our POST!");
-        }
-        
-    } else if ([request isDELETE]) {
-        
-        // Handling DELETE /missing_resource.txt
-        if ([response isNotFound]) {
-            NSLog(@"The resource path '%@' was not found.", [request resourcePath]);
-        }
+        [FBRequestConnection
+         startForMeWithCompletionHandler:^(FBRequestConnection *connection,
+                                           id<FBGraphUser> user,
+                                           NSError *error) {
+             if (!error) {
+                 NSString *userInfo = @"";
+                 
+                 // Example: typed access (name)
+                 // - no special permissions required
+                 userInfo = [userInfo
+                             stringByAppendingString:
+                             [NSString stringWithFormat:@"Name: %@\n\n",
+                              user.name]];
+                 
+                 // Example: access via key (locale)
+                 // - no special permissions required
+                 userInfo = [userInfo
+                             stringByAppendingString:
+                             [NSString stringWithFormat:@"Email: %@\n\n",
+                              [user objectForKey:@"email"]]];
+                 
+                 
+                 // Display the user info
+                 NSLog(@"%@", userInfo);
+             }
+         }];
+    } else {
+        NSLog(@"Logged out!");
     }
 }
 
