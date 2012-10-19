@@ -38,8 +38,7 @@
                                               target:self
                                               action:@selector(logoutButtonWasPressed:)];
     
-    //NSURL *URL = [NSURL URLWithString: @"http://127.0.0.1:8080"];
-    NSURL *URL = [NSURL URLWithString: @"http://barmanager.herokuapp.com/api/xmlrpc?auth_token=xnirhtxYhs8d6xYrrrKN"];
+    NSURL *URL = [NSURL URLWithString: @"http://barmanager.dev/api/xmlrpc?auth_token=xnirhtxYhs8d6xYrrrKN"];
     XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL: URL];
     XMLRPCConnectionManager *manager = [XMLRPCConnectionManager sharedManager];
     
@@ -86,13 +85,13 @@
         
     }
     
-    //NSLog(@"Response body: %@", [response body]);
+    NSLog(@"Response body: %@", [response body]);
 }
 
 
 - (void)request: (XMLRPCRequest *)request didFailWithError: (NSError *)error
 {
-    
+    NSLog(@"XML Error: %@", [error localizedDescription]);
 }
 
 - (BOOL)request: (XMLRPCRequest *)request canAuthenticateAgainstProtectionSpace: (NSURLProtectionSpace *)protectionSpace
@@ -108,11 +107,6 @@
 - (void)request: (XMLRPCRequest *)request didCancelAuthenticationChallenge: (NSURLAuthenticationChallenge *)challenge
 {
     
-}
-
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
-{
-    NSLog(@"%@", elementName);
 }
 
 @end
