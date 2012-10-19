@@ -1,13 +1,16 @@
 
 PODS:
+- Facebook-iOS-SDK (3.1.1)
 - NSData+Base64 (1.0.0)
 - xmlrpc (2.3.1):
   - NSData+Base64 (~> 1.0.0)
 
 DEPENDENCIES:
+- Facebook-iOS-SDK (~> 3.1.1)
 - xmlrpc (~> 2.3.1)
 
 SPEC CHECKSUMS:
+  Facebook-iOS-SDK: 5fc068ebfd8c8c9b0fad476bc36dbbf1fffeebc8
   NSData+Base64: 8b910cb8a64f45daec6fb15936c36a9a911c57ca
   xmlrpc: df8464def5b94139c5bcec28d67b963958d6fa7c
 
