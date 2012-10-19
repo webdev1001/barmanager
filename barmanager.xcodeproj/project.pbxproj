@@ -19,6 +19,9 @@
 		DA02CE3916315CC10096E156 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA02CE3816315CC10096E156 /* QuartzCore.framework */; };
 		DA02CE3B16315CC80096E156 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA02CE3A16315CC80096E156 /* libxml2.dylib */; };
 		DA02CE3F163185FE0096E156 /* BaseBar.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02CE3E163185FE0096E156 /* BaseBar.m */; };
+		DA02CE42163186740096E156 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02CE41163186740096E156 /* Bar.m */; };
+		DA02CE451631A1470096E156 /* BaseUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02CE441631A1470096E156 /* BaseUser.m */; };
+		DA02CE4B1631BC060096E156 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02CE4A1631BC060096E156 /* User.m */; };
 		DAFF7554162D82F1001A9E0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7553162D82F1001A9E0F /* UIKit.framework */; };
 		DAFF7556162D82F1001A9E0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7555162D82F1001A9E0F /* Foundation.framework */; };
 		DAFF7558162D82F1001A9E0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7557162D82F1001A9E0F /* CoreGraphics.framework */; };
@@ -48,6 +51,12 @@
 		DA02CE3A16315CC80096E156 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		DA02CE3D163185FE0096E156 /* BaseBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseBar.h; path = barmanager/BaseBar.h; sourceTree = "<group>"; };
 		DA02CE3E163185FE0096E156 /* BaseBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseBar.m; path = barmanager/BaseBar.m; sourceTree = "<group>"; };
+		DA02CE40163186740096E156 /* Bar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bar.h; path = barmanager/Bar.h; sourceTree = "<group>"; };
+		DA02CE41163186740096E156 /* Bar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bar.m; path = barmanager/Bar.m; sourceTree = "<group>"; };
+		DA02CE431631A1470096E156 /* BaseUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseUser.h; path = barmanager/BaseUser.h; sourceTree = "<group>"; };
+		DA02CE441631A1470096E156 /* BaseUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseUser.m; path = barmanager/BaseUser.m; sourceTree = "<group>"; };
+		DA02CE491631BC060096E156 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = barmanager/User.h; sourceTree = "<group>"; };
+		DA02CE4A1631BC060096E156 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = barmanager/User.m; sourceTree = "<group>"; };
 		DAFF754F162D82F1001A9E0F /* barmanager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barmanager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFF7553162D82F1001A9E0F /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DAFF7555162D82F1001A9E0F /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -98,6 +107,12 @@
 			children = (
 				DA02CE3D163185FE0096E156 /* BaseBar.h */,
 				DA02CE3E163185FE0096E156 /* BaseBar.m */,
+				DA02CE40163186740096E156 /* Bar.h */,
+				DA02CE41163186740096E156 /* Bar.m */,
+				DA02CE431631A1470096E156 /* BaseUser.h */,
+				DA02CE441631A1470096E156 /* BaseUser.m */,
+				DA02CE491631BC060096E156 /* User.h */,
+				DA02CE4A1631BC060096E156 /* User.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -260,6 +275,9 @@
 				DAFF7570162D82F1001A9E0F /* LoginViewController.m in Sources */,
 				DAFF758C162D91EC001A9E0F /* ViewController.m in Sources */,
 				DA02CE3F163185FE0096E156 /* BaseBar.m in Sources */,
+				DA02CE42163186740096E156 /* Bar.m in Sources */,
+				DA02CE451631A1470096E156 /* BaseUser.m in Sources */,
+				DA02CE4B1631BC060096E156 /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +320,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
-					"API_URL=\\@\\\"http://barmanager.dev\\\"",
+					"API_URL=\\@\\\"http://barmanager.dev/api\\\"",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -325,7 +343,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "API_URL=\\@\\\"http://barmanager.herokuapp.com\\\"";
+				GCC_PREPROCESSOR_DEFINITIONS = "API_URL=\\@\\\"http://barmanager.herokuapp.com/api\\\"";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
