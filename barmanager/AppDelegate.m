@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <FacebookSDK/FacebookSDK.h>
+#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 
 @implementation AppDelegate
 

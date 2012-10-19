@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 ITflows. All rights reserved.
 //
 
-#import <FacebookSDK/FacebookSDK.h>
+#import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
 
 #import "ViewController.h"
 #import "LoginViewController.h"
