@@ -38,15 +38,7 @@
                                               target:self
                                               action:@selector(logoutButtonWasPressed:)];
     
-    NSURL *URL = [NSURL URLWithString: @"http://barmanager.dev/api/xmlrpc?auth_token=xnirhtxYhs8d6xYrrrKN"];
-    XMLRPCRequest *request = [[XMLRPCRequest alloc] initWithURL: URL];
-    XMLRPCConnectionManager *manager = [XMLRPCConnectionManager sharedManager];
-    
-    [request setMethod: @"barmanager.listBars"];
-    
-    NSLog(@"Request body: %@", [request body]);
-    
-    [manager spawnConnectionWithXMLRPCRequest: request delegate: self];
+    [[RKClient sharedClient] get:@"/api/user.xml?auth_token=yJJmqUvraDgzfUw7XUTt" delegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,38 +67,30 @@
     [FBSession.activeSession closeAndClearTokenInformation];
 }
 
-- (void)request: (XMLRPCRequest *)request didReceiveResponse: (XMLRPCResponse *)response {
-    if ([response isFault]) {
-        NSLog(@"Fault code: %@", [response faultCode]);
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    if ([request isGET]) {
+        // Handling GET /foo.xml
         
-        NSLog(@"Fault string: %@", [response faultString]);
-    } else {
-        NSLog(@"Parsed response: %@", [response object]);
+        if ([response isOK]) {
+            // Success! Let's take a look at the data
+            NSLog(@"Retrieved XML: %@", [response bodyAsString]);
+            NSData *tmp = [response body];
+        }
         
+    } else if ([request isPOST]) {
+        
+        // Handling POST /other.json
+        if ([response isJSON]) {
+            NSLog(@"Got a JSON response back from our POST!");
+        }
+        
+    } else if ([request isDELETE]) {
+        
+        // Handling DELETE /missing_resource.txt
+        if ([response isNotFound]) {
+            NSLog(@"The resource path '%@' was not found.", [request resourcePath]);
+        }
     }
-    
-    NSLog(@"Response body: %@", [response body]);
-}
-
-
-- (void)request: (XMLRPCRequest *)request didFailWithError: (NSError *)error
-{
-    NSLog(@"XML Error: %@", [error localizedDescription]);
-}
-
-- (BOOL)request: (XMLRPCRequest *)request canAuthenticateAgainstProtectionSpace: (NSURLProtectionSpace *)protectionSpace
-{
-    return YES;
-}
-
-- (void)request: (XMLRPCRequest *)request didReceiveAuthenticationChallenge: (NSURLAuthenticationChallenge *)challenge
-{
-    
-}
-
-- (void)request: (XMLRPCRequest *)request didCancelAuthenticationChallenge: (NSURLAuthenticationChallenge *)challenge
-{
-    
 }
 
 @end

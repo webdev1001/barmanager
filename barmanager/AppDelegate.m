@@ -17,6 +17,8 @@
     self.mainController = (ViewController *)self.navController.topViewController;
     self.mainController.navController = self.navController;
     
+    [RKClient clientWithBaseURL:[NSURL URLWithString:API_URL]];
+    
     return YES;
 }
 							
