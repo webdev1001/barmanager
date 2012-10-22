@@ -7,6 +7,7 @@
 //
 
 #import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
+#import <RestKit/RKJSONParserJSONKit.h>
 
 #import "ViewController.h"
 #import "LoginViewController.h"
@@ -17,12 +18,14 @@
 
 @implementation ViewController
 
-@synthesize navController = _navController;
+@synthesize navController = _navController, dataModel;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
+    self.dataModel = [DataModel sharedManager];
+    
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         // Yes, so just open the session (this won't display any UX).
         AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
@@ -47,7 +50,7 @@
 
 - (IBAction)loadBars:(id)sender
 {
-    NSDictionary *queryParams = [NSDictionary dictionaryWithObject:@"yJJmqUvraDgzfUw7XUTt" forKey:@"auth_token"];
+    NSDictionary *queryParams = [NSDictionary dictionaryWithObject:dataModel.auth_token forKey:@"auth_token"];
     NSString *resourcePath = [@"/bars" stringByAppendingQueryParameters:queryParams];
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:resourcePath delegate:self];
 }
@@ -89,6 +92,17 @@
     NSLog(@"Encountered an error: %@", error);
 }
 
+- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
+    if( [response isOK] )
+    {
+        if( [request wasSentToResourcePath:@"/request_token.json"] )
+        {
+            NSString* parsedResponse = [response bodyAsString];
+            NSLog(@"ParsedResponse: %@", parsedResponse);
+        }
+    }
+}
+
 - (void)sessionStateChanged:(NSNotification*)notification {
     if (FBSession.activeSession.isOpen) {
         NSLog(@"Logged in!");
@@ -99,7 +113,6 @@
                                            NSError *error) {
              if (!error) {
                  NSString *userInfo = @"";
-                 
                  // Example: typed access (name)
                  // - no special permissions required
                  userInfo = [userInfo
@@ -117,11 +130,22 @@
                  
                  // Display the user info
                  NSLog(@"%@", userInfo);
+                 [self getAuthenticationTokenWithUid:user.id AndName:user.name AndEmail:[user objectForKey:@"email"]];
              }
          }];
     } else {
         NSLog(@"Logged out!");
     }
+}
+
+- (void)getAuthenticationTokenWithUid:(id)uid AndName:(NSString*)name AndEmail:(NSString*)email
+{
+    NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+    [params setValue:uid forKey:@"uid"];
+    [params setValue:name forKey:@"name"];
+    [params setValue:email forKey:@"email"];
+
+    [[RKClient sharedClient] post:@"/request_token.json" params:params delegate:self];
 }
 
 @end

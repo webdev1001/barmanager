@@ -20,7 +20,7 @@ NSString *const FBSessionStateChangedNotification =
     self.mainController = (ViewController *)self.navController.topViewController;
     self.mainController.navController = self.navController;
     
-    RKObjectManager* manager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:API_URL]];
+    RKObjectManager* manager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:@"http://barmanager.dev/api"]];
     
     [manager.router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
     [manager.router routeClass:[User class] toResourcePath:@"/users/:userId"];

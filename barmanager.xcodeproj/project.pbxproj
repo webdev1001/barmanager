@@ -11,6 +11,8 @@
 		3205749216314EBD00D33909 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3205749116314EBD00D33909 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3205749516314EC200D33909 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3205749416314EC200D33909 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3205749716314EC900D33909 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3205749616314EC900D33909 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		32C1C6D616353FF700D6AA5C /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1C6D516353FF700D6AA5C /* DataModel.m */; };
+		32C1C6D91635414F00D6AA5C /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32C1C6D81635414F00D6AA5C /* data.plist */; };
 		DA02CE2F16315C7F0096E156 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA02CE2E16315C7F0096E156 /* MobileCoreServices.framework */; };
 		DA02CE3116315C870096E156 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA02CE3016315C870096E156 /* CoreData.framework */; };
 		DA02CE3316315C9B0096E156 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA02CE3216315C9B0096E156 /* Security.framework */; };
@@ -41,6 +43,9 @@
 		3205749116314EBD00D33909 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		3205749416314EC200D33909 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3205749616314EC900D33909 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		32C1C6D416353FF700D6AA5C /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		32C1C6D516353FF700D6AA5C /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
+		32C1C6D81635414F00D6AA5C /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 		8626067EA2604DB5841B937F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA02CE2E16315C7F0096E156 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DA02CE3016315C870096E156 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -113,6 +118,9 @@
 				DA02CE441631A1470096E156 /* BaseUser.m */,
 				DA02CE491631BC060096E156 /* User.h */,
 				DA02CE4A1631BC060096E156 /* User.m */,
+				32C1C6D416353FF700D6AA5C /* DataModel.h */,
+				32C1C6D516353FF700D6AA5C /* DataModel.m */,
+				32C1C6D81635414F00D6AA5C /* data.plist */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -243,6 +251,7 @@
 				DAFF7568162D82F1001A9E0F /* Default@2x.png in Resources */,
 				DAFF756A162D82F1001A9E0F /* Default-568h@2x.png in Resources */,
 				DAFF756D162D82F1001A9E0F /* MainStoryboard.storyboard in Resources */,
+				32C1C6D91635414F00D6AA5C /* data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +287,7 @@
 				DA02CE42163186740096E156 /* Bar.m in Sources */,
 				DA02CE451631A1470096E156 /* BaseUser.m in Sources */,
 				DA02CE4B1631BC060096E156 /* User.m in Sources */,
+				32C1C6D616353FF700D6AA5C /* DataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
