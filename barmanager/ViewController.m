@@ -81,7 +81,7 @@
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
-    if ([objectLoader wasSentToResourcePath:@"/request_token.json"]) {
+    if ([objectLoader wasSentToResourcePath:@"/users/request_token.json"]) {
         User *user = [objects objectAtIndex:0];
         
         NSLog(@"Loaded user: %@", user.name);

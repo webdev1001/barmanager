@@ -29,7 +29,7 @@ NSString *const FBSessionStateChangedNotification =
     
     [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
     [router routeClass:[User class] toResourcePath:@"/users/:userId"];
-    [router routeClass:[User class] toResourcePath:@"/request_token.json" forMethod:RKRequestMethodPOST];
+    [router routeClass:[User class] toResourcePath:@"/users/request_token.json" forMethod:RKRequestMethodPOST];
     
     manager.acceptMIMEType = RKMIMETypeJSON;
     manager.serializationMIMEType = RKMIMETypeJSON;
