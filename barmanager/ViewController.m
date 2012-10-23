@@ -7,7 +7,6 @@
 //
 
 #import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
-#import <RestKit/RKJSONParserJSONKit.h>
 
 #import "ViewController.h"
 #import "LoginViewController.h"
@@ -50,9 +49,7 @@
 
 - (IBAction)loadBars:(id)sender
 {
-    NSDictionary *queryParams = [NSDictionary dictionaryWithObject:dataModel.auth_token forKey:@"auth_token"];
-    NSString *resourcePath = [@"/bars" stringByAppendingQueryParameters:queryParams];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:resourcePath delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/bars" delegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,23 +81,25 @@
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
-    Bar *bar = [objects objectAtIndex:0];
-    NSLog(@"Loaded Bar ID #%@ -> Name: %@, Capacity: %@", bar.barId, bar.name, bar.capacity);
+    if ([objectLoader wasSentToResourcePath:@"/request_token.json"]) {
+        User *user = [objects objectAtIndex:0];
+        
+        NSLog(@"Loaded user: %@", user.name);
+        
+        self.dataModel.auth_token = user.authenticationToken;
+        
+        NSLog(@"%@", user.authenticationToken);
+        
+        AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+        [appDelegate setAuthTokenWithinHTTPHeaders];
+    } else if ([objectLoader wasSentToResourcePath:@"/bars"]) {
+        Bar *bar = [objects objectAtIndex:0];
+        NSLog(@"Loaded Bar ID #%@ -> Name: %@, Capacity: %@", bar.barId, bar.name, bar.capacity);
+    }
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSLog(@"Encountered an error: %@", error);
-}
-
-- (void)request:(RKRequest*)request didLoadResponse:(RKResponse*)response {
-    if( [response isOK] )
-    {
-        if( [request wasSentToResourcePath:@"/request_token.json"] )
-        {
-            NSString* parsedResponse = [response bodyAsString];
-            NSLog(@"ParsedResponse: %@", parsedResponse);
-        }
-    }
 }
 
 - (void)sessionStateChanged:(NSNotification*)notification {
@@ -112,24 +111,6 @@
                                            id<FBGraphUser> user,
                                            NSError *error) {
              if (!error) {
-                 NSString *userInfo = @"";
-                 // Example: typed access (name)
-                 // - no special permissions required
-                 userInfo = [userInfo
-                             stringByAppendingString:
-                             [NSString stringWithFormat:@"Name: %@\n\n",
-                              user.name]];
-                 
-                 // Example: access via key (locale)
-                 // - no special permissions required
-                 userInfo = [userInfo
-                             stringByAppendingString:
-                             [NSString stringWithFormat:@"Email: %@\n\n",
-                              [user objectForKey:@"email"]]];
-                 
-                 
-                 // Display the user info
-                 NSLog(@"%@", userInfo);
                  [self getAuthenticationTokenWithUid:user.id AndName:user.name AndEmail:[user objectForKey:@"email"]];
              }
          }];
@@ -140,12 +121,18 @@
 
 - (void)getAuthenticationTokenWithUid:(id)uid AndName:(NSString*)name AndEmail:(NSString*)email
 {
-    NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
-    [params setValue:uid forKey:@"uid"];
-    [params setValue:name forKey:@"name"];
-    [params setValue:email forKey:@"email"];
+    RKObjectMapping* userSerializationMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
+    [userSerializationMapping mapAttributes:@"name", @"email", @"uid", nil];
+    
+    [[RKObjectManager sharedManager].mappingProvider setSerializationMapping:userSerializationMapping forClass:[User class]];
+    
+    User* user = [User new];
+    user.name = name;
+    user.email = email;
+    user.uid = uid;
 
-    [[RKClient sharedClient] post:@"/request_token.json" params:params delegate:self];
+    // POST to /request_token
+    [[RKObjectManager sharedManager] postObject:user delegate:self];
 }
 
 @end
