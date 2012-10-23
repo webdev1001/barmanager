@@ -71,4 +71,35 @@ static DataModel *dataModel = nil;
     return self;
 }
 
+- (void)writeSettings
+{
+    NSLog(@"try to write settings");
+    
+    NSString *tmpAuthToken = auth_token;
+    
+    NSLog(@"%@", tmpAuthToken);
+    
+    NSArray *temp = [NSArray arrayWithObjects:tmpAuthToken, nil];
+    
+    NSString *error;
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *plistPath = [rootPath stringByAppendingPathComponent:@"data.plist"];
+    NSDictionary *plistDict = [NSDictionary dictionaryWithObjects: temp forKeys:[NSArray arrayWithObjects: @"auth_token", nil]];
+    NSDictionary *settingsPlistDict = [NSDictionary dictionaryWithObject:plistDict forKey:@"user_settings"];
+    
+    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:settingsPlistDict
+                                                                   format:NSPropertyListXMLFormat_v1_0
+                                                         errorDescription:&error];
+    
+    if(plistData)
+    {
+        [plistData writeToFile:plistPath atomically:YES];
+        NSLog(@"settings written");
+    }
+    else
+    {
+        NSLog(@"%@", error);
+    }
+}
+
 @end

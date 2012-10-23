@@ -16,5 +16,6 @@
 @property (strong, nonatomic) NSString *auth_token;
 
 + (id)sharedManager;
+- (void)writeSettings;
 
 @end
