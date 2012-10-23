@@ -14,6 +14,7 @@
     @"email", @"email",
     @"name", @"name",
     @"authentication_token", @"authenticationToken",
+    @"uid", @"uid",
     nil];
     return mapping;
 }
@@ -26,6 +27,7 @@
         self.email = [coder decodeObjectForKey:@"email"];
         self.name = [coder decodeObjectForKey:@"name"];
         self.authenticationToken = [coder decodeObjectForKey:@"authenticationToken"];
+        self.uid = [coder decodeObjectForKey:@"uid"];
     }
     return self;
 }
@@ -36,6 +38,7 @@
     [coder encodeObject:self.email forKey:@"email"];
     [coder encodeObject:self.name forKey:@"name"];
     [coder encodeObject:self.authenticationToken forKey:@"authenticationToken"];
+    [coder encodeObject:self.uid forKey:@"uid"];
 }
 
 @end
