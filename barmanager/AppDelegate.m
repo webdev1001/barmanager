@@ -11,22 +11,33 @@
 
 @implementation AppDelegate
 
+@synthesize dataModel;
+
 NSString *const FBSessionStateChangedNotification =
 @"ITflows.barmanager.Login:FBSessionStateChangedNotification";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.dataModel = [DataModel sharedManager];
+    
     self.navController = (UINavigationController *)self.window.rootViewController;
     self.mainController = (ViewController *)self.navController.topViewController;
     self.mainController.navController = self.navController;
     
-    RKObjectManager* manager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:@"http://barmanager.dev/api"]];
+    RKObjectManager* manager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:API_URL]];
+    RKObjectRouter* router = manager.router;
     
-    [manager.router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
-    [manager.router routeClass:[User class] toResourcePath:@"/users/:userId"];
-
-    [[RKObjectManager sharedManager].mappingProvider setMapping:[Bar objectMapping] forKeyPath:@"bar"];
-    [[RKObjectManager sharedManager].mappingProvider setMapping:[User objectMapping] forKeyPath:@"user"];
+    [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
+    [router routeClass:[User class] toResourcePath:@"/users/:userId"];
+    [router routeClass:[User class] toResourcePath:@"/request_token.json" forMethod:RKRequestMethodPOST];
+    
+    manager.acceptMIMEType = RKMIMETypeJSON;
+    manager.serializationMIMEType = RKMIMETypeJSON;
+    
+    [manager.mappingProvider setMapping:[Bar objectMapping] forKeyPath:@"bar"];
+    [manager.mappingProvider setMapping:[User objectMapping] forKeyPath:@"user"];
+    
+    [manager.mappingProvider setSerializationMapping:[User objectMapping] forClass:[User class]];
     
     return YES;
 }
@@ -41,6 +52,8 @@ NSString *const FBSessionStateChangedNotification =
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    [self.dataModel writeSettings];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -55,6 +68,7 @@ NSString *const FBSessionStateChangedNotification =
     // We need to properly handle activation of the application with regards to SSO
     // (e.g., returning from iOS 6.0 authorization dialog or from fast app switching).
     [FBSession.activeSession handleDidBecomeActive];
+    [self setAuthTokenWithinHTTPHeaders];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -129,6 +143,13 @@ NSString *const FBSessionStateChangedNotification =
          annotation:(id)annotation
 {
     return [FBSession.activeSession handleOpenURL:url];
+}
+
+- (void)setAuthTokenWithinHTTPHeaders {
+    if ( self.dataModel.auth_token ) {
+        [[[RKObjectManager sharedManager] client] setValue:self.dataModel.auth_token forHTTPHeaderField:@"X-BARMANAGER-AUTH-TOKEN"];
+        NSLog(@"Loaded auth token: %@", self.dataModel.auth_token);
+    }
 }
 
 @end
