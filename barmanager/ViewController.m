@@ -17,7 +17,7 @@
 
 @implementation ViewController
 
-@synthesize navController = _navController, dataModel;
+@synthesize navController = _navController, dataModel, cityname;
 
 - (void)viewDidLoad
 {
@@ -45,11 +45,19 @@
                                               style:UIBarButtonItemStyleBordered
                                               target:self
                                               action:@selector(logoutButtonWasPressed:)];
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    locationManager.delegate = self;
+    locationManager.distanceFilter = 100.0f;
+    
+    [locationManager startUpdatingLocation];
 }
 
-- (IBAction)loadBars:(id)sender
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/bars" delegate:self];
+    CLLocation *lastLocation = [locations lastObject];
+    [self getCityByLat:lastLocation.coordinate.latitude AndLng:lastLocation.coordinate.longitude];
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,6 +89,10 @@
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
+    
+    NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
+    objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
+    
     if ([objectLoader wasSentToResourcePath:@"/users/request_token.json"]) {
         User *user = [objects objectAtIndex:0];
         
@@ -95,6 +107,11 @@
     } else if ([objectLoader wasSentToResourcePath:@"/bars"]) {
         Bar *bar = [objects objectAtIndex:0];
         NSLog(@"Loaded Bar ID #%@ -> Name: %@, Capacity: %@", bar.barId, bar.name, bar.capacity);
+    } else if ([objectLoader wasSentToResourcePath:@"/cities.json"]) {
+        City *city = [objects objectAtIndex:0];
+        cityname.text = city.name;
+        NSLog(@"Loaded City ID #%@ -> Name: %@, Population: %@", city.cityId, city.name, city.population);
+        [self displayBarsForCity:city ];        
     }
 }
 
@@ -119,6 +136,14 @@
     }
 }
 
+- (void)getCityByLat:(float)latitude AndLng:(float)longitude
+{
+    
+    NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f", latitude],@"latitude",[NSString stringWithFormat:@"%f", longitude],@"longitude", nil];
+    NSString *resourcePath = [@"/cities.json" stringByAppendingQueryParameters:queryParams];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:resourcePath delegate:self];
+}
+
 - (void)getAuthenticationTokenWithUid:(id)uid AndName:(NSString*)name AndEmail:(NSString*)email
 {
     RKObjectMapping* userSerializationMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
@@ -133,6 +158,34 @@
 
     // POST to /request_token
     [[RKObjectManager sharedManager] postObject:user delegate:self];
+}
+
+- (void)displayBarsForCity:(City*)city
+{
+    for ( UIView *die in [[self view] subviews]) {   // clear out previous label
+        if ( die.tag == 2277 ) {
+            [die removeFromSuperview];
+        }
+    }
+    NSInteger y = 120;
+    for( Bar *user_bar in city.user_bars )
+    {
+        y += 30;
+        UILabel *label =  [[UILabel alloc] initWithFrame: CGRectMake(20, y, 150, 20)];
+        label.text = user_bar.name;
+        label.tag = 2277;
+        [self.view addSubview:label];
+    }
+    
+    y = 250;
+    for( Bar *other_bar in city.other_bars )
+    {
+        y += 30;
+        UILabel *label =  [[UILabel alloc] initWithFrame: CGRectMake(20, y, 150, 20)];
+        label.text = other_bar.name;
+        label.tag = 2277;
+        [self.view addSubview:label];
+    }
 }
 
 @end

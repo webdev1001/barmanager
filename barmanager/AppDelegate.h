@@ -16,6 +16,7 @@
 
 #import "Bar.h"
 #import "User.h"
+#import "City.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {

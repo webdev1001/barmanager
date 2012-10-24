@@ -8,22 +8,25 @@
 
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 #import "Bar.h"
 #import "DataModel.h"
+#import "City.h"
 
-@interface ViewController : UIViewController <RKObjectLoaderDelegate>
+@interface ViewController : UIViewController <RKObjectLoaderDelegate, CLLocationManagerDelegate>
 {
     DataModel *dataModel;
+    CLLocationManager *locationManager;
+    UILabel *cityname;
 }
 
 @property (nonatomic, retain) DataModel *dataModel;
-
 @property (strong, nonatomic) UINavigationController *navController;
-
-- (IBAction)loadBars:(id)sender;
+@property (nonatomic, retain) IBOutlet UILabel *cityname;
 
 - (void)showLoginView;
 - (void)getAuthenticationTokenWithUid:(id)uid AndName:(NSString*)name AndEmail:(NSString*)email;
+- (void)displayBarsForCity:(City *) city;
 
 @end
