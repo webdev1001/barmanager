@@ -10,8 +10,6 @@
 
 @implementation Error
 
-@synthesize showingError;
-
 - (void)showError
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"

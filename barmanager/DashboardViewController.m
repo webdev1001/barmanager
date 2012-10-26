@@ -39,7 +39,7 @@
     NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
     objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
     
-    if ([objectLoader wasSentToResourcePath:@"/bars"]) {
+    if ([objectLoader wasSentToResourcePath:@"/bars.json"]) {
         Bar *bar = [objects objectAtIndex:0];
         NSLog(@"Loaded Bar ID #%@ -> Name: %@, Capacity: %@", bar.barId, bar.name, bar.capacity);
     } else if ([objectLoader wasSentToResourcePath:@"/cities.json"]) {
