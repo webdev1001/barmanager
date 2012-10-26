@@ -93,18 +93,7 @@
                     <view key="view" contentMode="scaleToFill" id="fo4-wB-edQ">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0q-0A-LwB">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="P0q-0A-LwB" firstAttribute="centerX" secondItem="fo4-wB-edQ" secondAttribute="centerX" type="default" id="IjP-2m-sZE"/>
-                            <constraint firstAttribute="bottom" secondItem="P0q-0A-LwB" secondAttribute="bottom" constant="86" id="vG3-Lb-Euy"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="URV-Tp-qJL"/>
                 </viewController>
