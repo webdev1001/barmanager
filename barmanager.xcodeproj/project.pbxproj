@@ -18,6 +18,9 @@
 		D93061AD1637422700BB0B75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93061AC1637422700BB0B75 /* CoreLocation.framework */; };
 		D955301A1637E5D900C81849 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = D95530191637E5D900C81849 /* City.m */; };
 		D955301D1637E60400C81849 /* BaseCity.m in Sources */ = {isa = PBXBuildFile; fileRef = D955301C1637E60400C81849 /* BaseCity.m */; };
+		D971E372163A94C4003B53A3 /* BankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D971E371163A94C4003B53A3 /* BankViewController.m */; };
+		D971E376163A96B1003B53A3 /* BaseBankTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D971E375163A96B1003B53A3 /* BaseBankTransaction.m */; };
+		D971E379163A972E003B53A3 /* BankTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = D971E378163A972E003B53A3 /* BankTransaction.m */; };
 		DA02CE2F16315C7F0096E156 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA02CE2E16315C7F0096E156 /* MobileCoreServices.framework */; };
 		DA02CE3116315C870096E156 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA02CE3016315C870096E156 /* CoreData.framework */; };
 		DA02CE3316315C9B0096E156 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA02CE3216315C9B0096E156 /* Security.framework */; };
@@ -63,6 +66,12 @@
 		D95530191637E5D900C81849 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = City.m; path = barmanager/City.m; sourceTree = "<group>"; };
 		D955301B1637E60400C81849 /* BaseCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseCity.h; path = barmanager/BaseCity.h; sourceTree = "<group>"; };
 		D955301C1637E60400C81849 /* BaseCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseCity.m; path = barmanager/BaseCity.m; sourceTree = "<group>"; };
+		D971E370163A94C4003B53A3 /* BankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankViewController.h; sourceTree = "<group>"; };
+		D971E371163A94C4003B53A3 /* BankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankViewController.m; sourceTree = "<group>"; };
+		D971E374163A96B1003B53A3 /* BaseBankTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseBankTransaction.h; path = barmanager/BaseBankTransaction.h; sourceTree = "<group>"; };
+		D971E375163A96B1003B53A3 /* BaseBankTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseBankTransaction.m; path = barmanager/BaseBankTransaction.m; sourceTree = "<group>"; };
+		D971E377163A972E003B53A3 /* BankTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BankTransaction.h; path = barmanager/BankTransaction.h; sourceTree = "<group>"; };
+		D971E378163A972E003B53A3 /* BankTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BankTransaction.m; path = barmanager/BankTransaction.m; sourceTree = "<group>"; };
 		DA02CE2E16315C7F0096E156 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DA02CE3016315C870096E156 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DA02CE3216315C9B0096E156 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -131,6 +140,10 @@
 		DA02CE3C163182C60096E156 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D971E374163A96B1003B53A3 /* BaseBankTransaction.h */,
+				D971E375163A96B1003B53A3 /* BaseBankTransaction.m */,
+				D971E377163A972E003B53A3 /* BankTransaction.h */,
+				D971E378163A972E003B53A3 /* BankTransaction.m */,
 				DA02CE3D163185FE0096E156 /* BaseBar.h */,
 				DA02CE3E163185FE0096E156 /* BaseBar.m */,
 				DA02CE40163186740096E156 /* Bar.h */,
@@ -210,6 +223,8 @@
 				322095D716393493000C70D9 /* LocationManager.h */,
 				322095D816393493000C70D9 /* LocationManager.m */,
 				DAFF755A162D82F1001A9E0F /* Supporting Files */,
+				D971E370163A94C4003B53A3 /* BankViewController.h */,
+				D971E371163A94C4003B53A3 /* BankViewController.m */,
 			);
 			path = barmanager;
 			sourceTree = "<group>";
@@ -328,6 +343,9 @@
 				322095D916393493000C70D9 /* LocationManager.m in Sources */,
 				DA7E69C5163AC4B90046701B /* BaseError.m in Sources */,
 				DA7E69C9163AC4FC0046701B /* Error.m in Sources */,
+				D971E372163A94C4003B53A3 /* BankViewController.m in Sources */,
+				D971E376163A96B1003B53A3 /* BaseBankTransaction.m in Sources */,
+				D971E379163A972E003B53A3 /* BankTransaction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
