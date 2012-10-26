@@ -1,6 +1,6 @@
 //
 //  BaseCity.h
-//  Command: /Users/joshuajansen/.rvm/gems/ruby-1.9.3-p194@global/bin/restkit-generate model City id:NSNumber name:NSString population:NSNumber
+//  Command: restkit-generate model City id:NSNumber name:NSString population:NSNumber
 //
 
 #import <Foundation/Foundation.h>

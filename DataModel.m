@@ -65,7 +65,7 @@ static DataModel *dataModel = nil;
         NSLog(@"%@", plistPath);
         
         auth_token = [user_settings objectForKey:@"auth_token"];
-        NSLog(@"Auth token:%@", auth_token);
+        NSLog(@"Loaded auth_token from data.plist: %@", auth_token);
         
         city_id = [city_data objectForKey:@"city_id"];
         city_name = [city_data objectForKey:@"city_name"];
@@ -76,7 +76,7 @@ static DataModel *dataModel = nil;
 
 - (void)writeSettings
 {
-    NSLog(@"try to write settings");
+    NSLog(@"try to write data.plist");
         
     NSString *error;
 
@@ -90,7 +90,7 @@ static DataModel *dataModel = nil;
     NSArray *userSettingsTemp = [NSArray arrayWithObjects:tmpAuthToken, nil];
     
     NSDictionary *userSettingsDict = [NSDictionary dictionaryWithObjects: userSettingsTemp forKeys:[NSArray arrayWithObjects: @"auth_token", nil]];
-    NSLog(@"User settings build");
+    NSLog(@"User settings built");
     
     // City data:
     NSNumber *tmpCityId = city_id;
@@ -99,7 +99,7 @@ static DataModel *dataModel = nil;
     NSArray *cityDataTemp = [NSArray arrayWithObjects:tmpCityId, tmpCityName, nil];
     
     NSDictionary *cityPlistDict = [NSDictionary dictionaryWithObjects: cityDataTemp forKeys:[NSArray arrayWithObjects: @"city_id", @"city_name", nil]];
-    NSLog(@"City data build");    
+    NSLog(@"City data built");    
     
     NSDictionary *rootPlistDict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:userSettingsDict, cityPlistDict, nil] forKeys:[NSArray arrayWithObjects: @"user_settings", @"city_data", nil]];
     NSData *rootPlistData = [NSPropertyListSerialization dataFromPropertyList:rootPlistDict
@@ -108,7 +108,7 @@ static DataModel *dataModel = nil;
     if(rootPlistData)
     {
         [rootPlistData writeToFile:plistPath atomically:YES];
-        NSLog(@"settings written");
+        NSLog(@"data.plist written");
     }
     else
     {

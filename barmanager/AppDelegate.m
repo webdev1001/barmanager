@@ -29,7 +29,7 @@ NSString *const FBSessionStateChangedNotification =
     
     [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
     [router routeClass:[User class] toResourcePath:@"/users/:userId"];
-    [router routeClass:[City class] toResourcePath:@"/cities"];
+    [router routeClass:[City class] toResourcePath:@"/cities.json"];
     [router routeClass:[User class] toResourcePath:@"/users/request_token.json" forMethod:RKRequestMethodPOST];
     
     manager.acceptMIMEType = RKMIMETypeJSON;
@@ -38,6 +38,7 @@ NSString *const FBSessionStateChangedNotification =
     [manager.mappingProvider setMapping:[Bar objectMapping] forKeyPath:@"bar"];
     [manager.mappingProvider setMapping:[User objectMapping] forKeyPath:@"user"];
     [manager.mappingProvider setMapping:[City objectMapping] forKeyPath:@"city"];
+    [manager.mappingProvider setMapping:[Error objectMapping] forKeyPath:@"error"];
     
     [manager.mappingProvider setSerializationMapping:[User objectMapping] forClass:[User class]];
     
@@ -149,9 +150,9 @@ NSString *const FBSessionStateChangedNotification =
 }
 
 - (void)setAuthTokenWithinHTTPHeaders {
-    if ( self.dataModel.auth_token ) {
+    if ( [self.dataModel.auth_token length] != 0 ) {
         [[[RKObjectManager sharedManager] client] setValue:self.dataModel.auth_token forHTTPHeaderField:@"X-BARMANAGER-AUTH-TOKEN"];
-        NSLog(@"Loaded auth token: %@", self.dataModel.auth_token);
+        NSLog(@"Set %@ to http headers", self.dataModel.auth_token);
     }
 }
 

@@ -61,16 +61,16 @@
 {
     if ( [item tag] == 0 ) {
         NSLog(@"item tag is 0");
-        DashboardViewController *dashboardViewController = [DashboardViewController alloc];
-        [ dashboardViewController viewDidLoad ];
+        //DashboardViewController *dashboardViewController = [DashboardViewController alloc];
     }
 }
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
-    
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
     NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
     objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
     
+    // After requesting token, set auth token to datamodel singleton
     if ([objectLoader wasSentToResourcePath:@"/users/request_token.json"]) {
         User *user = [objects objectAtIndex:0];
         
@@ -78,18 +78,18 @@
         
         self.dataModel.auth_token = user.authenticationToken;
         
-        NSLog(@"%@", user.authenticationToken);
-        
         AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
         [appDelegate setAuthTokenWithinHTTPHeaders];
     }
 }
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
     NSLog(@"Encountered an error: %@", error);
 }
 
-- (void)sessionStateChanged:(NSNotification*)notification {
+- (void)sessionStateChanged:(NSNotification*)notification
+{
     if (FBSession.activeSession.isOpen) {
         NSLog(@"Logged in!");
         

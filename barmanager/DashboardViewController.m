@@ -23,7 +23,7 @@
 {
     [super viewDidLoad];
     self.dataModel = [DataModel sharedManager];
-    [self getCity];
+    //[self getCity];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,8 +34,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
-    
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
     NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
     objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
     
@@ -46,7 +46,7 @@
         City *city = [objects objectAtIndex:0];
         cityname.text = city.name;
         NSLog(@"Loaded City ID #%@ -> Name: %@, Population: %@", city.cityId, city.name, city.population);
-        [self displayBarsForCity:city ];        
+        [self displayBarsForCity:city];
     }
 }
 
