@@ -80,7 +80,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="MFy-fa-vFe"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Item" id="MFy-fa-vFe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9g-LP-SsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,7 +95,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="URV-Tp-qJL"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Item 2" id="URV-Tp-qJL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AAJ-ec-CNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
