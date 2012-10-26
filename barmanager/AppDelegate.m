@@ -21,7 +21,7 @@ NSString *const FBSessionStateChangedNotification =
     self.dataModel = [DataModel sharedManager];
     
     self.navController = (UINavigationController *)self.window.rootViewController;
-    self.mainController = (ViewController *)self.navController.topViewController;
+    self.mainController = (RootTabBarController *)self.navController.topViewController;
     self.mainController.navController = self.navController;
     
     RKObjectManager* manager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:API_URL]];
@@ -71,6 +71,7 @@ NSString *const FBSessionStateChangedNotification =
     // (e.g., returning from iOS 6.0 authorization dialog or from fast app switching).
     [FBSession.activeSession handleDidBecomeActive];
     [self setAuthTokenWithinHTTPHeaders];
+    [LocationManager sharedLocationManager];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

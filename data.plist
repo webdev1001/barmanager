@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>city_data</key>
+	<dict>
+		<key>city_id</key>
+		<integer>0</integer>
+		<key>city_name</key>
+		<string></string>
+	</dict>
 	<key>user_settings</key>
 	<dict>
 		<key>auth_token</key>

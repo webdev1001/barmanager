@@ -12,8 +12,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="MJO-VC-2j5"/>
                         <segue destination="0Qx-gr-jEa" kind="modal" identifier="Show Login" id="9gA-pm-tLQ"/>
+                        <segue destination="cbA-3i-KE9" kind="relationship" relationship="rootViewController" id="qEj-2u-Kal"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWb-gd-qhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -71,12 +71,42 @@
             </objects>
             <point key="canvasLocation" x="257" y="159"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="5">
+        <!--View Controller - Item-->
+        <scene sceneID="x4d-Z5-a1b">
             <objects>
-                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="nPg-Zh-d4h" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KeX-j2-fxC">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="MFy-fa-vFe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O9g-LP-SsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="936" y="398"/>
+        </scene>
+        <!--View Controller - Item 2-->
+        <scene sceneID="spJ-Ev-h7l">
+            <objects>
+                <viewController id="p47-ZW-bwz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fo4-wB-edQ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="URV-Tp-qJL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AAJ-ec-CNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="936" y="-286"/>
+        </scene>
+        <!--View Controller - Item 1-->
+        <scene sceneID="QhI-JD-LQt">
+            <objects>
+                <viewController id="cbO-Cz-wjo" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Huidige Stad:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yg8-Zw-NIJ">
@@ -110,24 +140,42 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BDO-dS-cgu" firstAttribute="top" secondItem="3" secondAttribute="top" constant="250" id="05M-wO-4Ov"/>
+                            <constraint firstItem="mLU-Mr-CIk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="118" id="04q-71-spb"/>
+                            <constraint firstAttribute="bottom" secondItem="BDO-dS-cgu" secondAttribute="bottom" constant="187" id="3La-qP-c2F"/>
                             <constraint firstItem="yg8-Zw-NIJ" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4Te-tO-waD"/>
                             <constraint firstItem="mLU-Mr-CIk" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DhN-Lq-tbs"/>
                             <constraint firstItem="vdS-AX-Hui" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DzE-WK-S7O"/>
-                            <constraint firstItem="mLU-Mr-CIk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="120" id="H0k-1h-UPQ"/>
                             <constraint firstItem="vdS-AX-Hui" firstAttribute="top" secondItem="3" secondAttribute="top" constant="54" id="gq0-w3-w84"/>
                             <constraint firstItem="BDO-dS-cgu" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="oKJ-nt-E29"/>
                             <constraint firstItem="yg8-Zw-NIJ" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="s6D-5m-Gbg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="22c-bX-ciF"/>
-                    <connections>
-                        <outlet property="cityname" destination="vdS-AX-Hui" id="vqM-2h-d5o"/>
-                    </connections>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="vv3-IH-vTs"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tmJ-GW-QPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="257" y="-559"/>
+            <point key="canvasLocation" x="936" y="-949"/>
+        </scene>
+        <!--Root Tab Bar Controller-->
+        <scene sceneID="o67-6i-WsW">
+            <objects>
+                <tabBarController definesPresentationContext="YES" id="cbA-3i-KE9" customClass="RootTabBarController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="KuY-UD-Ghd"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="wa7-cR-tbK">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="cbO-Cz-wjo" kind="relationship" relationship="viewControllers" id="VKN-4j-0DV"/>
+                        <segue destination="p47-ZW-bwz" kind="relationship" relationship="viewControllers" id="b5S-aV-2lS"/>
+                        <segue destination="nPg-Zh-d4h" kind="relationship" relationship="viewControllers" id="T1K-lS-1uj"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="unK-ye-Xdw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="334" y="-779"/>
         </scene>
     </scenes>
     <classes>
@@ -140,6 +188,9 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RootTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootTabBarController.h"/>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>

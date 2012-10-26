@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
-#import "ViewController.h"
+#import "RootTabBarController.h"
+#import "LocationManager.h"
 
 #import <RestKit/RestKit.h>
 
@@ -25,7 +26,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navController;
-@property (strong, nonatomic) ViewController *mainController;
+@property (strong, nonatomic) RootTabBarController *mainController;
 @property (retain, nonatomic) DataModel *dataModel;
 
 extern NSString *const FBSessionStateChangedNotification;

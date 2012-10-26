@@ -12,7 +12,7 @@ static DataModel *dataModel = nil;
 
 @implementation DataModel
 
-@synthesize auth_token;
+@synthesize auth_token, city_id, city_name;
 
 #pragma mark Singleton Methods
 + (id)sharedManager
@@ -60,12 +60,15 @@ static DataModel *dataModel = nil;
         }
         
         NSDictionary *user_settings = [temp objectForKey:@"user_settings"];
+        NSDictionary *city_data = [temp objectForKey:@"city_data"];
         
         NSLog(@"%@", plistPath);
         
         auth_token = [user_settings objectForKey:@"auth_token"];
-        
         NSLog(@"Auth token:%@", auth_token);
+        
+        city_id = [city_data objectForKey:@"city_id"];
+        city_name = [city_data objectForKey:@"city_name"];
     }
     
     return self;
@@ -74,32 +77,44 @@ static DataModel *dataModel = nil;
 - (void)writeSettings
 {
     NSLog(@"try to write settings");
-    
-    NSString *tmpAuthToken = auth_token;
-    
-    NSLog(@"%@", tmpAuthToken);
-    
-    NSArray *temp = [NSArray arrayWithObjects:tmpAuthToken, nil];
-    
+        
     NSString *error;
+
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *plistPath = [rootPath stringByAppendingPathComponent:@"data.plist"];
-    NSDictionary *plistDict = [NSDictionary dictionaryWithObjects: temp forKeys:[NSArray arrayWithObjects: @"auth_token", nil]];
-    NSDictionary *settingsPlistDict = [NSDictionary dictionaryWithObject:plistDict forKey:@"user_settings"];
     
-    NSData *plistData = [NSPropertyListSerialization dataFromPropertyList:settingsPlistDict
+    
+    // User settings:
+    NSString *tmpAuthToken = auth_token;
+    
+    NSArray *userSettingsTemp = [NSArray arrayWithObjects:tmpAuthToken, nil];
+    
+    NSDictionary *userSettingsDict = [NSDictionary dictionaryWithObjects: userSettingsTemp forKeys:[NSArray arrayWithObjects: @"auth_token", nil]];
+    NSLog(@"User settings build");
+    
+    // City data:
+    NSNumber *tmpCityId = city_id;
+    NSString *tmpCityName = city_name;
+    
+    NSArray *cityDataTemp = [NSArray arrayWithObjects:tmpCityId, tmpCityName, nil];
+    
+    NSDictionary *cityPlistDict = [NSDictionary dictionaryWithObjects: cityDataTemp forKeys:[NSArray arrayWithObjects: @"city_id", @"city_name", nil]];
+    NSLog(@"City data build");    
+    
+    NSDictionary *rootPlistDict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:userSettingsDict, cityPlistDict, nil] forKeys:[NSArray arrayWithObjects: @"user_settings", @"city_data", nil]];
+    NSData *rootPlistData = [NSPropertyListSerialization dataFromPropertyList:rootPlistDict
                                                                    format:NSPropertyListXMLFormat_v1_0
                                                          errorDescription:&error];
-    
-    if(plistData)
+    if(rootPlistData)
     {
-        [plistData writeToFile:plistPath atomically:YES];
+        [rootPlistData writeToFile:plistPath atomically:YES];
         NSLog(@"settings written");
     }
     else
     {
         NSLog(@"%@", error);
     }
+    
 }
 
 @end
