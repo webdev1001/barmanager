@@ -10,6 +10,7 @@
 
 #import "RootTabBarController.h"
 #import "LoginViewController.h"
+#import "DashboardViewController.h"
 
 @interface RootTabBarController ()
 
@@ -54,6 +55,15 @@
                                               style:UIBarButtonItemStyleBordered
                                               target:self
                                               action:@selector(logoutButtonWasPressed:)];
+}
+
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
+{
+    if ( [item tag] == 0 ) {
+        NSLog(@"item tag is 0");
+        DashboardViewController *dashboardViewController = [DashboardViewController alloc];
+        [ dashboardViewController viewDidLoad ];
+    }
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects {
