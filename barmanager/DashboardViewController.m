@@ -22,6 +22,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.dataModel = [DataModel sharedManager];
+    [self getCity];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,13 +54,13 @@
     NSLog(@"Encountered an error: %@", error);
 }
 
-
-- (void)getCityByLat:(float)latitude AndLng:(float)longitude
+- (void)getCity
 {
-    
-    NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f", latitude],@"latitude",[NSString stringWithFormat:@"%f", longitude],@"longitude", nil];
-    NSString *resourcePath = [@"/cities.json" stringByAppendingQueryParameters:queryParams];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:resourcePath delegate:self];
+    NSLog(@"Get city called");
+    NSLog(@"City id: %@", dataModel.city_id);
+//    NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@", dataModel.city_id],@"id", nil];
+//    NSString *resourcePath = [@"/cities.json" stringByAppendingQueryParameters:queryParams];
+//    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:resourcePath delegate:self];
 }
 
 - (void)displayBarsForCity:(City*)city
