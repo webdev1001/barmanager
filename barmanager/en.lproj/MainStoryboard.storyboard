@@ -107,7 +107,7 @@
                             <outlet property="delegate" destination="UkJ-4T-7I9" id="zC0-XF-wGc"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="V02-c2-zU4"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Item" id="V02-c2-zU4"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jW-Ui-Pdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -205,6 +205,24 @@
             <point key="canvasLocation" x="334" y="-779"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="BankViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BankViewController.h"/>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="performLogin:"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RootTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootTabBarController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
