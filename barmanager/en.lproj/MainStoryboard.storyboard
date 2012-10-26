@@ -146,9 +146,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mLU-Mr-CIk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="118" id="04q-71-spb"/>
-                            <constraint firstAttribute="bottom" secondItem="BDO-dS-cgu" secondAttribute="bottom" constant="187" id="3La-qP-c2F"/>
+                            <constraint firstItem="mLU-Mr-CIk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="130" type="user" id="04q-71-spb"/>
                             <constraint firstItem="yg8-Zw-NIJ" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4Te-tO-waD"/>
+                            <constraint firstItem="BDO-dS-cgu" firstAttribute="top" secondItem="mLU-Mr-CIk" secondAttribute="bottom" constant="59" type="user" id="6fe-X9-dFp"/>
                             <constraint firstItem="mLU-Mr-CIk" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DhN-Lq-tbs"/>
                             <constraint firstItem="vdS-AX-Hui" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DzE-WK-S7O"/>
                             <constraint firstItem="vdS-AX-Hui" firstAttribute="top" secondItem="3" secondAttribute="top" constant="54" id="gq0-w3-w84"/>
@@ -157,6 +157,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="vv3-IH-vTs"/>
+                    <connections>
+                        <outlet property="cityname" destination="vdS-AX-Hui" id="p3k-M4-9Uh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmJ-GW-QPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -24,6 +24,8 @@
 @property (strong, nonatomic) CLLocation *lastLocation;
 @property (nonatomic, retain) DataModel *dataModel;
 
+extern NSString *const BMCityChange;
+
 + (id)sharedLocationManager;
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 

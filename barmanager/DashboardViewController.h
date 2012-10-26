@@ -24,6 +24,5 @@
 @property (nonatomic, retain) IBOutlet UILabel *cityname;
 
 - (void)displayBarsForCity:(City *) city;
-- (void)getCity;
 
 @end

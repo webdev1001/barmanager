@@ -13,8 +13,7 @@
 
 @synthesize dataModel;
 
-NSString *const FBSessionStateChangedNotification =
-@"ITflows.barmanager.Login:FBSessionStateChangedNotification";
+NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:FBSessionStateChangedNotification";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

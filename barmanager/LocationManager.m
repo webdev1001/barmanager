@@ -14,6 +14,8 @@ static LocationManager *sharedLocationManager = nil;
 
 @synthesize lastLocation, dataModel;
 
+NSString *const BMCityChange = @"ITflows.barmanager.City:BMCityChange";
+
 + (id)sharedLocationManager
 {
     @synchronized(self) {
@@ -68,6 +70,10 @@ static LocationManager *sharedLocationManager = nil;
             self.dataModel.city_id = city.cityId;
             self.dataModel.city_name = city.name;
             NSLog(@"Loaded City ID #%@ -> Name: %@, Population: %@", city.cityId, city.name, city.population);
+            
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:BMCityChange
+             object:city];
         }
     }
 }

@@ -23,7 +23,12 @@
 {
     [super viewDidLoad];
     self.dataModel = [DataModel sharedManager];
-    //[self getCity];
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(cityChange:)
+     name:BMCityChange
+     object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,6 +39,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+// Gets called when location managers updates location
+- (void)cityChange:(NSNotification*)notification
+{
+    City *city = [notification object];
+    [cityname setText:city.name];
+    
+    [self displayBarsForCity:city];
+}
+
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
@@ -42,25 +56,11 @@
     if ([objectLoader wasSentToResourcePath:@"/bars.json"]) {
         Bar *bar = [objects objectAtIndex:0];
         NSLog(@"Loaded Bar ID #%@ -> Name: %@, Capacity: %@", bar.barId, bar.name, bar.capacity);
-    } else if ([objectLoader wasSentToResourcePath:@"/cities.json"]) {
-        City *city = [objects objectAtIndex:0];
-        cityname.text = city.name;
-        NSLog(@"Loaded City ID #%@ -> Name: %@, Population: %@", city.cityId, city.name, city.population);
-        [self displayBarsForCity:city];
     }
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSLog(@"Encountered an error: %@", error);
-}
-
-- (void)getCity
-{
-    NSLog(@"Get city called");
-    NSLog(@"City id: %@", dataModel.city_id);
-//    NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@", dataModel.city_id],@"id", nil];
-//    NSString *resourcePath = [@"/cities.json" stringByAppendingQueryParameters:queryParams];
-//    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:resourcePath delegate:self];
 }
 
 - (void)displayBarsForCity:(City*)city
@@ -70,7 +70,7 @@
             [die removeFromSuperview];
         }
     }
-    NSInteger y = 120;
+    NSInteger y = 130;
     for( Bar *user_bar in city.user_bars )
     {
         y += 30;
@@ -80,7 +80,7 @@
         [self.view addSubview:label];
     }
     
-    y = 250;
+    y = 215;
     for( Bar *other_bar in city.other_bars )
     {
         y += 30;
