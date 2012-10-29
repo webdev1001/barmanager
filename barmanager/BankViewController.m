@@ -14,6 +14,7 @@
 
 @implementation BankViewController
 
+@synthesize dataModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -21,12 +22,17 @@
     if (self) {
         // Custom initialization
     }
+    
+    balance = 0.00;
+    
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/users/%@.json", dataModel.user_id] delegate:self];
 	// Do any additional setup after loading the view.
 }
 
@@ -36,9 +42,29 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
+    objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
+    
+    if ([objectLoader wasSentToResourcePath:[NSString stringWithFormat:@"/users/%@.json", dataModel.user_id]]) {
+        User *user = [objects objectAtIndex:0];
+        NSLog(@"Loaded User ID #%@ -> Name: %@, Balance: %@", user.userId, user.name, user.balance);
+        
+        balance = [user.balance doubleValue];
+        transaction_count = [ user.bank_transactions count ];
+        bank_transactions = user.bank_transactions;
+        [self.tableView reloadData];
+    }
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSLog(@"Encountered an error: %@", error);
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-  return @"Huidige balans: € 10.000";
+  return [NSString stringWithFormat:@"Huidige balans: € %.2f", balance];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -48,7 +74,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return transaction_count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -83,8 +109,9 @@
     cell.textLabel.font  = textFont;
     cell.detailTextLabel.font = detailFont;
     
-    cell.textLabel.text = @"Resultaat voor bar The iProtobar";
-    cell.detailTextLabel.text = @"€ 1327,00";
+    BankTransaction *transaction = [bank_transactions objectAtIndex:[indexPath row]];
+    cell.textLabel.text = transaction.description;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"€ %.2f", [transaction.amount doubleValue]];
 }
 
 @end

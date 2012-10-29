@@ -27,8 +27,8 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     RKObjectRouter* router = manager.router;
     
     [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
-    [router routeClass:[User class] toResourcePath:@"/users/:userId"];
     [router routeClass:[City class] toResourcePath:@"/cities.json"];
+    [router routeClass:[User class] toResourcePath:@"/users/:userId"];
     [router routeClass:[User class] toResourcePath:@"/users/request_token.json" forMethod:RKRequestMethodPOST];
     
     manager.acceptMIMEType = RKMIMETypeJSON;

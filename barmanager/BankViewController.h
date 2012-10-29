@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
 
-@interface BankViewController : UITableViewController
+#import "DataModel.h"
+#import "User.h"
+
+@interface BankViewController : UITableViewController <RKObjectLoaderDelegate>
+{
+    DataModel *dataModel;
+    double balance;
+    int transaction_count;
+    NSArray *bank_transactions;
+}
+
+@property (nonatomic, retain) DataModel *dataModel;
 
 @end
