@@ -113,21 +113,6 @@
             </objects>
             <point key="canvasLocation" x="936" y="380"/>
         </scene>
-        <!--View Controller - Bars-->
-        <scene sceneID="spJ-Ev-h7l">
-            <objects>
-                <viewController id="p47-ZW-bwz" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fo4-wB-edQ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="Bars" image="iconmonstr-details-large-view-icon.png" id="URV-Tp-qJL"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AAJ-ec-CNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="936" y="-286"/>
-        </scene>
         <!--Dashboard View Controller - Dashboard-->
         <scene sceneID="QhI-JD-LQt">
             <objects>
@@ -192,6 +177,52 @@
             </objects>
             <point key="canvasLocation" x="936" y="-949"/>
         </scene>
+        <!--Bar Index View Controller - Mijn Bars-->
+        <scene sceneID="a1t-SA-0Wb">
+            <objects>
+                <tableViewController id="3jo-sa-4nV" customClass="BarIndexViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Oid-Zf-YJj">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BarCell" textLabel="1hY-1G-gRn" detailTextLabel="bpZ-cB-Scb" imageView="6xw-0a-gsI" style="IBUITableViewCellStyleSubtitle" id="JIi-LQ-ckH">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hY-1G-gRn">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpZ-cB-Scb">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="beers.png" id="6xw-0a-gsI">
+                                            <rect key="frame" x="6" y="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3jo-sa-4nV" id="yLx-Rw-XqQ"/>
+                            <outlet property="delegate" destination="3jo-sa-4nV" id="2Ky-tK-dQ3"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Mijn Bars" image="iconmonstr-details-large-view-icon.png" id="Qmk-Mg-tPM"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PMd-Ni-KJx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="936" y="-292"/>
+        </scene>
         <!--Root Tab Bar Controller-->
         <scene sceneID="o67-6i-WsW">
             <objects>
@@ -205,8 +236,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="cbO-Cz-wjo" kind="relationship" relationship="viewControllers" id="VKN-4j-0DV"/>
-                        <segue destination="p47-ZW-bwz" kind="relationship" relationship="viewControllers" id="b5S-aV-2lS"/>
-                        <segue destination="UkJ-4T-7I9" kind="relationship" relationship="viewControllers" id="Yzf-xq-E9a"/>
+                        <segue destination="3jo-sa-4nV" kind="relationship" relationship="viewControllers" id="8NJ-Cd-mPk"/>
+                        <segue destination="UkJ-4T-7I9" kind="relationship" relationship="viewControllers" id="dio-W3-Fir"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unK-ye-Xdw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -215,6 +246,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="beers.png" width="30" height="30"/>
         <image name="iconmonstr-details-large-view-icon.png" width="30" height="30"/>
         <image name="iconmonstr-home-icon.png" width="30" height="30"/>
         <image name="iconmonstr-line-chart-icon.png" width="30" height="30"/>
@@ -222,6 +254,9 @@
     <classes>
         <class className="BankViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BankViewController.h"/>
+        </class>
+        <class className="BarIndexViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BarIndexViewController.h"/>
         </class>
         <class className="DashboardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DashboardViewController.h"/>

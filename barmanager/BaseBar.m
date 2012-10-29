@@ -14,6 +14,7 @@
     @"name", @"name",
     @"capacity", @"capacity",
     nil];
+    
     return mapping;
 }
 

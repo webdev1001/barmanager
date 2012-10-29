@@ -10,4 +10,6 @@
 
 @interface Bar : BaseBar
 
+@property (nonatomic, retain) NSArray *city;
+
 @end

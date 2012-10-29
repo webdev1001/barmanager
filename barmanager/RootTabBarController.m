@@ -57,14 +57,6 @@
                                               action:@selector(logoutButtonWasPressed:)];
 }
 
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
-{
-    if ( [item tag] == 0 ) {
-        NSLog(@"item tag is 0");
-        //DashboardViewController *dashboardViewController = [DashboardViewController alloc];
-    }
-}
-
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];

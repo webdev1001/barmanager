@@ -9,10 +9,11 @@
 #import "BarIndexViewController.h"
 
 @interface BarIndexViewController ()
-
 @end
 
 @implementation BarIndexViewController
+
+@synthesize dataModel;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -20,6 +21,9 @@
     if (self) {
         // Custom initialization
     }
+    
+    bar_count = 0;
+    
     return self;
 }
 
@@ -32,6 +36,25 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/bars.json" delegate:self];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
+    objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
+    
+    if ([objectLoader wasSentToResourcePath:@"/bars.json"]) {
+        NSLog(@"Loaded Bars");
+        user_bars = objects;
+        bar_count = [ user_bars count ];
+        [self.tableView reloadData];
+    }
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSLog(@"Encountered an error: %@", error);
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,36 +67,41 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return bar_count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"BarCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    Bar *bar = [user_bars objectAtIndex:[indexPath row]];
+    City *bar_city = [ bar.city objectAtIndex:0];
+    cell.detailTextLabel.text = bar_city.name;
+    cell.textLabel.text = bar.name;
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
-*/
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // The table view should not be re-orderable.
+    return NO;
+}
 
 /*
 // Override to support editing the table view.
@@ -86,22 +114,6 @@
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
 }
 */
 
