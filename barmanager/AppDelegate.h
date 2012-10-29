@@ -18,7 +18,6 @@
 #import "Bar.h"
 #import "User.h"
 #import "City.h"
-#import "Error.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {

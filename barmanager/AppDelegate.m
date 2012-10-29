@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
+#import <RestKit/RKErrorMessage.h>
 
 @implementation AppDelegate
 
@@ -37,9 +38,11 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     [manager.mappingProvider setMapping:[Bar objectMapping] forKeyPath:@"bar"];
     [manager.mappingProvider setMapping:[User objectMapping] forKeyPath:@"user"];
     [manager.mappingProvider setMapping:[City objectMapping] forKeyPath:@"city"];
-    [manager.mappingProvider setMapping:[Error objectMapping] forKeyPath:@"error"];
-    
     [manager.mappingProvider setSerializationMapping:[User objectMapping] forClass:[User class]];
+    
+    RKObjectMapping *errorMapping = [RKObjectMapping mappingForClass:[RKErrorMessage class]];
+    [errorMapping mapKeyPath:@"message" toAttribute:@"errorMessage"];
+    [[manager.mappingProvider errorMapping] setRootKeyPath:@"error"];
     
     return YES;
 }
@@ -150,7 +153,7 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
 
 - (void)setAuthTokenWithinHTTPHeaders {
     if ( [self.dataModel.auth_token length] != 0 ) {
-        [[[RKObjectManager sharedManager] client] setValue:self.dataModel.auth_token forHTTPHeaderField:@"X-BARMANAGER-AUTH-TOKEN"];
+        [[[RKObjectManager sharedManager] client] setValue:self.dataModel.auth_token forHTTPHeaderField:@"X-BARMANAGER-AUTH-TOKENn"];
         NSLog(@"Set %@ to http headers", self.dataModel.auth_token);
     }
 }

@@ -62,10 +62,7 @@ NSString *const BMCityChange = @"ITflows.barmanager.City:BMCityChange";
     
     // Try to load cities, when none are found an error object is returned
     if ([objectLoader wasSentToResourcePath:@"/cities.json"]) {
-        if ( [[objects objectAtIndex:0] isKindOfClass:[Error class]] ){
-            Error *error = [objects objectAtIndex:0];
-            [error showError];
-        } else {
+        if ( [[objects objectAtIndex:0] isKindOfClass:[City class]] ){
             City *city = [objects objectAtIndex:0];
             self.dataModel.city_id = city.cityId;
             self.dataModel.city_name = city.name;
@@ -78,8 +75,16 @@ NSString *const BMCityChange = @"ITflows.barmanager.City:BMCityChange";
     }
 }
 
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
-    NSLog(@"Encountered an error: %@", error);
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error
+{
+    NSLog(@"Encountered an error: %@", [error localizedDescription]);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:[error localizedDescription]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 @end

@@ -12,7 +12,6 @@
 
 #import "DataModel.h"
 #import "City.h"
-#import "Error.h"
 
 @interface LocationManager : NSObject <CLLocationManagerDelegate, RKObjectLoaderDelegate>
 {
