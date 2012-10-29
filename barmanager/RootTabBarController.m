@@ -74,9 +74,10 @@
     if ([objectLoader wasSentToResourcePath:@"/users/request_token.json"]) {
         User *user = [objects objectAtIndex:0];
         
-        NSLog(@"Loaded user: %@", user.name);
+        NSLog(@"Loaded user: %@ with id: %@", user.name, user.userId);
         
         self.dataModel.auth_token = user.authenticationToken;
+        self.dataModel.user_id = user.userId;
         
         AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
         [appDelegate setAuthTokenWithinHTTPHeaders];

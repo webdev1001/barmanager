@@ -12,7 +12,7 @@ static DataModel *dataModel = nil;
 
 @implementation DataModel
 
-@synthesize auth_token, city_id, city_name;
+@synthesize user_id, auth_token, city_id, city_name;
 
 #pragma mark Singleton Methods
 + (id)sharedManager
@@ -65,6 +65,8 @@ static DataModel *dataModel = nil;
         NSLog(@"%@", plistPath);
         
         auth_token = [user_settings objectForKey:@"auth_token"];
+        user_id = [user_settings objectForKey:@"user_id"];
+        
         NSLog(@"Loaded auth_token from data.plist: %@", auth_token);
         
         city_id = [city_data objectForKey:@"city_id"];
@@ -85,11 +87,12 @@ static DataModel *dataModel = nil;
     
     
     // User settings:
+    NSNumber *tmpUserId = user_id;
     NSString *tmpAuthToken = auth_token;
     
-    NSArray *userSettingsTemp = [NSArray arrayWithObjects:tmpAuthToken, nil];
+    NSArray *userSettingsTemp = [NSArray arrayWithObjects:tmpUserId, tmpAuthToken, nil];
     
-    NSDictionary *userSettingsDict = [NSDictionary dictionaryWithObjects: userSettingsTemp forKeys:[NSArray arrayWithObjects: @"auth_token", nil]];
+    NSDictionary *userSettingsDict = [NSDictionary dictionaryWithObjects: userSettingsTemp forKeys:[NSArray arrayWithObjects: @"user_id", @"auth_token", nil]];
     NSLog(@"User settings built");
     
     // City data:
