@@ -29,7 +29,6 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     
     [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
     [router routeClass:[Bar class] toResourcePath:@"/bars.json" forMethod:RKRequestMethodPOST];
-    [router routeClass:[User class] toResourcePath:@"/users/:userId"];
     [router routeClass:[City class] toResourcePath:@"/cities.json"];
     [router routeClass:[User class] toResourcePath:@"/users/:userId"];
     [router routeClass:[User class] toResourcePath:@"/users/request_token.json" forMethod:RKRequestMethodPOST];

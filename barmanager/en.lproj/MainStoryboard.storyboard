@@ -272,6 +272,9 @@
         <class className="BankViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BankViewController.h"/>
         </class>
+        <class className="BarIndexViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BarIndexViewController.h"/>
+        </class>
         <class className="DashboardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DashboardViewController.h"/>
             <relationships>
