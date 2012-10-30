@@ -31,9 +31,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/users/%@.json", dataModel.user_id] delegate:self];
+    [self loadBank];
 	// Do any additional setup after loading the view.
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+}
+
+- (void)loadBank
+{
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/users/%@.json", dataModel.user_id] delegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,12 +62,23 @@
         balance = [user.balance doubleValue];
         transaction_count = [ user.bank_transactions count ];
         bank_transactions = user.bank_transactions;
+        
+        [self.refreshControl endRefreshing];
         [self.tableView reloadData];
     }
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSLog(@"Encountered an error: %@", error);
+}
+
+- (void)refreshView:(UIRefreshControl *)refresh {
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Bezig met vernieuwen..."];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *lastUpdated = [NSString stringWithFormat:@"Laatst geüpdatet op: %@", [formatter stringFromDate:[NSDate date]]];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    [self loadBank];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
