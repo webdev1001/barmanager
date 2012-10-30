@@ -17,7 +17,7 @@
 
 @implementation DashboardViewController
 
-@synthesize navController = _navController, dataModel, cityname;
+@synthesize navController = _navController, manager, dataModel, cityname, addBarButton;
 
 - (void)viewDidLoad
 {
@@ -39,28 +39,58 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (IBAction)addBarForCityButton:(id)sender
+{
+    self.manager = [[CLLocationManager alloc] init];
+    self.manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    self.manager.delegate = self;
+    self.manager.distanceFilter = 100.0f;
+    
+    [self.manager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    CLLocation *location = [locations lastObject];
+    
+    NSLog(@"%f", location.coordinate.latitude);
+    NSLog(@"%f", location.coordinate.longitude);
+    
+    RKObjectMapping* barSerializationMapping = [RKObjectMapping mappingForClass:[Bar class]];
+    [barSerializationMapping mapKeyPathsToAttributes:
+     @"cityId", @"city_id",
+     @"name", @"name",
+     @"latitude", @"latitude",
+     @"longitude", @"longitude",
+     nil];
+    
+    [[RKObjectManager sharedManager].mappingProvider setSerializationMapping:barSerializationMapping forClass:[Bar class]];
+    
+    Bar *bar = [Bar new];
+    bar.name = @"test";
+    bar.cityId = self.dataModel.city_id;
+    bar.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+    bar.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    
+    // POST to /request_token
+    [[RKObjectManager sharedManager] postObject:bar delegate:self];
+    
+    [self.manager stopUpdatingLocation];
+}
+
 // Gets called when location managers updates location
 - (void)cityChange:(NSNotification*)notification
 {
     City *city = [notification object];
     [cityname setText:city.name];
     
-    [self displayBarsForCity:city];
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-{
-    NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
-    objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
-    
-    if ([objectLoader wasSentToResourcePath:@"/bars.json"]) {
-        Bar *bar = [objects objectAtIndex:0];
-        NSLog(@"Loaded Bar ID #%@ -> Name: %@, Capacity: %@", bar.barId, bar.name, bar.capacity);
+    if ( [city.user_bars count] == 0 ){
+        [addBarButton setHidden:NO];
+    } else {
+        [addBarButton setHidden:YES];
     }
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
-    NSLog(@"Encountered an error: %@", error);
+    
+    [self displayBarsForCity:city];
 }
 
 - (void)displayBarsForCity:(City*)city
@@ -80,7 +110,7 @@
         [self.view addSubview:label];
     }
     
-    y = 215;
+    y = 225;
     for( Bar *other_bar in city.other_bars )
     {
         y += 30;
@@ -89,6 +119,21 @@
         label.tag = 2277;
         [self.view addSubview:label];
     }
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
+    objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
+    
+    if ([objectLoader wasSentToResourcePath:@"/bars.json"]) {
+        Bar *bar = [objects objectAtIndex:0];
+        NSLog(@"Loaded Bar ID #%@ -> Name: %@, Capacity: %@", bar.barId, bar.name, bar.capacity);
+    }
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSLog(@"Encountered an error: %@", error);
 }
 
 @end

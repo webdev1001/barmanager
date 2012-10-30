@@ -8,21 +8,29 @@
 
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-#import "Bar.h"
 #import "DataModel.h"
+#import "Bar.h"
 #import "City.h"
 
-@interface DashboardViewController : UIViewController <RKObjectLoaderDelegate>
+@interface DashboardViewController : UIViewController <CLLocationManagerDelegate, RKObjectLoaderDelegate>
 {
+    CLLocationManager *manager;
     DataModel *dataModel;
+    
     UILabel *cityname;
+    IBOutlet UIButton *addBarButton;
 }
 
 @property (nonatomic, retain) DataModel *dataModel;
+@property (nonatomic, retain) CLLocationManager *manager;
+
 @property (strong, nonatomic) UINavigationController *navController;
 @property (nonatomic, retain) IBOutlet UILabel *cityname;
+@property (strong, nonatomic) IBOutlet UIButton *addBarButton;
 
 - (void)displayBarsForCity:(City *) city;
+- (IBAction)addBarForCityButton:(id)sender;
 
 @end
