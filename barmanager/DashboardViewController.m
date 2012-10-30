@@ -56,16 +56,6 @@
     NSLog(@"%f", location.coordinate.latitude);
     NSLog(@"%f", location.coordinate.longitude);
     
-    RKObjectMapping* barSerializationMapping = [RKObjectMapping mappingForClass:[Bar class]];
-    [barSerializationMapping mapKeyPathsToAttributes:
-     @"cityId", @"city_id",
-     @"name", @"name",
-     @"latitude", @"latitude",
-     @"longitude", @"longitude",
-     nil];
-    
-    [[RKObjectManager sharedManager].mappingProvider setSerializationMapping:barSerializationMapping forClass:[Bar class]];
-    
     Bar *bar = [Bar new];
     bar.name = @"test";
     bar.cityId = self.dataModel.city_id;

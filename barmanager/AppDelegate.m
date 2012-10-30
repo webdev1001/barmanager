@@ -36,10 +36,18 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     manager.acceptMIMEType = RKMIMETypeJSON;
     manager.serializationMIMEType = RKMIMETypeJSON;
     
-    [manager.mappingProvider setMapping:[Bar objectMapping] forKeyPath:@"bar"];
+    RKObjectMapping *barMapping = [Bar objectMapping];
+    
+    [manager.mappingProvider setMapping:barMapping forKeyPath:@"bar"];
     [manager.mappingProvider setMapping:[User objectMapping] forKeyPath:@"user"];
     [manager.mappingProvider setMapping:[City objectMapping] forKeyPath:@"city"];
+    
+    RKObjectMapping *barSerializationMapping = [barMapping inverseMapping];
+    
+    [barSerializationMapping removeMappingForKeyPath:@"barId"];
+    
     [manager.mappingProvider setSerializationMapping:[User objectMapping] forClass:[User class]];
+    [manager.mappingProvider setSerializationMapping:barSerializationMapping forClass:[Bar class]];
     
     RKObjectMapping *errorMapping = [RKObjectMapping mappingForClass:[RKErrorMessage class]];
     [errorMapping mapKeyPath:@"message" toAttribute:@"errorMessage"];
