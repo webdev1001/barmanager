@@ -17,6 +17,7 @@
     @"latitude", @"latitude",
     @"longitude", @"longitude",
     nil];
+    
     return mapping;
 }
 

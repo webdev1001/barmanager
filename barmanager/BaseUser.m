@@ -15,7 +15,15 @@
     @"name", @"name",
     @"authentication_token", @"authenticationToken",
     @"uid", @"uid",
+    @"balance", @"balance",
     nil];
+    
+    RKObjectMapping* bankTransactionMapping = [RKObjectMapping mappingForClass:[BankTransaction class] ];
+    [bankTransactionMapping mapAttributes:@"description", @"amount", nil];
+    
+    [mapping mapKeyPath:@"bank_transactions" toRelationship:@"bank_transactions" withMapping:bankTransactionMapping];
+
+    
     return mapping;
 }
 
@@ -28,6 +36,7 @@
         self.name = [coder decodeObjectForKey:@"name"];
         self.authenticationToken = [coder decodeObjectForKey:@"authenticationToken"];
         self.uid = [coder decodeObjectForKey:@"uid"];
+        self.balance = [coder decodeObjectForKey:@"balance"];
     }
     return self;
 }
@@ -39,6 +48,7 @@
     [coder encodeObject:self.name forKey:@"name"];
     [coder encodeObject:self.authenticationToken forKey:@"authenticationToken"];
     [coder encodeObject:self.uid forKey:@"uid"];
+    [coder encodeObject:self.balance forKey:@"balance"];
 }
 
 @end

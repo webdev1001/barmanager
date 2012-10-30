@@ -57,14 +57,6 @@
                                               action:@selector(logoutButtonWasPressed:)];
 }
 
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
-{
-    if ( [item tag] == 0 ) {
-        NSLog(@"item tag is 0");
-        //DashboardViewController *dashboardViewController = [DashboardViewController alloc];
-    }
-}
-
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
     NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
@@ -74,9 +66,10 @@
     if ([objectLoader wasSentToResourcePath:@"/users/request_token.json"]) {
         User *user = [objects objectAtIndex:0];
         
-        NSLog(@"Loaded user: %@", user.name);
+        NSLog(@"Loaded user: %@ with id: %@", user.name, user.userId);
         
         self.dataModel.auth_token = user.authenticationToken;
+        self.dataModel.user_id = user.userId;
         
         AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
         [appDelegate setAuthTokenWithinHTTPHeaders];

@@ -11,11 +11,13 @@
 @interface DataModel : NSObject
 {
     NSString *auth_token;
+    NSNumber *user_id;
     NSNumber *city_id;
     NSString *city_name;
 }
 
 @property (strong, nonatomic) NSString *auth_token;
+@property (strong, nonatomic) NSNumber *user_id;
 @property (strong, nonatomic) NSNumber *city_id;
 @property (strong, nonatomic) NSString *city_name;
 

@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
+
 #import "Bar.h"
 
 @interface BaseCity : NSObject <NSCoding>

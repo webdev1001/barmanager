@@ -1,8 +1,8 @@
 //
-//  BankViewController.h
+//  BarIndexViewController.h
 //  barmanager
 //
-//  Created by Joshua Jansen on 26-10-12.
+//  Created by Joshua Jansen on 29-10-12.
 //  Copyright (c) 2012 ITflows. All rights reserved.
 //
 
@@ -10,14 +10,14 @@
 #import <RestKit/RestKit.h>
 
 #import "DataModel.h"
-#import "User.h"
+#import "Bar.h"
+#import "City.h"
 
-@interface BankViewController : UITableViewController <RKObjectLoaderDelegate>
+@interface BarIndexViewController : UITableViewController <RKObjectLoaderDelegate>
 {
     DataModel *dataModel;
-    double balance;
-    int transaction_count;
-    NSArray *bank_transactions;
+    NSArray *user_bars;
+    int bar_count;
 }
 
 @property (nonatomic, retain) DataModel *dataModel;

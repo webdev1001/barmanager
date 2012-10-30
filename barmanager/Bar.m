@@ -7,7 +7,19 @@
 //
 
 #import "Bar.h"
+#import "City.h"
 
 @implementation Bar
+
++ (RKObjectMapping *)objectMapping
+{
+    RKObjectMapping *mapping = [super objectMapping];
+    RKObjectMapping* cityMapping = [RKObjectMapping mappingForClass:[City class] ];
+    [cityMapping mapAttributes:@"name", nil];
+    
+    [mapping mapKeyPath:@"city" toRelationship:@"city" withMapping:cityMapping];
+    
+    return mapping;
+}
 
 @end

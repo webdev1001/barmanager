@@ -11,6 +11,8 @@
 	</dict>
 	<key>user_settings</key>
 	<dict>
+		<key>user_id</key>
+		<integer>0</integer>
 		<key>auth_token</key>
 		<string></string>
 	</dict>
