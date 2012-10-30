@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
-#import <CoreLocation/CoreLocation.h>
 
 #import "DataModel.h"
 #import "Bar.h"
 #import "City.h"
 
-@interface DashboardViewController : UIViewController <CLLocationManagerDelegate, RKObjectLoaderDelegate>
+#import "AddBarViewController.h"
+
+@interface DashboardViewController : UIViewController
 {
-    CLLocationManager *manager;
     DataModel *dataModel;
     
     UILabel *cityname;
@@ -24,13 +24,11 @@
 }
 
 @property (nonatomic, retain) DataModel *dataModel;
-@property (nonatomic, retain) CLLocationManager *manager;
 
 @property (strong, nonatomic) UINavigationController *navController;
 @property (nonatomic, retain) IBOutlet UILabel *cityname;
 @property (strong, nonatomic) IBOutlet UIButton *addBarButton;
 
 - (void)displayBarsForCity:(City *) city;
-- (IBAction)addBarForCityButton:(id)sender;
 
 @end

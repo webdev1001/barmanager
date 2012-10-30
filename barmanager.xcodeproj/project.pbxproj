@@ -41,6 +41,7 @@
 		DA02CE42163186740096E156 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02CE41163186740096E156 /* Bar.m */; };
 		DA02CE451631A1470096E156 /* BaseUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02CE441631A1470096E156 /* BaseUser.m */; };
 		DA02CE4B1631BC060096E156 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02CE4A1631BC060096E156 /* User.m */; };
+		DA70E43E163FF33900645F6F /* AddBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA70E43D163FF33900645F6F /* AddBarViewController.m */; };
 		DAFF7554162D82F1001A9E0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7553162D82F1001A9E0F /* UIKit.framework */; };
 		DAFF7556162D82F1001A9E0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7555162D82F1001A9E0F /* Foundation.framework */; };
 		DAFF7558162D82F1001A9E0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7557162D82F1001A9E0F /* CoreGraphics.framework */; };
@@ -104,6 +105,8 @@
 		DA02CE441631A1470096E156 /* BaseUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseUser.m; path = barmanager/BaseUser.m; sourceTree = "<group>"; };
 		DA02CE491631BC060096E156 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = barmanager/User.h; sourceTree = "<group>"; };
 		DA02CE4A1631BC060096E156 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = barmanager/User.m; sourceTree = "<group>"; };
+		DA70E43C163FF33900645F6F /* AddBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBarViewController.h; sourceTree = "<group>"; };
+		DA70E43D163FF33900645F6F /* AddBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBarViewController.m; sourceTree = "<group>"; };
 		DAFF754F162D82F1001A9E0F /* barmanager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barmanager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFF7553162D82F1001A9E0F /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DAFF7555162D82F1001A9E0F /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -236,6 +239,8 @@
 				DAFF755A162D82F1001A9E0F /* Supporting Files */,
 				327E8485163ECBC50009ABE2 /* BarIndexViewController.h */,
 				327E8486163ECBC50009ABE2 /* BarIndexViewController.m */,
+				DA70E43C163FF33900645F6F /* AddBarViewController.h */,
+				DA70E43D163FF33900645F6F /* AddBarViewController.m */,
 			);
 			path = barmanager;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 				D971E376163A96B1003B53A3 /* BaseBankTransaction.m in Sources */,
 				D971E379163A972E003B53A3 /* BankTransaction.m in Sources */,
 				327E8487163ECBC50009ABE2 /* BarIndexViewController.m in Sources */,
+				DA70E43E163FF33900645F6F /* AddBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

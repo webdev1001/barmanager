@@ -17,7 +17,7 @@
 
 @implementation DashboardViewController
 
-@synthesize navController = _navController, manager, dataModel, cityname, addBarButton;
+@synthesize navController = _navController, dataModel, cityname, addBarButton;
 
 - (void)viewDidLoad
 {
@@ -37,36 +37,6 @@
     // Dispose of any resources that can be recreated.
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (IBAction)addBarForCityButton:(id)sender
-{
-    self.manager = [[CLLocationManager alloc] init];
-    self.manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    self.manager.delegate = self;
-    self.manager.distanceFilter = 100.0f;
-    
-    [self.manager startUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    CLLocation *location = [locations lastObject];
-    
-    NSLog(@"%f", location.coordinate.latitude);
-    NSLog(@"%f", location.coordinate.longitude);
-    
-    Bar *bar = [Bar new];
-    bar.name = @"test";
-    bar.latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
-    bar.longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
-    
-    // POST to /request_token
-    [[RKObjectManager sharedManager] postObject:bar delegate:self];
-    
-    [self.manager stopUpdatingLocation];
-    
-    [City findCityForLocation:location WithDelegate:self];
 }
 
 // Gets called when location managers updates location
@@ -110,31 +80,6 @@
         label.tag = 2277;
         [self.view addSubview:label];
     }
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
-{
-    NSLog(@"%@", [objectLoader.URL baseURL]);
-    NSArray *resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
-    objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
-    
-    if ([objectLoader wasSentToResourcePath:@"/bars.json"]) {
-        Bar *bar = [objects objectAtIndex:0];
-        NSLog(@"Loaded Bar ID #%@ -> Name: %@, Capacity: %@", bar.barId, bar.name, bar.capacity);
-    } else if ([objectLoader wasSentToResourcePath:@"/cities.json"]) {
-        if ( [[objects objectAtIndex:0] isKindOfClass:[City class]] ){
-            City *city = [objects objectAtIndex:0];
-            
-            [[NSNotificationCenter defaultCenter]
-             postNotificationName:BMCityChange
-             object:city];
-        }
-    }
-
-}
-
-- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
-    NSLog(@"Encountered an error: %@", error);
 }
 
 @end

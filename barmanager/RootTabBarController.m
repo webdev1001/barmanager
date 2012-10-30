@@ -51,7 +51,7 @@
      object:nil];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                              initWithTitle:@"Logout"
+                                              initWithTitle:@"Uitloggen"
                                               style:UIBarButtonItemStyleBordered
                                               target:self
                                               action:@selector(logoutButtonWasPressed:)];

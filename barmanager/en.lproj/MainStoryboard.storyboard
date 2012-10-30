@@ -8,7 +8,9 @@
         <scene sceneID="C98-Ma-R7g">
             <objects>
                 <navigationController definesPresentationContext="YES" id="63D-Ed-oFy" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hbw-6K-MdI">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="Hbw-6K-MdI">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -62,7 +64,6 @@
                             <constraint firstItem="byU-vj-1p1" firstAttribute="top" secondItem="z6n-hF-mP5" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Tm7-Af-mNc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="IqH-RM-lA1"/>
                     <connections>
                         <outlet property="spinner" destination="jfr-Jn-SWb" id="4q6-df-75P"/>
                     </connections>
@@ -121,7 +122,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Current city:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yg8-Zw-NIJ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Huidige stad:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yg8-Zw-NIJ">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="103" id="pBZ-t9-a7Y"/>
                                 </constraints>
@@ -129,19 +130,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="My bars:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLU-Mr-CIk">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Mijn bars:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLU-Mr-CIk">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="YIV-sO-gB7"/>
                                     <constraint firstAttribute="width" constant="75" id="cro-es-dOv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Other bars:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDO-dS-cgu">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="98" id="9OX-U5-wLL"/>
-                                </constraints>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Andere bars:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDO-dS-cgu">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -157,7 +154,7 @@
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvF-Km-dmC">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Add bar for city!">
+                                <state key="normal" title="Bar openen!">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -165,7 +162,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addBarForCityButton:" destination="cbO-Cz-wjo" eventType="touchUpInside" id="n9w-ui-59J"/>
+                                    <segue destination="ocb-NP-J9Z" kind="push" identifier="Add Bar" id="hwo-0S-r3P"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -193,6 +190,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmJ-GW-QPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="936" y="-949"/>
+        </scene>
+        <!--Add Bar View Controller - test-->
+        <scene sceneID="0EO-yV-cti">
+            <objects>
+                <viewController title="test" id="ocb-NP-J9Z" customClass="AddBarViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YG5-Kf-ORF">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Naam" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jqW-9c-pAy">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jqW-9c-pAy" firstAttribute="leading" secondItem="YG5-Kf-ORF" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="PxQ-Xf-YcM"/>
+                            <constraint firstAttribute="trailing" secondItem="jqW-9c-pAy" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Rk2-cY-ABx"/>
+                            <constraint firstItem="jqW-9c-pAy" firstAttribute="top" secondItem="YG5-Kf-ORF" secondAttribute="top" constant="20" symbolic="YES" type="default" id="TN2-Ze-iPz"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="6Z8-1l-FIZ" appends="YES" id="2Ca-Yp-idA"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="Bar toevoegen" id="dea-wC-4fj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Pbo-Gs-o9I">
+                            <connections>
+                                <action selector="addBar:" destination="ocb-NP-J9Z" id="4lG-iL-J9P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="barButtonItem" destination="Pbo-Gs-o9I" id="3jW-4s-AuI"/>
+                        <outlet property="barTextField" destination="jqW-9c-pAy" id="1tE-ga-a5x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Opk-Wt-8tm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6Z8-1l-FIZ">
+                    <connections>
+                        <outlet property="delegate" destination="ocb-NP-J9Z" id="PxC-lH-EyK"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1527" y="-949"/>
         </scene>
         <!--Bar Index View Controller - Mijn Bars-->
         <scene sceneID="a1t-SA-0Wb">
@@ -269,6 +310,14 @@
         <image name="iconmonstr-line-chart-icon.png" width="30" height="30"/>
     </resources>
     <classes>
+        <class className="AddBarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddBarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addBar:"/>
+                <relationship kind="outlet" name="barButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="barTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
         <class className="BankViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BankViewController.h"/>
         </class>
@@ -278,7 +327,6 @@
         <class className="DashboardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DashboardViewController.h"/>
             <relationships>
-                <relationship kind="action" name="addBarForCityButton:"/>
                 <relationship kind="outlet" name="addBarButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cityname" candidateClass="UILabel"/>
             </relationships>
