@@ -12,7 +12,6 @@
 
 #import "DataModel.h"
 #import "City.h"
-#import "Error.h"
 
 @interface LocationManager : NSObject <CLLocationManagerDelegate, RKObjectLoaderDelegate>
 {
@@ -21,12 +20,14 @@
     DataModel *dataModel;
 }
 
-@property (strong, nonatomic) CLLocation *lastLocation;
+@property (nonatomic, strong) CLLocationManager *manager;
+@property (nonatomic, strong) CLLocation *lastLocation;
 @property (nonatomic, retain) DataModel *dataModel;
 
+extern NSString *const BMLocationChange;
 extern NSString *const BMCityChange;
 
-+ (id)sharedLocationManager;
++ (id)sharedManager;
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 
 @end

@@ -9,16 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
 #import "RootTabBarController.h"
-#import "LocationManager.h"
 
 #import <RestKit/RestKit.h>
 
 #import "DataModel.h"
+#import "LocationManager.h"
 
 #import "Bar.h"
 #import "User.h"
 #import "City.h"
-#import "Error.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {

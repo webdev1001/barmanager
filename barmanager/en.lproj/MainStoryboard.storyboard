@@ -152,21 +152,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvF-Km-dmC">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Add bar for city!">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addBarForCityButton:" destination="cbO-Cz-wjo" eventType="touchUpInside" id="n9w-ui-59J"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="mLU-Mr-CIk" firstAttribute="top" secondItem="3" secondAttribute="top" constant="130" type="user" id="04q-71-spb"/>
                             <constraint firstItem="yg8-Zw-NIJ" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4Te-tO-waD"/>
-                            <constraint firstItem="BDO-dS-cgu" firstAttribute="top" secondItem="mLU-Mr-CIk" secondAttribute="bottom" constant="59" type="user" id="6fe-X9-dFp"/>
+                            <constraint firstItem="BDO-dS-cgu" firstAttribute="top" secondItem="mLU-Mr-CIk" secondAttribute="bottom" constant="70" type="user" id="6fe-X9-dFp"/>
                             <constraint firstItem="mLU-Mr-CIk" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DhN-Lq-tbs"/>
-                            <constraint firstItem="vdS-AX-Hui" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DzE-WK-S7O"/>
-                            <constraint firstItem="vdS-AX-Hui" firstAttribute="top" secondItem="3" secondAttribute="top" constant="54" id="gq0-w3-w84"/>
+                            <constraint firstItem="vdS-AX-Hui" firstAttribute="top" secondItem="yg8-Zw-NIJ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Vc9-Zi-L8u"/>
+                            <constraint firstItem="vdS-AX-Hui" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZuQ-oS-pIU"/>
+                            <constraint firstItem="cvF-Km-dmC" firstAttribute="top" secondItem="mLU-Mr-CIk" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="nt3-fR-SJ3"/>
                             <constraint firstItem="BDO-dS-cgu" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="oKJ-nt-E29"/>
                             <constraint firstItem="yg8-Zw-NIJ" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="s6D-5m-Gbg"/>
+                            <constraint firstItem="cvF-Km-dmC" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="vPB-VI-qNo"/>
+                            <constraint firstAttribute="trailing" secondItem="cvF-Km-dmC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vdU-OZ-W0u"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Dashboard" image="iconmonstr-home-icon.png" id="vv3-IH-vTs"/>
                     <connections>
+                        <outlet property="addBarButton" destination="cvF-Km-dmC" id="wIc-dJ-2zT"/>
                         <outlet property="cityname" destination="vdS-AX-Hui" id="p3k-M4-9Uh"/>
                     </connections>
                 </viewController>
@@ -259,6 +276,8 @@
         <class className="DashboardViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DashboardViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addBarForCityButton:"/>
+                <relationship kind="outlet" name="addBarButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cityname" candidateClass="UILabel"/>
             </relationships>
         </class>
