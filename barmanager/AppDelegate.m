@@ -24,34 +24,7 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     self.mainController = (RootTabBarController *)self.navController.topViewController;
     self.mainController.navController = self.navController;
     
-    RKObjectManager* manager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:API_URL]];
-    RKObjectRouter* router = manager.router;
-    
-    [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
-    [router routeClass:[Bar class] toResourcePath:@"/bars.json" forMethod:RKRequestMethodPOST];
-    [router routeClass:[City class] toResourcePath:@"/cities.json"];
-    [router routeClass:[User class] toResourcePath:@"/users/:userId"];
-    [router routeClass:[User class] toResourcePath:@"/users/request_token.json" forMethod:RKRequestMethodPOST];
-    
-    manager.acceptMIMEType = RKMIMETypeJSON;
-    manager.serializationMIMEType = RKMIMETypeJSON;
-    
-    RKObjectMapping *barMapping = [Bar objectMapping];
-    
-    [manager.mappingProvider setMapping:barMapping forKeyPath:@"bar"];
-    [manager.mappingProvider setMapping:[User objectMapping] forKeyPath:@"user"];
-    [manager.mappingProvider setMapping:[City objectMapping] forKeyPath:@"city"];
-    
-    RKObjectMapping *barSerializationMapping = [barMapping inverseMapping];
-    
-    [barSerializationMapping removeMappingForKeyPath:@"barId"];
-    
-    [manager.mappingProvider setSerializationMapping:[User objectMapping] forClass:[User class]];
-    [manager.mappingProvider setSerializationMapping:barSerializationMapping forClass:[Bar class]];
-    
-    RKObjectMapping *errorMapping = [RKObjectMapping mappingForClass:[RKErrorMessage class]];
-    [errorMapping mapKeyPath:@"message" toAttribute:@"errorMessage"];
-    [[manager.mappingProvider errorMapping] setRootKeyPath:@"error"];
+    [self setRestKitMappingAndRoutes];
     
     return YES;
 }
@@ -91,6 +64,38 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     
     [FBSession.activeSession close];
+}
+
+- (void)setRestKitMappingAndRoutes
+{
+    RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:API_URL]];
+    RKObjectRouter *router = manager.router;
+    
+    [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
+    [router routeClass:[Bar class] toResourcePath:@"/bars.json" forMethod:RKRequestMethodPOST];
+    [router routeClass:[City class] toResourcePath:@"/cities.json"];
+    [router routeClass:[User class] toResourcePath:@"/users/:userId"];
+    [router routeClass:[User class] toResourcePath:@"/users/request_token.json" forMethod:RKRequestMethodPOST];
+    
+    manager.acceptMIMEType = RKMIMETypeJSON;
+    manager.serializationMIMEType = RKMIMETypeJSON;
+    
+    RKObjectMapping *barMapping = [Bar objectMapping];
+    
+    [manager.mappingProvider setMapping:barMapping forKeyPath:@"bar"];
+    [manager.mappingProvider setMapping:[User objectMapping] forKeyPath:@"user"];
+    [manager.mappingProvider setMapping:[City objectMapping] forKeyPath:@"city"];
+    
+    RKObjectMapping *barSerializationMapping = [barMapping inverseMapping];
+    
+    [barSerializationMapping removeMappingForKeyPath:@"barId"];
+    
+    [manager.mappingProvider setSerializationMapping:[User objectMapping] forClass:[User class]];
+    [manager.mappingProvider setSerializationMapping:barSerializationMapping forClass:[Bar class]];
+    
+    RKObjectMapping *errorMapping = [RKObjectMapping mappingForClass:[RKErrorMessage class]];
+    [errorMapping mapKeyPath:@"message" toAttribute:@"errorMessage"];
+    [[manager.mappingProvider errorMapping] setRootKeyPath:@"error"];
 }
 
 - (void)sessionStateChanged:(FBSession *)session
