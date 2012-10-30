@@ -31,8 +31,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byU-vj-1p1">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="O1N-sf-Dli"/>
+                                    <constraint firstAttribute="width" constant="284" id="dam-2Q-x3f"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Login">
+                                <state key="normal">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -43,28 +47,21 @@
                                     <action selector="performLogin:" destination="0Qx-gr-jEa" eventType="touchUpInside" id="xvt-1m-FDy"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="To get started, login using Facebook" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="154" translatesAutoresizingMaskIntoConstraints="NO" id="z6n-hF-mP5">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="154" id="ji4-Xe-ryR"/>
-                                    <constraint firstAttribute="height" constant="65" id="roZ-kg-1gE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jfr-Jn-SWb"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="4CN-Le-uQ5"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="z6n-hF-mP5" firstAttribute="centerX" secondItem="byU-vj-1p1" secondAttribute="centerX" type="default" id="1pY-wq-bQP"/>
-                            <constraint firstItem="jfr-Jn-SWb" firstAttribute="top" secondItem="byU-vj-1p1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Huj-ar-afI"/>
-                            <constraint firstItem="z6n-hF-mP5" firstAttribute="top" secondItem="0ne-1g-ziM" secondAttribute="top" constant="200" id="MaG-om-m58"/>
-                            <constraint firstItem="jfr-Jn-SWb" firstAttribute="centerX" secondItem="byU-vj-1p1" secondAttribute="centerX" type="default" id="Q1i-OR-ALy"/>
-                            <constraint firstItem="jfr-Jn-SWb" firstAttribute="centerX" secondItem="0ne-1g-ziM" secondAttribute="centerX" type="default" id="T06-D2-g6h"/>
-                            <constraint firstItem="byU-vj-1p1" firstAttribute="top" secondItem="z6n-hF-mP5" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Tm7-Af-mNc"/>
+                            <constraint firstAttribute="bottom" secondItem="jfr-Jn-SWb" secondAttribute="bottom" constant="221" id="084-S6-bhf"/>
+                            <constraint firstItem="4CN-Le-uQ5" firstAttribute="centerX" secondItem="0ne-1g-ziM" secondAttribute="centerX" type="default" id="6ri-lq-73D"/>
+                            <constraint firstItem="4CN-Le-uQ5" firstAttribute="centerX" secondItem="byU-vj-1p1" secondAttribute="centerX" type="default" id="KFU-XV-gK4"/>
+                            <constraint firstItem="byU-vj-1p1" firstAttribute="top" secondItem="0ne-1g-ziM" secondAttribute="top" constant="253" id="NUo-dE-OJ4"/>
+                            <constraint firstItem="4CN-Le-uQ5" firstAttribute="top" secondItem="0ne-1g-ziM" secondAttribute="top" constant="49" id="UiR-XC-eV8"/>
+                            <constraint firstItem="jfr-Jn-SWb" firstAttribute="leading" secondItem="0ne-1g-ziM" secondAttribute="leading" constant="149" id="tCS-cj-a4J"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="button" destination="byU-vj-1p1" id="Nkt-6u-sZv"/>
                         <outlet property="spinner" destination="jfr-Jn-SWb" id="4q6-df-75P"/>
                     </connections>
                 </viewController>
@@ -308,6 +305,7 @@
         <image name="iconmonstr-details-large-view-icon.png" width="30" height="30"/>
         <image name="iconmonstr-home-icon.png" width="30" height="30"/>
         <image name="iconmonstr-line-chart-icon.png" width="30" height="30"/>
+        <image name="logo.png" width="275" height="125"/>
     </resources>
     <classes>
         <class className="AddBarViewController" superclassName="UIViewController">
@@ -335,6 +333,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
                 <relationship kind="action" name="performLogin:"/>
+                <relationship kind="outlet" name="button" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
