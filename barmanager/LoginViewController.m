@@ -20,11 +20,7 @@
 {
     [super viewDidLoad];
     
-    UIImage *buttonImage = [UIImage imageNamed:@"facebook-connect-button"];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bar.jpg"]];
-
-    [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
-
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
