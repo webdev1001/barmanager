@@ -84,7 +84,7 @@ NSString *const BMCityChange = @"ITflows.barmanager.City:BMCityChange";
 {
     NSLog(@"Encountered an error: %@", [error localizedDescription]);
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fout"
                                                     message:[error localizedDescription]
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"

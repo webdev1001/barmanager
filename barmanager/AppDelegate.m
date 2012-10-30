@@ -71,30 +71,31 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:API_URL]];
     RKObjectRouter *router = manager.router;
     
+    manager.acceptMIMEType = RKMIMETypeJSON;
+    manager.serializationMIMEType = RKMIMETypeJSON;
+    
     [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
     [router routeClass:[Bar class] toResourcePath:@"/bars.json" forMethod:RKRequestMethodPOST];
     [router routeClass:[City class] toResourcePath:@"/cities.json"];
     [router routeClass:[User class] toResourcePath:@"/users/:userId"];
     [router routeClass:[User class] toResourcePath:@"/users/request_token.json" forMethod:RKRequestMethodPOST];
     
-    manager.acceptMIMEType = RKMIMETypeJSON;
-    manager.serializationMIMEType = RKMIMETypeJSON;
-    
     RKObjectMapping *barMapping = [Bar objectMapping];
+    RKObjectMapping *userMapping = [User objectMapping];
     
     [manager.mappingProvider setMapping:barMapping forKeyPath:@"bar"];
-    [manager.mappingProvider setMapping:[User objectMapping] forKeyPath:@"user"];
+    [manager.mappingProvider setMapping:userMapping forKeyPath:@"user"];
     [manager.mappingProvider setMapping:[City objectMapping] forKeyPath:@"city"];
     
     RKObjectMapping *barSerializationMapping = [barMapping inverseMapping];
+    RKObjectMapping *userSerializationMapping = [userMapping inverseMapping];
     
     [barSerializationMapping removeMappingForKeyPath:@"barId"];
+    [userSerializationMapping removeMappingForKeyPath:@"userId"];
     
-    [manager.mappingProvider setSerializationMapping:[User objectMapping] forClass:[User class]];
     [manager.mappingProvider setSerializationMapping:barSerializationMapping forClass:[Bar class]];
+    [manager.mappingProvider setSerializationMapping:userSerializationMapping forClass:[User class]];
     
-    RKObjectMapping *errorMapping = [RKObjectMapping mappingForClass:[RKErrorMessage class]];
-    [errorMapping mapKeyPath:@"message" toAttribute:@"errorMessage"];
     [[manager.mappingProvider errorMapping] setRootKeyPath:@"error"];
 }
 
