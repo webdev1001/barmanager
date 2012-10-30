@@ -8,22 +8,28 @@
 
 #import "LocationManager.h"
 
-static LocationManager *sharedLocationManager = nil;
+static LocationManager *locationManager = nil;
 
 @implementation LocationManager
 
-@synthesize lastLocation, dataModel;
+@synthesize manager, lastLocation, dataModel;
 
 NSString *const BMCityChange = @"ITflows.barmanager.City:BMCityChange";
 
-+ (id)sharedLocationManager
+#pragma mark Singleton Methods
++ (id)sharedManager
 {
     @synchronized(self) {
-        if(sharedLocationManager == nil)
-            sharedLocationManager = [[super allocWithZone:NULL] init];
+        if(locationManager == nil)
+            locationManager = [[super allocWithZone:NULL] init];
     }
     
-    return sharedLocationManager;
+    return locationManager;
+}
+
++ (id)allocWithZone:(NSZone *)zone
+{
+    return [self sharedManager];
 }
 
 - (id)init
@@ -40,6 +46,7 @@ NSString *const BMCityChange = @"ITflows.barmanager.City:BMCityChange";
         [manager startUpdatingLocation];
         NSLog(@"locationManager initialized");
     }
+    
     return self;
 }
 

@@ -28,6 +28,7 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     RKObjectRouter* router = manager.router;
     
     [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
+    [router routeClass:[Bar class] toResourcePath:@"/bars.json" forMethod:RKRequestMethodPOST];
     [router routeClass:[User class] toResourcePath:@"/users/:userId"];
     [router routeClass:[City class] toResourcePath:@"/cities.json"];
     [router routeClass:[User class] toResourcePath:@"/users/request_token.json" forMethod:RKRequestMethodPOST];
@@ -74,7 +75,7 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     // (e.g., returning from iOS 6.0 authorization dialog or from fast app switching).
     [FBSession.activeSession handleDidBecomeActive];
     [self setAuthTokenWithinHTTPHeaders];
-    [LocationManager sharedLocationManager];
+    [LocationManager sharedManager];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -153,7 +154,7 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
 
 - (void)setAuthTokenWithinHTTPHeaders {
     if ( [self.dataModel.auth_token length] != 0 ) {
-        [[[RKObjectManager sharedManager] client] setValue:self.dataModel.auth_token forHTTPHeaderField:@"X-BARMANAGER-AUTH-TOKENn"];
+        [[[RKObjectManager sharedManager] client] setValue:self.dataModel.auth_token forHTTPHeaderField:@"X-BARMANAGER-AUTH-TOKEN"];
         NSLog(@"Set %@ to http headers", self.dataModel.auth_token);
     }
 }
