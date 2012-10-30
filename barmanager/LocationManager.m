@@ -56,9 +56,7 @@ NSString *const BMCityChange = @"ITflows.barmanager.City:BMCityChange";
     
     if ( [self.dataModel.auth_token length] != 0 ) {
         NSLog(@"Reload cities.json from locationmananger did update locations");
-        NSDictionary *queryParams = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f", lastLocation.coordinate.latitude],@"latitude",[NSString stringWithFormat:@"%f", lastLocation.coordinate.longitude],@"longitude", nil];
-        NSString *resourcePath = [@"/cities.json" stringByAppendingQueryParameters:queryParams];
-        [[RKObjectManager sharedManager] loadObjectsAtResourcePath:resourcePath delegate:self];
+        [City findCityForLocation:lastLocation WithDelegate:self];
     }
 }
 
