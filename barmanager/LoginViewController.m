@@ -14,10 +14,13 @@
 @end
 
 @implementation LoginViewController
+@synthesize button;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bar.jpg"]];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

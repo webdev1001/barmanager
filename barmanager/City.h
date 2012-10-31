@@ -7,7 +7,10 @@
 //
 
 #import "BaseCity.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface City : BaseCity
+
++ (void)findCityForLocation:(CLLocation *)location WithDelegate:(id<RKObjectLoaderDelegate>)delegate;
 
 @end

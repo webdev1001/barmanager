@@ -36,7 +36,16 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [ self loadBars];
     
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
+}
+
+- (void)loadBars
+{
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/bars.json" delegate:self];
     //self.managedObjectContext = appDelegate.managedObjectContext;
 }
@@ -50,6 +59,8 @@
         NSLog(@"Loaded Bars");
         user_bars = objects;
         bar_count = [ user_bars count ];
+        
+        [self.refreshControl endRefreshing];
         [self.tableView reloadData];
     }
 }
@@ -62,6 +73,15 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)refreshView:(UIRefreshControl *)refresh {
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Bezig met vernieuwen..."];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *lastUpdated = [NSString stringWithFormat:@"Laatst geüpdatet op: %@", [formatter stringFromDate:[NSDate date]]];
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+    [self loadBars];
 }
 
 #pragma mark - Table view data source

@@ -51,7 +51,7 @@
      object:nil];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                              initWithTitle:@"Logout"
+                                              initWithTitle:@"Uitloggen"
                                               style:UIBarButtonItemStyleBordered
                                               target:self
                                               action:@selector(logoutButtonWasPressed:)];
@@ -128,17 +128,12 @@
 
 - (void)getAuthenticationTokenWithUid:(id)uid AndName:(NSString*)name AndEmail:(NSString*)email
 {
-    RKObjectMapping* userSerializationMapping = [RKObjectMapping mappingForClass:[NSMutableDictionary class]];
-    [userSerializationMapping mapAttributes:@"name", @"email", @"uid", nil];
-    
-    [[RKObjectManager sharedManager].mappingProvider setSerializationMapping:userSerializationMapping forClass:[User class]];
-    
     User* user = [User new];
     user.name = name;
     user.email = email;
     user.uid = uid;
     
-    // POST to /request_token
+    // POST to /api/request_token.json
     [[RKObjectManager sharedManager] postObject:user delegate:self];
 }
 

@@ -13,6 +13,12 @@
 		3205749716314EC900D33909 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3205749616314EC900D33909 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		322095D516392D8E000C70D9 /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322095D416392D8E000C70D9 /* RootTabBarController.m */; };
 		322095D916393493000C70D9 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 322095D816393493000C70D9 /* LocationManager.m */; };
+		323DF1A0163FE10E0080DA33 /* facebook-connect-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 323DF19F163FE10E0080DA33 /* facebook-connect-button.png */; };
+		323DF1A3163FE5540080DA33 /* facebook-connect-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 323DF1A2163FE5540080DA33 /* facebook-connect-button@2x.png */; };
+		323DF1A8163FE7100080DA33 /* bar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 323DF1A6163FE7100080DA33 /* bar.jpg */; };
+		323DF1A9163FE7100080DA33 /* bar@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 323DF1A7163FE7100080DA33 /* bar@2x.jpg */; };
+		323DF1AC163FE9D00080DA33 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 323DF1AA163FE9D00080DA33 /* logo.png */; };
+		323DF1AD163FE9D00080DA33 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 323DF1AB163FE9D00080DA33 /* logo@2x.png */; };
 		327E847F163EC9100009ABE2 /* iconmonstr-details-large-view-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 327E8479163EC9100009ABE2 /* iconmonstr-details-large-view-icon.png */; };
 		327E8480163EC9100009ABE2 /* iconmonstr-details-large-view-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 327E847A163EC9100009ABE2 /* iconmonstr-details-large-view-icon@2x.png */; };
 		327E8481163EC9100009ABE2 /* iconmonstr-home-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 327E847B163EC9100009ABE2 /* iconmonstr-home-icon.png */; };
@@ -48,8 +54,7 @@
 		DA02CE42163186740096E156 /* Bar.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02CE41163186740096E156 /* Bar.m */; };
 		DA02CE451631A1470096E156 /* BaseUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02CE441631A1470096E156 /* BaseUser.m */; };
 		DA02CE4B1631BC060096E156 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DA02CE4A1631BC060096E156 /* User.m */; };
-		DA7E69C5163AC4B90046701B /* BaseError.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7E69C4163AC4B90046701B /* BaseError.m */; };
-		DA7E69C9163AC4FC0046701B /* Error.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7E69C8163AC4FC0046701B /* Error.m */; };
+		DA70E43E163FF33900645F6F /* AddBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA70E43D163FF33900645F6F /* AddBarViewController.m */; };
 		DAFF7554162D82F1001A9E0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7553162D82F1001A9E0F /* UIKit.framework */; };
 		DAFF7556162D82F1001A9E0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7555162D82F1001A9E0F /* Foundation.framework */; };
 		DAFF7558162D82F1001A9E0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7557162D82F1001A9E0F /* CoreGraphics.framework */; };
@@ -73,6 +78,12 @@
 		322095D416392D8E000C70D9 /* RootTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabBarController.m; sourceTree = "<group>"; };
 		322095D716393493000C70D9 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		322095D816393493000C70D9 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		323DF19F163FE10E0080DA33 /* facebook-connect-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-connect-button.png"; sourceTree = "<group>"; };
+		323DF1A2163FE5540080DA33 /* facebook-connect-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-connect-button@2x.png"; sourceTree = "<group>"; };
+		323DF1A6163FE7100080DA33 /* bar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bar.jpg; sourceTree = "<group>"; };
+		323DF1A7163FE7100080DA33 /* bar@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bar@2x.jpg"; sourceTree = "<group>"; };
+		323DF1AA163FE9D00080DA33 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		323DF1AB163FE9D00080DA33 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		327E8479163EC9100009ABE2 /* iconmonstr-details-large-view-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconmonstr-details-large-view-icon.png"; sourceTree = "<group>"; };
 		327E847A163EC9100009ABE2 /* iconmonstr-details-large-view-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconmonstr-details-large-view-icon@2x.png"; sourceTree = "<group>"; };
 		327E847B163EC9100009ABE2 /* iconmonstr-home-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconmonstr-home-icon.png"; sourceTree = "<group>"; };
@@ -127,10 +138,8 @@
 		DA02CE441631A1470096E156 /* BaseUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseUser.m; path = barmanager/BaseUser.m; sourceTree = "<group>"; };
 		DA02CE491631BC060096E156 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = barmanager/User.h; sourceTree = "<group>"; };
 		DA02CE4A1631BC060096E156 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = barmanager/User.m; sourceTree = "<group>"; };
-		DA7E69C3163AC4B90046701B /* BaseError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseError.h; sourceTree = "<group>"; };
-		DA7E69C4163AC4B90046701B /* BaseError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseError.m; sourceTree = "<group>"; };
-		DA7E69C7163AC4FC0046701B /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Error.h; path = barmanager/Error.h; sourceTree = "<group>"; };
-		DA7E69C8163AC4FC0046701B /* Error.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Error.m; path = barmanager/Error.m; sourceTree = "<group>"; };
+		DA70E43C163FF33900645F6F /* AddBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBarViewController.h; sourceTree = "<group>"; };
+		DA70E43D163FF33900645F6F /* AddBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBarViewController.m; sourceTree = "<group>"; };
 		DAFF754F162D82F1001A9E0F /* barmanager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barmanager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFF7553162D82F1001A9E0F /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DAFF7555162D82F1001A9E0F /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -192,10 +201,6 @@
 				D955301C1637E60400C81849 /* BaseCity.m */,
 				D95530181637E5D900C81849 /* City.h */,
 				D95530191637E5D900C81849 /* City.m */,
-				DA7E69C3163AC4B90046701B /* BaseError.h */,
-				DA7E69C4163AC4B90046701B /* BaseError.m */,
-				DA7E69C7163AC4FC0046701B /* Error.h */,
-				DA7E69C8163AC4FC0046701B /* Error.m */,
 				DA02CE431631A1470096E156 /* BaseUser.h */,
 				DA02CE441631A1470096E156 /* BaseUser.m */,
 				DA02CE491631BC060096E156 /* User.h */,
@@ -288,6 +293,12 @@
 		DAFF755A162D82F1001A9E0F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				323DF1AA163FE9D00080DA33 /* logo.png */,
+				323DF1AB163FE9D00080DA33 /* logo@2x.png */,
+				323DF1A6163FE7100080DA33 /* bar.jpg */,
+				323DF1A7163FE7100080DA33 /* bar@2x.jpg */,
+				323DF1A2163FE5540080DA33 /* facebook-connect-button@2x.png */,
+				323DF19F163FE10E0080DA33 /* facebook-connect-button.png */,
 				327E848C163ED7940009ABE2 /* beers.png */,
 				327E848D163ED7940009ABE2 /* beers@2x.png */,
 				327E8479163EC9100009ABE2 /* iconmonstr-details-large-view-icon.png */,
@@ -373,6 +384,12 @@
 				327E8484163EC9100009ABE2 /* iconmonstr-line-chart-icon@2x.png in Resources */,
 				327E848E163ED7940009ABE2 /* beers.png in Resources */,
 				327E848F163ED7940009ABE2 /* beers@2x.png in Resources */,
+				323DF1A0163FE10E0080DA33 /* facebook-connect-button.png in Resources */,
+				323DF1A3163FE5540080DA33 /* facebook-connect-button@2x.png in Resources */,
+				323DF1A8163FE7100080DA33 /* bar.jpg in Resources */,
+				323DF1A9163FE7100080DA33 /* bar@2x.jpg in Resources */,
+				323DF1AC163FE9D00080DA33 /* logo.png in Resources */,
+				323DF1AD163FE9D00080DA33 /* logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,8 +430,6 @@
 				D955301D1637E60400C81849 /* BaseCity.m in Sources */,
 				322095D516392D8E000C70D9 /* RootTabBarController.m in Sources */,
 				322095D916393493000C70D9 /* LocationManager.m in Sources */,
-				DA7E69C5163AC4B90046701B /* BaseError.m in Sources */,
-				DA7E69C9163AC4FC0046701B /* Error.m in Sources */,
 				D971E372163A94C4003B53A3 /* BankViewController.m in Sources */,
 				D971E376163A96B1003B53A3 /* BaseBankTransaction.m in Sources */,
 				D971E379163A972E003B53A3 /* BankTransaction.m in Sources */,

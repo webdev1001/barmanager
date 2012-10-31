@@ -10,6 +10,11 @@
 #import "AppDelegate.h"
 
 @interface LoginViewController : UIViewController
+{
+    UIButton *button;
+}
+
+@property (nonatomic, retain) IBOutlet UIButton *button;
 
 - (void)loginFailed;
 

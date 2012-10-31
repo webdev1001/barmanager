@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Facebook-iOS-SDK/FacebookSDK/Facebook.h>
+#import <RestKit/RKErrorMessage.h>
 
 @implementation AppDelegate
 
@@ -78,7 +79,7 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     // (e.g., returning from iOS 6.0 authorization dialog or from fast app switching).
     [FBSession.activeSession handleDidBecomeActive];
     [self setAuthTokenWithinHTTPHeaders];
-    [LocationManager sharedLocationManager];
+    [LocationManager sharedManager];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -86,6 +87,39 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     
     [FBSession.activeSession close];
+}
+
+- (void)setRestKitMappingAndRoutes
+{
+    RKObjectManager *manager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:API_URL]];
+    RKObjectRouter *router = manager.router;
+    
+    manager.acceptMIMEType = RKMIMETypeJSON;
+    manager.serializationMIMEType = RKMIMETypeJSON;
+    
+    [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
+    [router routeClass:[Bar class] toResourcePath:@"/bars.json" forMethod:RKRequestMethodPOST];
+    [router routeClass:[City class] toResourcePath:@"/cities.json"];
+    [router routeClass:[User class] toResourcePath:@"/users/:userId"];
+    [router routeClass:[User class] toResourcePath:@"/users/request_token.json" forMethod:RKRequestMethodPOST];
+    
+    RKObjectMapping *barMapping = [Bar objectMapping];
+    RKObjectMapping *userMapping = [User objectMapping];
+    
+    [manager.mappingProvider setMapping:barMapping forKeyPath:@"bar"];
+    [manager.mappingProvider setMapping:userMapping forKeyPath:@"user"];
+    [manager.mappingProvider setMapping:[City objectMapping] forKeyPath:@"city"];
+    
+    RKObjectMapping *barSerializationMapping = [barMapping inverseMapping];
+    RKObjectMapping *userSerializationMapping = [userMapping inverseMapping];
+    
+    [barSerializationMapping removeMappingForKeyPath:@"barId"];
+    [userSerializationMapping removeMappingForKeyPath:@"userId"];
+    
+    [manager.mappingProvider setSerializationMapping:barSerializationMapping forClass:[Bar class]];
+    [manager.mappingProvider setSerializationMapping:userSerializationMapping forClass:[User class]];
+    
+    [[manager.mappingProvider errorMapping] setRootKeyPath:@"error"];
 }
 
 - (void)sessionStateChanged:(FBSession *)session
