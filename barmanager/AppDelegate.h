@@ -19,6 +19,9 @@
 #import "User.h"
 #import "City.h"
 #import "Error.h"
+#import "Feature.h"
+#import "Expansion.h"
+#import "Enlargement.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {

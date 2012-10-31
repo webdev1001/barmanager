@@ -13,7 +13,7 @@
 
 @implementation BarIndexViewController
 
-@synthesize dataModel;
+@synthesize dataModel, bar;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,6 +38,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/bars.json" delegate:self];
+    //self.managedObjectContext = appDelegate.managedObjectContext;
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
@@ -82,10 +83,10 @@
     static NSString *CellIdentifier = @"BarCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    Bar *bar = [user_bars objectAtIndex:[indexPath row]];
-    City *bar_city = [ bar.city objectAtIndex:0];
+    Bar *loadBar = [user_bars objectAtIndex:[indexPath row]];
+    City *bar_city = [ loadBar.city objectAtIndex:0];
     cell.detailTextLabel.text = bar_city.name;
-    cell.textLabel.text = bar.name;
+    cell.textLabel.text = loadBar.name;
     
     return cell;
 }
@@ -128,6 +129,21 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"loadBar"]) {
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        self.bar = [user_bars objectAtIndex:[indexPath row]];
+        
+        BarViewController *barViewController = segue.destinationViewController;
+        barViewController.managedObjectContext = self.managedObjectContext;
+        
+        NSLog(@"Passing selected bar (%@) to BarViewController", self.bar.name);
+        barViewController.bar = self.bar;
+    }
 }
 
 @end

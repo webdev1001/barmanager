@@ -12,6 +12,7 @@
 #import "DataModel.h"
 #import "Bar.h"
 #import "City.h"
+#import "BarViewController.h"
 
 @interface BarIndexViewController : UITableViewController <RKObjectLoaderDelegate>
 {
@@ -21,5 +22,7 @@
 }
 
 @property (nonatomic, retain) DataModel *dataModel;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) Bar *bar;
 
 @end
