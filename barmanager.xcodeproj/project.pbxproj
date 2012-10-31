@@ -286,6 +286,8 @@
 				D94F0A7A163FF16800AF016D /* BarViewController.h */,
 				D94F0A7B163FF16800AF016D /* BarViewController.m */,
 				DAFF755A162D82F1001A9E0F /* Supporting Files */,
+				DA70E43C163FF33900645F6F /* AddBarViewController.h */,
+				DA70E43D163FF33900645F6F /* AddBarViewController.m */,
 			);
 			path = barmanager;
 			sourceTree = "<group>";
@@ -441,6 +443,7 @@
 				D94F0A8B1640112300AF016D /* BaseExpansion.m in Sources */,
 				D94F0A8E1640188500AF016D /* BaseEnlargement.m in Sources */,
 				D94F0A911640189A00AF016D /* Enlargement.m in Sources */,
+				DA70E43E163FF33900645F6F /* AddBarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
