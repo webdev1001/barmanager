@@ -277,17 +277,17 @@
 				DAFF758B162D91EC001A9E0F /* DashboardViewController.m */,
 				DAFF756E162D82F1001A9E0F /* LoginViewController.h */,
 				DAFF756F162D82F1001A9E0F /* LoginViewController.m */,
-				322095D716393493000C70D9 /* LocationManager.h */,
-				322095D816393493000C70D9 /* LocationManager.m */,
 				D971E370163A94C4003B53A3 /* BankViewController.h */,
 				D971E371163A94C4003B53A3 /* BankViewController.m */,
 				327E8485163ECBC50009ABE2 /* BarIndexViewController.h */,
 				327E8486163ECBC50009ABE2 /* BarIndexViewController.m */,
 				D94F0A7A163FF16800AF016D /* BarViewController.h */,
 				D94F0A7B163FF16800AF016D /* BarViewController.m */,
-				DAFF755A162D82F1001A9E0F /* Supporting Files */,
 				DA70E43C163FF33900645F6F /* AddBarViewController.h */,
 				DA70E43D163FF33900645F6F /* AddBarViewController.m */,
+				322095D716393493000C70D9 /* LocationManager.h */,
+				322095D816393493000C70D9 /* LocationManager.m */,
+				DAFF755A162D82F1001A9E0F /* Supporting Files */,
 			);
 			path = barmanager;
 			sourceTree = "<group>";

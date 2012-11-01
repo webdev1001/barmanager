@@ -56,6 +56,7 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     // (e.g., returning from iOS 6.0 authorization dialog or from fast app switching).
     [FBSession.activeSession handleDidBecomeActive];
     [self setAuthTokenWithinHTTPHeaders];
+    
     [LocationManager sharedManager];
 }
 
@@ -74,7 +75,7 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     manager.acceptMIMEType = RKMIMETypeJSON;
     manager.serializationMIMEType = RKMIMETypeJSON;
     
-    [router routeClass:[Bar class] toResourcePath:@"/api/bars/:barId\\.json"];
+    [router routeClass:[Bar class] toResourcePathPattern:@"/api/bars/:barId\\.json"];
     [router routeClass:[Bar class] toResourcePath:@"/api/bars.json" forMethod:RKRequestMethodPOST];
     [router routeClass:[City class] toResourcePath:@"/api/cities.json"];
     [router routeClass:[User class] toResourcePathPattern:@"/api/users/:userId\\.json"];

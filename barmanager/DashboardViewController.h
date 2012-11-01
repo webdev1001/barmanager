@@ -14,6 +14,7 @@
 #import "City.h"
 
 #import "AddBarViewController.h"
+#import "BarViewController.h"
 
 @interface DashboardViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
@@ -24,6 +25,7 @@
     IBOutlet UIButton *userBarButton;
     IBOutlet UITableView *otherBarsTableView;
     NSArray *otherBars;
+    Bar *userBar;
 }
 
 @property (nonatomic, retain) DataModel *dataModel;
@@ -33,6 +35,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *addBarButton;
 @property (strong, nonatomic) IBOutlet UIButton *userBarButton;
 @property (strong, nonatomic) IBOutlet UITableView *otherBarsTableView;
+@property (strong, nonatomic) Bar *userBar;
 
 - (void)displayBarsForCity:(City *) city;
 

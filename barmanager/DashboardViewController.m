@@ -17,7 +17,7 @@
 
 @implementation DashboardViewController
 
-@synthesize navController = _navController, dataModel, cityname, addBarButton, otherBarsTableView, userBarButton;
+@synthesize navController = _navController, dataModel, cityname, addBarButton, otherBarsTableView, userBarButton, userBar;
 
 - (void)viewDidLoad
 {
@@ -48,12 +48,13 @@
     City *city = [notification object];
     [cityname setText:city.name];
     
+    // Show add bar button
     if ( [city.user_bars count] == 0 ){
         [userBarButton setHidden:YES];
         [addBarButton setHidden:NO];
     } else {
-        Bar *user_bar = [ city.user_bars objectAtIndex:0];
-        [userBarButton setTitle:user_bar.name forState:UIControlStateNormal];
+        self.userBar = [city.user_bars objectAtIndex:0];
+        [userBarButton setTitle:self.userBar.name forState:UIControlStateNormal];
         [userBarButton setHidden:NO];
         
         [addBarButton setHidden:YES];
@@ -110,6 +111,16 @@
     Bar *other_bar = [otherBars objectAtIndex:[indexPath row]];
     cell.textLabel.text = other_bar.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Capaciteit: %@", other_bar.capacity];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"loadBar"]) {
+        BarViewController *barViewController = segue.destinationViewController;
+        
+        NSLog(@"Passing selected bar (%@) to BarViewController", self.userBar.name);
+        barViewController.bar = self.userBar;
+    }
 }
 
 @end

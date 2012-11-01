@@ -151,6 +151,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Wp7-Rr-Gf9" kind="push" identifier="loadBar" id="1ls-Id-CoL"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="332" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="30" sectionHeaderHeight="21" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="wiW-yS-7XB">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -385,9 +388,55 @@
         <image name="iconmonstr-line-chart-icon.png" width="30" height="30"/>
         <image name="logo.png" width="275" height="125"/>
     </resources>
+    <classes>
+        <class className="AddBarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddBarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addBar:"/>
+                <relationship kind="outlet" name="barButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="barTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="BankViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BankViewController.h"/>
+        </class>
+        <class className="BarIndexViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BarIndexViewController.h"/>
+        </class>
+        <class className="BarViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BarViewController.h"/>
+        </class>
+        <class className="DashboardViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DashboardViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showBar:"/>
+                <relationship kind="outlet" name="addBarButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cityname" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="otherBarsTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="userBarButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="performLogin:"/>
+                <relationship kind="outlet" name="button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RootTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootTabBarController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="1ls-Id-CoL"/>
+    </inferredMetricsTieBreakers>
 </document>
