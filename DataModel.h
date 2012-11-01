@@ -23,5 +23,6 @@
 
 + (id)sharedManager;
 - (void)writeSettings;
+- (void)resetValues;
 
 @end

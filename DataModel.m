@@ -64,13 +64,13 @@ static DataModel *dataModel = nil;
         
         NSLog(@"%@", plistPath);
         
-        auth_token = [user_settings objectForKey:@"auth_token"];
-        user_id = [user_settings objectForKey:@"user_id"];
+        self.auth_token = [user_settings objectForKey:@"auth_token"];
+        self.user_id = [user_settings objectForKey:@"user_id"];
         
         NSLog(@"Loaded auth_token from data.plist: %@", auth_token);
         
-        city_id = [city_data objectForKey:@"city_id"];
-        city_name = [city_data objectForKey:@"city_name"];
+        self.city_id = [city_data objectForKey:@"city_id"];
+        self.city_name = [city_data objectForKey:@"city_name"];
     }
     
     return self;
@@ -85,21 +85,14 @@ static DataModel *dataModel = nil;
     NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *plistPath = [rootPath stringByAppendingPathComponent:@"data.plist"];
     
-    
     // User settings:
-    NSNumber *tmpUserId = user_id;
-    NSString *tmpAuthToken = auth_token;
-    
-    NSArray *userSettingsTemp = [NSArray arrayWithObjects:tmpUserId, tmpAuthToken, nil];
+    NSArray *userSettingsTemp = [NSArray arrayWithObjects:self.user_id, self.auth_token, nil];
     
     NSDictionary *userSettingsDict = [NSDictionary dictionaryWithObjects: userSettingsTemp forKeys:[NSArray arrayWithObjects: @"user_id", @"auth_token", nil]];
     NSLog(@"User settings built");
     
     // City data:
-    NSNumber *tmpCityId = city_id;
-    NSString *tmpCityName = city_name;
-    
-    NSArray *cityDataTemp = [NSArray arrayWithObjects:tmpCityId, tmpCityName, nil];
+    NSArray *cityDataTemp = [NSArray arrayWithObjects:self.city_id, self.city_name, nil];
     
     NSDictionary *cityPlistDict = [NSDictionary dictionaryWithObjects: cityDataTemp forKeys:[NSArray arrayWithObjects: @"city_id", @"city_name", nil]];
     NSLog(@"City data built");    
@@ -117,7 +110,16 @@ static DataModel *dataModel = nil;
     {
         NSLog(@"%@", error);
     }
+}
+
+- (void)resetValues
+{
+    self.auth_token = @"";
+    self.user_id = [NSNumber numberWithInt:0];
+    self.city_id = [NSNumber numberWithInt:0];
+    self.city_name = @"";
     
+    NSLog(@"Reset DataModel values");
 }
 
 @end
