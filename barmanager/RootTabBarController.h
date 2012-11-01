@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <RestKit/RestKit.h>
 
+#import "LocationManager.h"
 #import "Bar.h"
 #import "DataModel.h"
 #import "City.h"

@@ -59,11 +59,8 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
-    NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
-    objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
-    
     // After requesting token, set auth token to datamodel singleton
-    if ([objectLoader wasSentToResourcePath:@"/api/users/request_token.json"]) {
+    if ([[objectLoader.URL path] isEqualToString:@"/api/users/request_token.json"]) {
         User *user = [objects objectAtIndex:0];
         
         NSLog(@"Loaded user: %@ with id: %@", user.name, user.userId);
@@ -71,8 +68,12 @@
         self.dataModel.auth_token = user.authenticationToken;
         self.dataModel.user_id = user.userId;
         
-        AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+        AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
         [appDelegate setAuthTokenWithinHTTPHeaders];
+        
+        LocationManager *locationManager = [LocationManager sharedManager];
+        [locationManager.manager stopUpdatingLocation];
+        [locationManager.manager startUpdatingLocation];
     }
 }
 
@@ -117,6 +118,8 @@
 
 -(void)logoutButtonWasPressed:(id)sender {
     [FBSession.activeSession closeAndClearTokenInformation];
+    
+    [self.dataModel resetValues];
 }
 
 
@@ -133,7 +136,7 @@
     user.email = email;
     user.uid = uid;
     
-    // POST to /api/request_token.json
+    // POST to /api/users/request_token.json
     [[RKObjectManager sharedManager] postObject:user delegate:self];
 }
 
