@@ -42,6 +42,7 @@
     // Hide keyboard on view press
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     tap.cancelsTouchesInView = NO;
+    [self.view setBackgroundColor:[UIColor scrollViewTexturedBackgroundColor]];
     [self.view addGestureRecognizer:tap];
 }
 
