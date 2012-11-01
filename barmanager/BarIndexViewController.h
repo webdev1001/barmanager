@@ -22,7 +22,6 @@
 }
 
 @property (nonatomic, retain) DataModel *dataModel;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) Bar *bar;
 
 @end

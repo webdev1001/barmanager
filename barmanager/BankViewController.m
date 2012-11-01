@@ -73,6 +73,13 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSLog(@"Encountered an error: %@", error);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fout"
+                                                    message:[error localizedDescription]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)refreshView:(UIRefreshControl *)refresh {
@@ -86,7 +93,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-  return [NSString stringWithFormat:@"Huidige balans: € %.2f", balance];
+    return [NSString stringWithFormat:@"Huidige balans: € %.2f", balance];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

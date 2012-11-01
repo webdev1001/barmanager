@@ -47,7 +47,6 @@
 - (void)loadBars
 {
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/bars.json" delegate:self];
-    //self.managedObjectContext = appDelegate.managedObjectContext;
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
@@ -64,6 +63,13 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
     NSLog(@"Encountered an error: %@", error);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fout"
+                                                    message:[error localizedDescription]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)didReceiveMemoryWarning
@@ -156,7 +162,6 @@
         self.bar = [user_bars objectAtIndex:[indexPath row]];
         
         BarViewController *barViewController = segue.destinationViewController;
-        barViewController.managedObjectContext = self.managedObjectContext;
         
         NSLog(@"Passing selected bar (%@) to BarViewController", self.bar.name);
         barViewController.bar = self.bar;
