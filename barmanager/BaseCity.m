@@ -15,11 +15,6 @@
     @"population", @"population",
     nil];
     
-    RKObjectMapping* barMapping = [RKObjectMapping mappingForClass:[Bar class] ];
-    [barMapping mapAttributes:@"name", @"capacity", nil];
-    
-    [mapping mapKeyPath:@"user_bars" toRelationship:@"user_bars" withMapping:barMapping];
-    [mapping mapKeyPath:@"other_bars" toRelationship:@"other_bars" withMapping:barMapping];
     return mapping;
 }
 

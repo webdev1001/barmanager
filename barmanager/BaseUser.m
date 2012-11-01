@@ -18,12 +18,6 @@
     @"balance", @"balance",
     nil];
     
-    RKObjectMapping* bankTransactionMapping = [RKObjectMapping mappingForClass:[BankTransaction class] ];
-    [bankTransactionMapping mapAttributes:@"description", @"amount", nil];
-    
-    [mapping mapKeyPath:@"bank_transactions" toRelationship:@"bank_transactions" withMapping:bankTransactionMapping];
-
-    
     return mapping;
 }
 
