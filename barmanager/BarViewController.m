@@ -54,36 +54,6 @@
         self.bar.available_enlargements = tmp.available_enlargements;
     }
     
-    /*
-    Bar *tmpBar = [objects objectAtIndex:0];
-    BOOL isFeature = [tmpBar.current_features isKindOfClass:[Feature class]];
-    if(isFeature)
-    {
-        //Feature *tmpFeature = [objects objectAtIndex:0];
-        NSLog(@"het is een feature");
-    }
-    */
-    /*
-    if(NO)
-    {
-        [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/bars/%@/features.json", [self.bar barId]] delegate:self];
-        [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/bars/%@/expansions.json", [self.bar barId]] delegate:self];
-        [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/bars/%@/enlargements.json", [self.bar barId]] delegate:self];
-    }
-     */
-    
-//    for(Feature *feat in self.bar.current_features)
-//    {
-//        NSLog(@"feature: %@", feat.name);
-//    }
-//    for(Expansion *exp in self.bar.current_expansions)
-//    {
-//        NSLog(@"expansion: %@", exp.name);
-//    }
-//    for(Enlargement *enl in self.bar.current_enlargements)
-//    {
-//        NSLog(@"enlargement id: %@", enl.enlargementId);
-//    }
     [self.tableView reloadData];
 }
 
@@ -223,12 +193,14 @@
     UIButton *but = sender;
     int expansionId = but.superview.superview.tag;
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/expansions/%d/add_to_bar.json", [self.bar barId], expansionId] delegate:self];
+    [but removeFromSuperview];
 }
 - (void) buyFeature:(id)sender
 {
     UIButton *but = sender;
     int featureId = but.superview.superview.tag;
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/features/%d/add_to_bar.json", [self.bar barId], featureId] delegate:self];
+    [but removeFromSuperview];
 }
 - (void) buyEnlargement:(id) sender
 {
@@ -236,6 +208,7 @@
     int enlargementId = but.superview.superview.tag;
     //NSLog(@"/bars/%@/enlargements/%d/add_to_bar.json", [self.bar barId], enlargementId);
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/enlargements/%d/add_to_bar.json", [self.bar barId], enlargementId] delegate:self];
+    [but removeFromSuperview];
 }
 
 @end
