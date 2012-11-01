@@ -45,7 +45,6 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     [manager.mappingProvider setMapping:[Bar objectMapping] forKeyPath:@"bar"];
     [manager.mappingProvider setMapping:[User objectMapping] forKeyPath:@"user"];
     [manager.mappingProvider setMapping:[City objectMapping] forKeyPath:@"city"];
-    [manager.mappingProvider setMapping:[Error objectMapping] forKeyPath:@"error"];
     
     [manager.mappingProvider setSerializationMapping:[User objectMapping] forClass:[User class]];
     
