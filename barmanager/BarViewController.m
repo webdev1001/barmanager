@@ -31,27 +31,24 @@
 	// Do any additional setup after loading the view.
     sectionNames = [NSArray arrayWithObjects: @"Expansions", @"Features", @"Enlargement", nil];
     
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/bars/%@/features.json", [self.bar barId]] delegate:self];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/bars/%@/expansions.json", [self.bar barId]] delegate:self];
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/bars/%@/enlargements.json", [self.bar barId]] delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/features.json", [self.bar barId]] delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/expansions.json", [self.bar barId]] delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/enlargements.json", [self.bar barId]] delegate:self];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
-    NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
-    objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
-    
-    if ([objectLoader wasSentToResourcePath:[NSString stringWithFormat: @"/bars/%@/features.json", [self.bar barId]]]) {
+    if ([[objectLoader.URL path] isEqualToString:[NSString stringWithFormat: @"/api/bars/%@/features.json", [self.bar barId]]]) {
         Bar *tmp = [objects objectAtIndex:0];
         self.bar.current_features = tmp.current_features;
         self.bar.available_features = tmp.available_features;
     }
-    if ([objectLoader wasSentToResourcePath:[NSString stringWithFormat: @"/bars/%@/expansions.json", [self.bar barId]]]) {
+    if ([[objectLoader.URL path] isEqualToString:[NSString stringWithFormat: @"/api/bars/%@/expansions.json", [self.bar barId]]]) {
         Bar *tmp = [objects objectAtIndex:0];
         self.bar.current_expansions = tmp.current_expansions;
         self.bar.available_expansions = tmp.available_expansions;
     }
-    if ([objectLoader wasSentToResourcePath:[NSString stringWithFormat: @"/bars/%@/enlargements.json", [self.bar barId]]]) {
+    if ([[objectLoader.URL path] isEqualToString:[NSString stringWithFormat: @"/api/bars/%@/enlargements.json", [self.bar barId]]]) {
         Bar *tmp = [objects objectAtIndex:0];
         self.bar.current_enlargements = tmp.current_enlargements;
         self.bar.available_enlargements = tmp.available_enlargements;
@@ -225,20 +222,20 @@
 {
     UIButton *but = sender;
     int expansionId = but.superview.superview.tag;
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/bars/%@/expansions/%d/add_to_bar.json", [self.bar barId], expansionId] delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/expansions/%d/add_to_bar.json", [self.bar barId], expansionId] delegate:self];
 }
 - (void) buyFeature:(id)sender
 {
     UIButton *but = sender;
     int featureId = but.superview.superview.tag;
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/bars/%@/features/%d/add_to_bar.json", [self.bar barId], featureId] delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/features/%d/add_to_bar.json", [self.bar barId], featureId] delegate:self];
 }
 - (void) buyEnlargement:(id) sender
 {
     UIButton *but = sender;
     int enlargementId = but.superview.superview.tag;
     //NSLog(@"/bars/%@/enlargements/%d/add_to_bar.json", [self.bar barId], enlargementId);
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/bars/%@/enlargements/%d/add_to_bar.json", [self.bar barId], enlargementId] delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/enlargements/%d/add_to_bar.json", [self.bar barId], enlargementId] delegate:self];
 }
 
 @end

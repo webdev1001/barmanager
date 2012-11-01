@@ -62,11 +62,7 @@ NSString *const BMCityChange = @"ITflows.barmanager.City:BMCityChange";
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
-    NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
-    objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
-    
-    // Try to load cities, when none are found an error object is returned
-    if ([objectLoader wasSentToResourcePath:@"/cities.json"]) {
+    if ([[objectLoader.URL path] isEqualToString:@"/api/cities.json"]) {
         if ( [[objects objectAtIndex:0] isKindOfClass:[City class]] ){
             City *city = [objects objectAtIndex:0];
             self.dataModel.city_id = city.cityId;

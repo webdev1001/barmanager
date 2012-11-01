@@ -63,7 +63,7 @@
     objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
     
     // After requesting token, set auth token to datamodel singleton
-    if ([objectLoader wasSentToResourcePath:@"/users/request_token.json"]) {
+    if ([objectLoader wasSentToResourcePath:@"/api/users/request_token.json"]) {
         User *user = [objects objectAtIndex:0];
         
         NSLog(@"Loaded user: %@ with id: %@", user.name, user.userId);

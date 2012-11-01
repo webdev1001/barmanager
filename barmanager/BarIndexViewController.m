@@ -46,16 +46,13 @@
 
 - (void)loadBars
 {
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/bars.json" delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/bars.json" delegate:self];
     //self.managedObjectContext = appDelegate.managedObjectContext;
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
-    NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
-    objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
-    
-    if ([objectLoader wasSentToResourcePath:@"/bars.json"]) {
+    if ([[objectLoader.URL path] isEqualToString:@"/api/bars.json"]) {
         NSLog(@"Loaded Bars");
         user_bars = objects;
         bar_count = [ user_bars count ];

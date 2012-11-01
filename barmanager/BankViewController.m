@@ -41,7 +41,10 @@
 
 - (void)loadBank
 {
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:[NSString stringWithFormat:@"/users/%@.json", dataModel.user_id] delegate:self];
+    User *user = [User new];
+    user.userId = self.dataModel.user_id;
+    
+    [[RKObjectManager sharedManager] getObject:user delegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,7 +58,7 @@
     NSArray * resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
     objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
     
-    if ([objectLoader wasSentToResourcePath:[NSString stringWithFormat:@"/users/%@.json", dataModel.user_id]]) {
+    if ([[objectLoader.URL path] isEqualToString:[NSString stringWithFormat:@"/api/users/%@.json", self.dataModel.user_id]]) {
         User *user = [objects objectAtIndex:0];
         NSLog(@"Loaded User ID #%@ -> Name: %@, Balance: %@", user.userId, user.name, user.balance);
         
