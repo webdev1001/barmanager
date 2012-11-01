@@ -24,29 +24,7 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     self.mainController = (RootTabBarController *)self.navController.topViewController;
     self.mainController.navController = self.navController;
     
-    RKObjectManager* manager = [RKObjectManager objectManagerWithBaseURL:[NSURL URLWithString:API_URL]];
-    RKObjectRouter* router = manager.router;
-    
-    [router routeClass:[Feature class] toResourcePath:@"/bars/:barId/features.json"];
-    [router routeClass:[Expansion class] toResourcePath:@"/bars/:barId/expansions.json"];
-    [router routeClass:[Enlargement class] toResourcePath:@"/bars/:barId/enlargements.json"];
-    [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
-    [router routeClass:[City class] toResourcePath:@"/cities.json"];
-    [router routeClass:[User class] toResourcePath:@"/users/:userId"];
-    [router routeClass:[User class] toResourcePath:@"/users/request_token.json" forMethod:RKRequestMethodPOST];
-    //[router routeClass:[Enlargement class] toResourcePath:@"/bars/:barId/enlargements/:enlargementId/add_to_bar.json"];
-    
-    manager.acceptMIMEType = RKMIMETypeJSON;
-    manager.serializationMIMEType = RKMIMETypeJSON;
-    
-    [manager.mappingProvider setMapping:[Expansion objectMapping] forKeyPath:@"expansions"];
-    [manager.mappingProvider setMapping:[Feature objectMapping] forKeyPath:@"features"];
-    [manager.mappingProvider setMapping:[Enlargement objectMapping] forKeyPath:@"enlargements"];
-    [manager.mappingProvider setMapping:[Bar objectMapping] forKeyPath:@"bar"];
-    [manager.mappingProvider setMapping:[User objectMapping] forKeyPath:@"user"];
-    [manager.mappingProvider setMapping:[City objectMapping] forKeyPath:@"city"];
-    
-    [manager.mappingProvider setSerializationMapping:[User objectMapping] forClass:[User class]];
+    [self setRestKitMappingAndRoutes];
     
     return YES;
 }
@@ -96,11 +74,11 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     manager.acceptMIMEType = RKMIMETypeJSON;
     manager.serializationMIMEType = RKMIMETypeJSON;
     
-    [router routeClass:[Bar class] toResourcePath:@"/bars/:barId"];
-    [router routeClass:[Bar class] toResourcePath:@"/bars.json" forMethod:RKRequestMethodPOST];
-    [router routeClass:[City class] toResourcePath:@"/cities.json"];
-    [router routeClass:[User class] toResourcePath:@"/users/:userId"];
-    [router routeClass:[User class] toResourcePath:@"/users/request_token.json" forMethod:RKRequestMethodPOST];
+    [router routeClass:[Bar class] toResourcePath:@"/api/bars/:barId\\.json"];
+    [router routeClass:[Bar class] toResourcePath:@"/api/bars.json" forMethod:RKRequestMethodPOST];
+    [router routeClass:[City class] toResourcePath:@"/api/cities.json"];
+    [router routeClass:[User class] toResourcePathPattern:@"/api/users/:userId\\.json"];
+    [router routeClass:[User class] toResourcePath:@"/api/users/request_token.json" forMethod:RKRequestMethodPOST];
     
     RKObjectMapping *barMapping = [Bar objectMapping];
     RKObjectMapping *userMapping = [User objectMapping];
@@ -108,6 +86,9 @@ NSString *const FBSessionStateChangedNotification = @"ITflows.barmanager.Login:F
     [manager.mappingProvider setMapping:barMapping forKeyPath:@"bar"];
     [manager.mappingProvider setMapping:userMapping forKeyPath:@"user"];
     [manager.mappingProvider setMapping:[City objectMapping] forKeyPath:@"city"];
+    [manager.mappingProvider setMapping:[Expansion objectMapping] forKeyPath:@"expansions"];
+    [manager.mappingProvider setMapping:[Feature objectMapping] forKeyPath:@"features"];
+    [manager.mappingProvider setMapping:[Enlargement objectMapping] forKeyPath:@"enlargements"];
     
     RKObjectMapping *barSerializationMapping = [barMapping inverseMapping];
     RKObjectMapping *userSerializationMapping = [userMapping inverseMapping];

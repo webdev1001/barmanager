@@ -18,12 +18,10 @@
 {
     RKObjectMapping *mapping = [super objectMapping];
     
-    RKObjectMapping* cityMapping = [RKObjectMapping mappingForClass:[City class] ];
-    [cityMapping mapAttributes:@"name", nil];
-    
-    RKObjectMapping* featuresMapping = [Feature objectMapping];
-    RKObjectMapping* expansionsMapping = [Expansion objectMapping];
-    RKObjectMapping* enlargementsMapping = [Enlargement objectMapping];
+    RKObjectMapping *cityMapping = [City objectMapping];
+    RKObjectMapping *featuresMapping = [Feature objectMapping];
+    RKObjectMapping *expansionsMapping = [Expansion objectMapping];
+    RKObjectMapping *enlargementsMapping = [Enlargement objectMapping];
     
     [mapping mapKeyPath:@"city" toRelationship:@"city" withMapping:cityMapping];
     

@@ -77,13 +77,10 @@
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
-    NSArray *resource_path_array = [[objectLoader resourcePath] componentsSeparatedByString:@"?"];
-    objectLoader.resourcePath = [resource_path_array objectAtIndex:0];
-    
     // When bar has been added, load cities
-    if ([objectLoader wasSentToResourcePath:@"/bars.json"]) {
+    if ([[objectLoader.URL path] isEqualToString:@"/api/bars.json"]) {
         [City findCityForLocation:self.lastLocation WithDelegate:self];
-    } else if ([objectLoader wasSentToResourcePath:@"/cities.json"]) {
+    } else if ([[objectLoader.URL path] isEqualToString:@"/api/cities.json"]) {
         if ( [[objects objectAtIndex:0] isKindOfClass:[City class]] ){
             City *city = [objects objectAtIndex:0];
             
