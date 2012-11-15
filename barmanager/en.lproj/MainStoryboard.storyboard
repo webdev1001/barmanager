@@ -494,6 +494,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bank_bg.png" width="320" height="100"/>
         <image name="bar.jpg" width="320" height="480"/>
         <image name="beers.png" width="30" height="30"/>
         <image name="facebook-connect-button.png" width="284" height="50"/>
@@ -502,6 +503,58 @@
         <image name="iconmonstr-line-chart-icon.png" width="30" height="30"/>
         <image name="logo.png" width="275" height="125"/>
     </resources>
+    <classes>
+        <class className="AddBarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddBarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addBar:"/>
+                <relationship kind="outlet" name="barButtonItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="barTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="AddFeatureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddFeatureViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="featuresTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="BankViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BankViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="balanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="bankTransactionsTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="BarIndexViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BarIndexViewController.h"/>
+        </class>
+        <class className="BarViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BarViewController.h"/>
+        </class>
+        <class className="DashboardViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DashboardViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="addBarButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cityname" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="otherBarsTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="userBarButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="performLogin:"/>
+                <relationship kind="outlet" name="button" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RootTabBarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootTabBarController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
