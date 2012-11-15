@@ -12,14 +12,18 @@
 #import "DataModel.h"
 #import "User.h"
 
-@interface BankViewController : UITableViewController <RKObjectLoaderDelegate>
+@interface BankViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>
 {
     DataModel *dataModel;
     double balance;
     int transaction_count;
     NSArray *bank_transactions;
+    IBOutlet UITableView *bankTransactionsTableView;
+    IBOutlet UILabel *balanceLabel;
 }
 
 @property (nonatomic, retain) DataModel *dataModel;
+@property (strong, nonatomic) IBOutlet UITableView *bankTransactionsTableView;
+@property (nonatomic, retain) IBOutlet UILabel *balanceLabel;
 
 @end

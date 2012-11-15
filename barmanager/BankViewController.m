@@ -14,7 +14,7 @@
 
 @implementation BankViewController
 
-@synthesize dataModel;
+@synthesize dataModel, bankTransactionsTableView, balanceLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,11 +32,6 @@
 {
     [super viewDidLoad];
     [self loadBank];
-	// Do any additional setup after loading the view.
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
-    [refresh addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refresh;
 }
 
 - (void)loadBank
@@ -63,11 +58,12 @@
         NSLog(@"Loaded User ID #%@ -> Name: %@, Balance: %@", user.userId, user.name, user.balance);
         
         balance = [user.balance doubleValue];
+        balanceLabel.text = [ NSString stringWithFormat:@"%.2f", balance];
         transaction_count = [ user.bank_transactions count ];
         bank_transactions = user.bank_transactions;
         
-        [self.refreshControl endRefreshing];
-        [self.tableView reloadData];
+
+        [self.bankTransactionsTableView reloadData];
     }
 }
 
@@ -80,20 +76,6 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-}
-
-- (void)refreshView:(UIRefreshControl *)refresh {
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Bezig met vernieuwen..."];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMM d, h:mm a"];
-    NSString *lastUpdated = [NSString stringWithFormat:@"Laatst geüpdatet op: %@", [formatter stringFromDate:[NSDate date]]];
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
-    [self loadBank];
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return [NSString stringWithFormat:@"Huidige balans: € %.2f", balance];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -113,30 +95,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TransactionCell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return NO;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // The table view should not be re-orderable.
     return NO;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    UIFont *textFont = [ UIFont fontWithName: @"Arial" size: 12.0 ];
-    UIFont *detailFont = [ UIFont fontWithName: @"Arial" size: 12.0 ];
+    UIFont *textFont = [ UIFont fontWithName: @"Arial" size: 10.0 ];
     cell.textLabel.font  = textFont;
-    cell.detailTextLabel.font = detailFont;
+    cell.detailTextLabel.font = textFont;
     
     BankTransaction *transaction = [bank_transactions objectAtIndex:[indexPath row]];
     cell.textLabel.text = transaction.description;
