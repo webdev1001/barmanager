@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="63D-Ed-oFy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="63D-Ed-oFy">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -203,7 +203,7 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="obz-Eu-4hk" firstAttribute="centerX" secondItem="vdS-AX-Hui" secondAttribute="centerX" type="default" id="1ch-w2-fb6"/>
+                                    <constraint firstItem="cvF-Km-dmC" firstAttribute="centerX" secondItem="vdS-AX-Hui" secondAttribute="centerX" type="default" id="2iq-o6-DUq"/>
                                     <constraint firstAttribute="trailing" secondItem="obz-Eu-4hk" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="4HG-lb-IxA"/>
                                     <constraint firstItem="wiW-yS-7XB" firstAttribute="top" secondItem="4Es-Wg-YP4" secondAttribute="bottom" constant="20" type="user" id="6mJ-b5-XDL"/>
                                     <constraint firstItem="wiW-yS-7XB" firstAttribute="leading" secondItem="1Iv-18-bnQ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Coo-N0-T9B"/>
@@ -344,11 +344,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell2" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell2" textLabel="gSB-Qe-YdQ" style="IBUITableViewCellStyleDefault" id="JLI-ER-uFv">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell2" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell2" textLabel="gSB-Qe-YdQ" style="IBUITableViewCellStyleDefault" id="JLI-ER-uFv">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSB-Qe-YdQ">
@@ -359,6 +359,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="KHM-66-zfH" kind="push" id="MSo-lQ-snk"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -371,6 +374,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PdE-Bs-WJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1426" y="-294"/>
+        </scene>
+        <!--Add Feature View Controller-->
+        <scene sceneID="qRs-zx-qD4">
+            <objects>
+                <viewController id="KHM-66-zfH" customClass="AddFeatureViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BUw-wg-Ft3">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bar.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="KrI-wR-Biy">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Pmh-Vi-gtO"/>
+                                </constraints>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="J8Z-2v-2cm">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="356" id="fPZ-uP-ftK"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="gray" indentationWidth="10" reuseIdentifier="AddFeatureCell" textLabel="yHH-zO-uIZ" detailTextLabel="rEf-eG-hsw" style="IBUITableViewCellStyleSubtitle" id="VSf-0t-ja0">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHH-zO-uIZ">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEf-eG-hsw">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="KHM-66-zfH" id="pWg-Ce-vla"/>
+                                    <outlet property="delegate" destination="hyt-Df-VG1" id="Cb3-qG-Tdn"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="J8Z-2v-2cm" firstAttribute="bottom" secondItem="BUw-wg-Ft3" secondAttribute="bottom" type="default" id="31k-FZ-AuQ"/>
+                            <constraint firstItem="J8Z-2v-2cm" firstAttribute="trailing" secondItem="BUw-wg-Ft3" secondAttribute="trailing" type="default" id="4m1-T1-07v"/>
+                            <constraint firstItem="J8Z-2v-2cm" firstAttribute="leading" secondItem="BUw-wg-Ft3" secondAttribute="leading" type="default" id="6j4-sN-COK"/>
+                            <constraint firstItem="KrI-wR-Biy" firstAttribute="top" secondItem="BUw-wg-Ft3" secondAttribute="top" type="default" id="DVn-Gt-yJO"/>
+                            <constraint firstItem="KrI-wR-Biy" firstAttribute="leading" secondItem="BUw-wg-Ft3" secondAttribute="leading" type="default" id="iZH-HW-OIv"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hyt-Df-VG1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AKl-lX-ZlT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1836" y="-290"/>
         </scene>
         <!--Root Tab Bar Controller-->
         <scene sceneID="o67-6i-WsW">
@@ -395,6 +460,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bar.jpg" width="320" height="480"/>
         <image name="beers.png" width="30" height="30"/>
         <image name="facebook-connect-button.png" width="284" height="50"/>
         <image name="iconmonstr-details-large-view-icon.png" width="30" height="30"/>
@@ -402,48 +468,6 @@
         <image name="iconmonstr-line-chart-icon.png" width="30" height="30"/>
         <image name="logo.png" width="275" height="125"/>
     </resources>
-    <classes>
-        <class className="AddBarViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddBarViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addBar:"/>
-                <relationship kind="outlet" name="barButtonItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="barTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="BankViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BankViewController.h"/>
-        </class>
-        <class className="BarIndexViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BarIndexViewController.h"/>
-        </class>
-        <class className="BarViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BarViewController.h"/>
-        </class>
-        <class className="DashboardViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DashboardViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="addBarButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="cityname" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="otherBarsTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="userBarButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="performLogin:"/>
-                <relationship kind="outlet" name="button" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="spinner" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="RootTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootTabBarController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
