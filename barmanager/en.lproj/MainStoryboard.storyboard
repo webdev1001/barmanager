@@ -70,10 +70,10 @@
             <point key="canvasLocation" x="257" y="159"/>
         </scene>
         <!--Bank View Controller - Bank-->
-        <scene sceneID="Rog-Ts-39X">
+        <scene sceneID="7zX-XL-8Vl">
             <objects>
-                <tableViewController id="UkJ-4T-7I9" customClass="BankViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="N5A-fV-OjR">
+                <viewController id="PWG-Ia-ffn" customClass="BankViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wth-7a-fYM">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,7 +111,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jW-Ui-Pdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="936" y="380"/>
+            <point key="canvasLocation" x="942" y="381"/>
         </scene>
         <!--Bar View Controller-->
         <scene sceneID="N8J-V7-ahC">
@@ -534,7 +534,7 @@
                     <connections>
                         <segue destination="cbO-Cz-wjo" kind="relationship" relationship="viewControllers" id="VKN-4j-0DV"/>
                         <segue destination="3jo-sa-4nV" kind="relationship" relationship="viewControllers" id="8NJ-Cd-mPk"/>
-                        <segue destination="UkJ-4T-7I9" kind="relationship" relationship="viewControllers" id="dio-W3-Fir"/>
+                        <segue destination="PWG-Ia-ffn" kind="relationship" relationship="viewControllers" id="nLo-sD-aXa"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unK-ye-Xdw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -560,8 +560,18 @@
                 <relationship kind="outlet" name="barTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
-        <class className="BankViewController" superclassName="UITableViewController">
+        <class className="AddFeatureViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddFeatureViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="featuresTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="BankViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BankViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="balanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="bankTransactionsTableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="BarIndexViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BarIndexViewController.h"/>
