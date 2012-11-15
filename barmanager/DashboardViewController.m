@@ -115,7 +115,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"loadBar"]) {
+    if ([[segue identifier] isEqualToString:@"ShowBar"]) {
         BarViewController *barViewController = segue.destinationViewController;
         
         NSLog(@"Passing selected bar (%@) to BarViewController", self.userBar.name);

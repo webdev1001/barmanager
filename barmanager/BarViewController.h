@@ -2,28 +2,26 @@
 //  BarViewController.h
 //  barmanager
 //
-//  Created by Joshua Jansen on 30-10-12.
+//  Created by Youri van der Lans on 11/15/12.
 //  Copyright (c) 2012 ITflows. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "Bar.h"
-#import "City.h"
-#import "Feature.h"
-#import "Expansion.h"
-#import "Enlargement.h"
 
-@interface BarViewController : UITableViewController <RKObjectLoaderDelegate>
+#import "Bar.h"
+#import "BarViewCell.h"
+#import "Feature.h"
+
+@interface BarViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, RKObjectLoaderDelegate>
 {
-    
+    NSString *identifier;
+    NSArray *collection;
 }
 
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) Bar *bar;
-@property (nonatomic, strong) City *city;
-@property (nonatomic, strong) Feature *feature;
-@property (nonatomic, strong) Expansion *Expansion;
-@property (nonatomic, strong) Enlargement *enlargement;
-@property (nonatomic, retain) NSArray *sectionNames;
+@property (nonatomic, strong) IBOutlet UICollectionView *featureCollectionView;
+@property (nonatomic, strong) IBOutlet UICollectionView *expansionCollectionView;
+@property (nonatomic, strong) IBOutlet UICollectionView *enlargementCollectionView;
+@property (strong, nonatomic) IBOutlet UILabel *barName;
 
 @end

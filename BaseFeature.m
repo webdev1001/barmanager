@@ -18,6 +18,7 @@
      @"id", @"featureId",
      @"name", @"name",
      @"investment", @"investment",
+     @"icon", @"icon",
      nil];
     
     return mapping;
@@ -30,6 +31,7 @@
         self.featureId = [coder decodeObjectForKey:@"featureId"];
         self.name = [coder decodeObjectForKey:@"name"];
         self.investment = [coder decodeObjectForKey:@"investment"];
+        self.icon = [coder decodeObjectForKey:@"icon"];
     }
     return self;
 }
@@ -39,6 +41,7 @@
     [coder encodeObject:self.featureId forKey:@"featureId"];
     [coder encodeObject:self.name forKey:@"name"];
     [coder encodeObject:self.investment forKey:@"investment"];
+    [coder encodeObject:self.icon forKey:@"icon"];
 }
 
 @end

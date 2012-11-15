@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSNumber *featureId;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSNumber *investment;
+@property (nonatomic, retain) NSString *icon;
 
 + (RKObjectMapping *)objectMapping;
 

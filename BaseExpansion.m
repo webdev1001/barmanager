@@ -16,6 +16,7 @@
     [mapping mapKeyPathsToAttributes:
      @"id", @"expansionId",
      @"name", @"name",
+     @"icon", @"icon",
      nil];
     
     return mapping;
@@ -27,6 +28,7 @@
     if (self) {
         self.expansionId = [coder decodeObjectForKey:@"expansionId"];
         self.name = [coder decodeObjectForKey:@"name"];
+        self.icon = [coder decodeObjectForKey:@"icon"];
     }
     return self;
 }
@@ -35,6 +37,7 @@
 {
     [coder encodeObject:self.expansionId forKey:@"expansionId"];
     [coder encodeObject:self.name forKey:@"name"];
+    [coder encodeObject:self.icon forKey:@"icon"];
 }
 
 @end

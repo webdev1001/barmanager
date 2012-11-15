@@ -156,7 +156,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"loadBar"]) {
+    if ([[segue identifier] isEqualToString:@"ShowBar"]) {
         
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         self.bar = [user_bars objectAtIndex:[indexPath row]];

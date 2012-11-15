@@ -13,6 +13,7 @@
 
 @property (nonatomic, retain) NSNumber *expansionId;
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *icon;
 
 + (RKObjectMapping *)objectMapping;
 
