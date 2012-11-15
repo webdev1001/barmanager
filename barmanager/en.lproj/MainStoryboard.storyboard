@@ -70,46 +70,80 @@
             <point key="canvasLocation" x="257" y="159"/>
         </scene>
         <!--Bank View Controller - Bank-->
-        <scene sceneID="Rog-Ts-39X">
+        <scene sceneID="7zX-XL-8Vl">
             <objects>
-                <tableViewController id="UkJ-4T-7I9" customClass="BankViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="N5A-fV-OjR">
+                <viewController id="PWG-Ia-ffn" customClass="BankViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wth-7a-fYM">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="Cell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="f97-DW-fMH" detailTextLabel="zLw-0w-3ev" style="IBUITableViewCellStyleValue1" id="Krp-gh-93U">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f97-DW-fMH">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLw-0w-3ev">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="UkJ-4T-7I9" id="L1A-XU-aZh"/>
-                            <outlet property="delegate" destination="UkJ-4T-7I9" id="zC0-XF-wGc"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" tag="2" title="Bank" image="iconmonstr-line-chart-icon.png" id="V02-c2-zU4"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6jW-Ui-Pdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bank_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="hZS-bE-90r"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Icq-Is-yPN">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="Qoc-3E-UgN"/>
+                                    <constraint firstAttribute="width" constant="93" id="vm3-ty-cdh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="332" verticalHuggingPriority="395" verticalCompressionResistancePriority="1000" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="30" sectionHeaderHeight="21" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="VL3-Hi-uA8">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="354" id="dx6-Vd-ayE"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TransactionCell" textLabel="oZq-Cw-9mW" detailTextLabel="c5s-ea-84T" style="IBUITableViewCellStyleValue1" id="b1G-xJ-gRL">
+                                        <rect key="frame" x="0.0" y="21" width="320" height="30"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oZq-Cw-9mW">
+                                                    <rect key="frame" x="10" y="4" width="35" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c5s-ea-84T">
+                                                    <rect key="frame" x="253" y="4" width="57" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="PWG-Ia-ffn" id="crz-aB-wMI"/>
+                                    <outlet property="delegate" destination="PWG-Ia-ffn" id="Gx8-Oq-62v"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hZS-bE-90r" firstAttribute="centerY" secondItem="Icq-Is-yPN" secondAttribute="centerY" type="default" id="3d3-Vx-f38"/>
+                            <constraint firstItem="hZS-bE-90r" firstAttribute="top" secondItem="Wth-7a-fYM" secondAttribute="top" type="default" id="64S-rB-OVc"/>
+                            <constraint firstAttribute="trailing" secondItem="Icq-Is-yPN" secondAttribute="trailing" constant="64" id="EYj-gA-ZwD"/>
+                            <constraint firstItem="VL3-Hi-uA8" firstAttribute="trailing" secondItem="Wth-7a-fYM" secondAttribute="trailing" type="default" id="QiH-Hc-Ne7"/>
+                            <constraint firstItem="hZS-bE-90r" firstAttribute="leading" secondItem="Wth-7a-fYM" secondAttribute="leading" type="default" id="bIF-pd-tMT"/>
+                            <constraint firstItem="VL3-Hi-uA8" firstAttribute="leading" secondItem="Wth-7a-fYM" secondAttribute="leading" type="default" id="trY-Rb-g4L"/>
+                            <constraint firstItem="VL3-Hi-uA8" firstAttribute="top" secondItem="Wth-7a-fYM" secondAttribute="top" constant="100" id="xEM-rN-naO"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Bank" image="iconmonstr-line-chart-icon.png" id="bzh-wi-bic"/>
+                    <connections>
+                        <outlet property="balanceLabel" destination="Icq-Is-yPN" id="kz7-rM-MEv"/>
+                        <outlet property="bankTransactionsTableView" destination="VL3-Hi-uA8" id="FEx-Jo-McL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4vE-13-M38" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="936" y="380"/>
+            <point key="canvasLocation" x="942" y="381"/>
         </scene>
         <!--Dashboard View Controller - Dashboard-->
         <scene sceneID="QhI-JD-LQt">
@@ -451,7 +485,7 @@
                     <connections>
                         <segue destination="cbO-Cz-wjo" kind="relationship" relationship="viewControllers" id="VKN-4j-0DV"/>
                         <segue destination="3jo-sa-4nV" kind="relationship" relationship="viewControllers" id="8NJ-Cd-mPk"/>
-                        <segue destination="UkJ-4T-7I9" kind="relationship" relationship="viewControllers" id="dio-W3-Fir"/>
+                        <segue destination="PWG-Ia-ffn" kind="relationship" relationship="viewControllers" id="nLo-sD-aXa"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unK-ye-Xdw" userLabel="First Responder" sceneMemberID="firstResponder"/>
