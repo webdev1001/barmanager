@@ -32,16 +32,9 @@
 		327E848F163ED7940009ABE2 /* beers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 327E848D163ED7940009ABE2 /* beers@2x.png */; };
 		32B4755116495E1700C3BE3A /* icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B4755016495E1700C3BE3A /* icon-114.png */; };
 		32B4755416495E3C00C3BE3A /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B4755316495E3C00C3BE3A /* icon-57.png */; };
-		32C1C6D616353FF700D6AA5C /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C1C6D516353FF700D6AA5C /* DataModel.m */; };
 		32C1C6D91635414F00D6AA5C /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32C1C6D81635414F00D6AA5C /* data.plist */; };
 		D9178F8216551CEA00505A23 /* AddFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9178F8116551CEA00505A23 /* AddFeatureViewController.m */; };
 		D93061AD1637422700BB0B75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D93061AC1637422700BB0B75 /* CoreLocation.framework */; };
-		D94F0A82163FF49F00AF016D /* BaseFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F0A81163FF49F00AF016D /* BaseFeature.m */; };
-		D94F0A85163FF5CE00AF016D /* Feature.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F0A84163FF5CE00AF016D /* Feature.m */; };
-		D94F0A881640111400AF016D /* Expansion.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F0A871640111300AF016D /* Expansion.m */; };
-		D94F0A8B1640112300AF016D /* BaseExpansion.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F0A8A1640112200AF016D /* BaseExpansion.m */; };
-		D94F0A8E1640188500AF016D /* BaseEnlargement.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F0A8D1640188500AF016D /* BaseEnlargement.m */; };
-		D94F0A911640189A00AF016D /* Enlargement.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F0A901640189A00AF016D /* Enlargement.m */; };
 		D955301A1637E5D900C81849 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = D95530191637E5D900C81849 /* City.m */; };
 		D955301D1637E60400C81849 /* BaseCity.m in Sources */ = {isa = PBXBuildFile; fileRef = D955301C1637E60400C81849 /* BaseCity.m */; };
 		D971E372163A94C4003B53A3 /* BankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D971E371163A94C4003B53A3 /* BankViewController.m */; };
@@ -96,6 +89,13 @@
 		DA1DD6E416553715009BBE0F /* uitsmijter-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA1DD6C016553715009BBE0F /* uitsmijter-2@2x.png */; };
 		DA1DD6E516553715009BBE0F /* wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = DA1DD6C116553715009BBE0F /* wifi.png */; };
 		DA1DD6E616553715009BBE0F /* wifi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA1DD6C216553715009BBE0F /* wifi@2x.png */; };
+		DA44CF8416565C1A00ECEB2A /* BaseEnlargement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA44CF7F16565C1A00ECEB2A /* BaseEnlargement.m */; };
+		DA44CF8516565C1A00ECEB2A /* BaseExpansion.m in Sources */ = {isa = PBXBuildFile; fileRef = DA44CF8116565C1A00ECEB2A /* BaseExpansion.m */; };
+		DA44CF8616565C1A00ECEB2A /* BaseFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = DA44CF8316565C1A00ECEB2A /* BaseFeature.m */; };
+		DA44CF9016565C6700ECEB2A /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DA44CF8916565C6700ECEB2A /* DataModel.m */; };
+		DA44CF9116565C6700ECEB2A /* Enlargement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA44CF8B16565C6700ECEB2A /* Enlargement.m */; };
+		DA44CF9216565C6700ECEB2A /* Expansion.m in Sources */ = {isa = PBXBuildFile; fileRef = DA44CF8D16565C6700ECEB2A /* Expansion.m */; };
+		DA44CF9316565C6700ECEB2A /* Feature.m in Sources */ = {isa = PBXBuildFile; fileRef = DA44CF8F16565C6700ECEB2A /* Feature.m */; };
 		DA70E43E163FF33900645F6F /* AddBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA70E43D163FF33900645F6F /* AddBarViewController.m */; };
 		DAFF7554162D82F1001A9E0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7553162D82F1001A9E0F /* UIKit.framework */; };
 		DAFF7556162D82F1001A9E0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF7555162D82F1001A9E0F /* Foundation.framework */; };
@@ -140,25 +140,11 @@
 		327E848D163ED7940009ABE2 /* beers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beers@2x.png"; sourceTree = "<group>"; };
 		32B4755016495E1700C3BE3A /* icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-114.png"; path = "../icon-114.png"; sourceTree = "<group>"; };
 		32B4755316495E3C00C3BE3A /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-57.png"; path = "../icon-57.png"; sourceTree = "<group>"; };
-		32C1C6D416353FF700D6AA5C /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
-		32C1C6D516353FF700D6AA5C /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		32C1C6D81635414F00D6AA5C /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 		8626067EA2604DB5841B937F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9178F8016551CEA00505A23 /* AddFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFeatureViewController.h; sourceTree = "<group>"; };
 		D9178F8116551CEA00505A23 /* AddFeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFeatureViewController.m; sourceTree = "<group>"; };
 		D93061AC1637422700BB0B75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		D94F0A80163FF49F00AF016D /* BaseFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFeature.h; sourceTree = "<group>"; };
-		D94F0A81163FF49F00AF016D /* BaseFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFeature.m; sourceTree = "<group>"; };
-		D94F0A83163FF5CE00AF016D /* Feature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feature.h; sourceTree = "<group>"; };
-		D94F0A84163FF5CE00AF016D /* Feature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Feature.m; sourceTree = "<group>"; };
-		D94F0A861640111300AF016D /* Expansion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expansion.h; sourceTree = "<group>"; };
-		D94F0A871640111300AF016D /* Expansion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expansion.m; sourceTree = "<group>"; };
-		D94F0A891640112200AF016D /* BaseExpansion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseExpansion.h; sourceTree = "<group>"; };
-		D94F0A8A1640112200AF016D /* BaseExpansion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseExpansion.m; sourceTree = "<group>"; };
-		D94F0A8C1640188400AF016D /* BaseEnlargement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEnlargement.h; sourceTree = "<group>"; };
-		D94F0A8D1640188500AF016D /* BaseEnlargement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEnlargement.m; sourceTree = "<group>"; };
-		D94F0A8F1640189900AF016D /* Enlargement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enlargement.h; sourceTree = "<group>"; };
-		D94F0A901640189A00AF016D /* Enlargement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enlargement.m; sourceTree = "<group>"; };
 		D95530181637E5D900C81849 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = City.h; path = barmanager/City.h; sourceTree = "<group>"; };
 		D95530191637E5D900C81849 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = City.m; path = barmanager/City.m; sourceTree = "<group>"; };
 		D955301B1637E60400C81849 /* BaseCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseCity.h; path = barmanager/BaseCity.h; sourceTree = "<group>"; };
@@ -224,6 +210,20 @@
 		DA1DD6C016553715009BBE0F /* uitsmijter-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "uitsmijter-2@2x.png"; sourceTree = "<group>"; };
 		DA1DD6C116553715009BBE0F /* wifi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifi.png; sourceTree = "<group>"; };
 		DA1DD6C216553715009BBE0F /* wifi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wifi@2x.png"; sourceTree = "<group>"; };
+		DA44CF7E16565C1A00ECEB2A /* BaseEnlargement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseEnlargement.h; path = barmanager/BaseEnlargement.h; sourceTree = "<group>"; };
+		DA44CF7F16565C1A00ECEB2A /* BaseEnlargement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseEnlargement.m; path = barmanager/BaseEnlargement.m; sourceTree = "<group>"; };
+		DA44CF8016565C1A00ECEB2A /* BaseExpansion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseExpansion.h; path = barmanager/BaseExpansion.h; sourceTree = "<group>"; };
+		DA44CF8116565C1A00ECEB2A /* BaseExpansion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseExpansion.m; path = barmanager/BaseExpansion.m; sourceTree = "<group>"; };
+		DA44CF8216565C1A00ECEB2A /* BaseFeature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseFeature.h; path = barmanager/BaseFeature.h; sourceTree = "<group>"; };
+		DA44CF8316565C1A00ECEB2A /* BaseFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseFeature.m; path = barmanager/BaseFeature.m; sourceTree = "<group>"; };
+		DA44CF8816565C6700ECEB2A /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataModel.h; path = barmanager/DataModel.h; sourceTree = "<group>"; };
+		DA44CF8916565C6700ECEB2A /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataModel.m; path = barmanager/DataModel.m; sourceTree = "<group>"; };
+		DA44CF8A16565C6700ECEB2A /* Enlargement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enlargement.h; path = barmanager/Enlargement.h; sourceTree = "<group>"; };
+		DA44CF8B16565C6700ECEB2A /* Enlargement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enlargement.m; path = barmanager/Enlargement.m; sourceTree = "<group>"; };
+		DA44CF8C16565C6700ECEB2A /* Expansion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Expansion.h; path = barmanager/Expansion.h; sourceTree = "<group>"; };
+		DA44CF8D16565C6700ECEB2A /* Expansion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Expansion.m; path = barmanager/Expansion.m; sourceTree = "<group>"; };
+		DA44CF8E16565C6700ECEB2A /* Feature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Feature.h; path = barmanager/Feature.h; sourceTree = "<group>"; };
+		DA44CF8F16565C6700ECEB2A /* Feature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Feature.m; path = barmanager/Feature.m; sourceTree = "<group>"; };
 		DA70E43C163FF33900645F6F /* AddBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBarViewController.h; sourceTree = "<group>"; };
 		DA70E43D163FF33900645F6F /* AddBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBarViewController.m; sourceTree = "<group>"; };
 		DAFF754F162D82F1001A9E0F /* barmanager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barmanager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,20 +291,20 @@
 				DA02CE441631A1470096E156 /* BaseUser.m */,
 				DA02CE491631BC060096E156 /* User.h */,
 				DA02CE4A1631BC060096E156 /* User.m */,
-				D94F0A80163FF49F00AF016D /* BaseFeature.h */,
-				D94F0A81163FF49F00AF016D /* BaseFeature.m */,
-				D94F0A83163FF5CE00AF016D /* Feature.h */,
-				D94F0A84163FF5CE00AF016D /* Feature.m */,
-				D94F0A891640112200AF016D /* BaseExpansion.h */,
-				D94F0A8A1640112200AF016D /* BaseExpansion.m */,
-				D94F0A861640111300AF016D /* Expansion.h */,
-				D94F0A871640111300AF016D /* Expansion.m */,
-				D94F0A8C1640188400AF016D /* BaseEnlargement.h */,
-				D94F0A8D1640188500AF016D /* BaseEnlargement.m */,
-				D94F0A8F1640189900AF016D /* Enlargement.h */,
-				D94F0A901640189A00AF016D /* Enlargement.m */,
-				32C1C6D416353FF700D6AA5C /* DataModel.h */,
-				32C1C6D516353FF700D6AA5C /* DataModel.m */,
+				DA44CF8016565C1A00ECEB2A /* BaseExpansion.h */,
+				DA44CF8116565C1A00ECEB2A /* BaseExpansion.m */,
+				DA44CF8C16565C6700ECEB2A /* Expansion.h */,
+				DA44CF8D16565C6700ECEB2A /* Expansion.m */,
+				DA44CF8216565C1A00ECEB2A /* BaseFeature.h */,
+				DA44CF8316565C1A00ECEB2A /* BaseFeature.m */,
+				DA44CF8E16565C6700ECEB2A /* Feature.h */,
+				DA44CF8F16565C6700ECEB2A /* Feature.m */,
+				DA44CF7E16565C1A00ECEB2A /* BaseEnlargement.h */,
+				DA44CF7F16565C1A00ECEB2A /* BaseEnlargement.m */,
+				DA44CF8A16565C6700ECEB2A /* Enlargement.h */,
+				DA44CF8B16565C6700ECEB2A /* Enlargement.m */,
+				DA44CF8816565C6700ECEB2A /* DataModel.h */,
+				DA44CF8916565C6700ECEB2A /* DataModel.m */,
 				32C1C6D81635414F00D6AA5C /* data.plist */,
 			);
 			name = Models;
@@ -605,7 +605,6 @@
 				DA02CE42163186740096E156 /* Bar.m in Sources */,
 				DA02CE451631A1470096E156 /* BaseUser.m in Sources */,
 				DA02CE4B1631BC060096E156 /* User.m in Sources */,
-				32C1C6D616353FF700D6AA5C /* DataModel.m in Sources */,
 				D955301A1637E5D900C81849 /* City.m in Sources */,
 				D955301D1637E60400C81849 /* BaseCity.m in Sources */,
 				322095D516392D8E000C70D9 /* RootTabBarController.m in Sources */,
@@ -614,16 +613,17 @@
 				D971E376163A96B1003B53A3 /* BaseBankTransaction.m in Sources */,
 				D971E379163A972E003B53A3 /* BankTransaction.m in Sources */,
 				327E8487163ECBC50009ABE2 /* BarIndexViewController.m in Sources */,
-				D94F0A82163FF49F00AF016D /* BaseFeature.m in Sources */,
-				D94F0A85163FF5CE00AF016D /* Feature.m in Sources */,
-				D94F0A881640111400AF016D /* Expansion.m in Sources */,
-				D94F0A8B1640112300AF016D /* BaseExpansion.m in Sources */,
-				D94F0A8E1640188500AF016D /* BaseEnlargement.m in Sources */,
-				D94F0A911640189A00AF016D /* Enlargement.m in Sources */,
 				DA70E43E163FF33900645F6F /* AddBarViewController.m in Sources */,
 				DA1DD693165512E5009BBE0F /* BarViewController.m in Sources */,
 				DA1DD69D16551D87009BBE0F /* BarViewCell.m in Sources */,
 				D9178F8216551CEA00505A23 /* AddFeatureViewController.m in Sources */,
+				DA44CF8416565C1A00ECEB2A /* BaseEnlargement.m in Sources */,
+				DA44CF8516565C1A00ECEB2A /* BaseExpansion.m in Sources */,
+				DA44CF8616565C1A00ECEB2A /* BaseFeature.m in Sources */,
+				DA44CF9016565C6700ECEB2A /* DataModel.m in Sources */,
+				DA44CF9116565C6700ECEB2A /* Enlargement.m in Sources */,
+				DA44CF9216565C6700ECEB2A /* Expansion.m in Sources */,
+				DA44CF9316565C6700ECEB2A /* Feature.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
