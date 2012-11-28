@@ -10,7 +10,7 @@
 
 @implementation AddFeatureViewController
 
-@synthesize featuresTableView, dataModel;
+@synthesize featuresTableView, dataModel, bar, selectedFeature;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,19 +29,27 @@
 
 - (void)loadFeatures
 {
-    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/features.json" delegate:self];
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/features.json", [self.bar barId]] delegate:self];
+}
+
+- (void)buyFeatureForBar:(NSNumber *)barId WithId:(NSNumber *)featureId
+{
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/features/%@/add_to_bar.json", barId, featureId] delegate:self];
 }
 
 - (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
 {
-    if ([[objectLoader.URL path] isEqualToString:@"/api/features.json"]) {
-        NSLog(@"Loaded Features");
-        features = objects;
+    if ([[objectLoader.URL path] isEqualToString:[NSString stringWithFormat: @"/api/bars/%@/features.json", [self.bar barId]]]) {
+        Bar *tmp = [objects objectAtIndex:0];
+        self.bar.available_features = tmp.available_features;
         
-//        available_feature_count = [ features count ];
-//        
-//        [self.refreshControl endRefreshing];
-//        [self.tableView reloadData];
+        [self.featuresTableView reloadData];
+    }
+    
+    if ([[objectLoader.URL path] isEqualToString:[NSString stringWithFormat: @"/api/bars/%@/features/%@/add_to_bar.json", [self.bar barId], [self.selectedFeature featureId]]]) {
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        self.selectedFeature = nil;
     }
 }
 
@@ -63,18 +71,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    // Feature collection view
+    if ( [tableView tag] == 0 ){
+        return [self.bar.available_features count];
+    }
+
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 48;
+    return 68;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddFeatureCell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
+    UITableViewCell *cell = (UITableViewCell *)[featuresTableView dequeueReusableCellWithIdentifier:@"AddFeatureCell" forIndexPath:indexPath];
+    
+    Feature *feature = [self.bar.available_features objectAtIndex:[indexPath item]];
+    
+    cell.imageView.image = [UIImage imageNamed:[feature icon]];
+    cell.textLabel.text = [feature name];
+    cell.detailTextLabel.text = [feature description];
+    
     return cell;
 }
 
@@ -88,24 +107,46 @@
     return NO;
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    UIFont *textFont = [ UIFont fontWithName: @"Arial" size: 10.0 ];
-    cell.textLabel.font  = textFont;
-    cell.detailTextLabel.font = textFont;
+    Feature *feature = [self.bar.available_features objectAtIndex:[indexPath item]];
+    self.selectedFeature = feature;
     
-    [cell.textLabel setFrame:CGRectMake(58, 0, 100, 48)];
-    
-    cell.textLabel.text = @"Zeik natte";
-    cell.detailTextLabel.text = @"KAAS";
-    
-    UIButton *imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [imageButton setFrame:[cell.contentView frame]];
-    [imageButton setFrame:CGRectMake(cell.bounds.size.width - 40, 10, 28, 28)];
-    [imageButton setBackgroundImage:[UIImage imageNamed:@"toevoegen.png"] forState:UIControlStateNormal];
-    [imageButton setTag:1234567];
-    [cell.contentView addSubview:imageButton];
+    UIAlertView *alert = [[UIAlertView alloc]
+						  initWithTitle:@"Weet je zeker dat je deze feature wilt kopen?"
+						  message:[feature name]
+						  delegate:self
+						  cancelButtonTitle:@"Nee"
+						  otherButtonTitles:@"Koop!", nil];
+	[alert show];
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // Koop has been pressed
+    if ( buttonIndex == 1 ) {
+        [self buyFeatureForBar:[self.bar barId] WithId:[self.selectedFeature featureId]];
+    }
+}
+
+//- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+//{
+//    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//    UIFont *textFont = [ UIFont fontWithName: @"Arial" size: 10.0 ];
+//    cell.textLabel.font  = textFont;
+//    cell.detailTextLabel.font = textFont;
+//    
+//    [cell.textLabel setFrame:CGRectMake(58, 0, 100, 48)];
+//    
+//    cell.textLabel.text = @"Zeik natte";
+//    cell.detailTextLabel.text = @"KAAS";
+//    
+//    UIButton *imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [imageButton setFrame:[cell.contentView frame]];
+//    [imageButton setFrame:CGRectMake(cell.bounds.size.width - 40, 10, 28, 28)];
+//    [imageButton setBackgroundImage:[UIImage imageNamed:@"toevoegen.png"] forState:UIControlStateNormal];
+//    [imageButton setTag:1234567];
+//    [cell.contentView addSubview:imageButton];
+//}
 
 @end

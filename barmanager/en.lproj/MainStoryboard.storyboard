@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="63D-Ed-oFy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="63D-Ed-oFy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -300,7 +300,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="KHM-66-zfH" kind="push" id="gba-1Z-dXI"/>
+                                            <segue destination="KHM-66-zfH" kind="push" identifier="ShowAvailableFeatures" id="gba-1Z-dXI"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -591,27 +591,23 @@
                                     <constraint firstAttribute="height" constant="403" id="Nnm-gh-Sun"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="" selectionStyle="gray" indentationWidth="10" reuseIdentifier="AddFeatureCell" textLabel="yHH-zO-uIZ" detailTextLabel="6CE-Sb-e4G" imageView="vyy-yR-13u" style="IBUITableViewCellStyleSubtitle" id="VSf-0t-ja0">
-                                        <rect key="frame" x="0.0" y="25" width="320" height="50"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddFeatureCell" textLabel="fcQ-TD-KfB" detailTextLabel="1DQ-gu-9Kz" rowHeight="68" style="IBUITableViewCellStyleSubtitle" id="Pok-ET-csa">
+                                        <rect key="frame" x="0.0" y="25" width="320" height="68"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHH-zO-uIZ">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcQ-TD-KfB">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6CE-Sb-e4G">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DQ-gu-9Kz">
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="doorguy.png" id="vyy-yR-13u">
-                                                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -619,7 +615,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="KHM-66-zfH" id="pWg-Ce-vla"/>
-                                    <outlet property="delegate" destination="hyt-Df-VG1" id="Cb3-qG-Tdn"/>
+                                    <outlet property="delegate" destination="KHM-66-zfH" id="GXR-AY-eBk"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -634,6 +630,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="hyt-Df-VG1"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="featuresTableView" destination="J8Z-2v-2cm" id="72w-MZ-bQB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AKl-lX-ZlT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -665,7 +664,6 @@
         <image name="bank_bg.png" width="320" height="100"/>
         <image name="bar.jpg" width="320" height="480"/>
         <image name="beers.png" width="30" height="30"/>
-        <image name="doorguy.png" width="48" height="48"/>
         <image name="facebook-connect-button.png" width="284" height="50"/>
         <image name="iconmonstr-details-large-view-icon.png" width="30" height="30"/>
         <image name="iconmonstr-home-icon.png" width="30" height="30"/>

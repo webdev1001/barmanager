@@ -10,16 +10,25 @@
 #import <RestKit/RestKit.h>
 
 #import "DataModel.h"
+#import "Bar.h"
 #import "Feature.h"
 
-@interface AddFeatureViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>
+@interface AddFeatureViewController : UIViewController <UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>
 {
     DataModel *dataModel;
     IBOutlet UITableView *featuresTableView;
     NSArray *features;
+    
+    Bar *bar;
+    Feature *selectedFeature;
 }
 
 @property (nonatomic, retain) DataModel *dataModel;
-@property (strong, nonatomic) IBOutlet UITableView *featuresTableView;
+@property (nonatomic, strong) IBOutlet UITableView *featuresTableView;
+
+@property (nonatomic, strong) Bar *bar;
+@property (nonatomic, strong) Feature *selectedFeature;
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end

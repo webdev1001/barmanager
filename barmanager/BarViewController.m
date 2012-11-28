@@ -30,7 +30,10 @@
     [super viewDidLoad];
     
     [barName setText:[self.bar name]];
+}
 
+- (void)viewDidAppear:(BOOL)animated
+{
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/expansions.json", [self.bar barId]] delegate:self];
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/features.json", [self.bar barId]] delegate:self];
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/enlargements.json", [self.bar barId]] delegate:self];
@@ -115,6 +118,16 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"ShowAvailableFeatures"]) {
+        AddFeatureViewController *addFeatureViewController = segue.destinationViewController;
+        
+        NSLog(@"Passing selected bar (%@) to AddFeatureViewController", self.bar.name);
+        addFeatureViewController.bar = self.bar;
+    }
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "Bar.h"
 #import "BarViewCell.h"
 #import "Feature.h"
+#import "AddFeatureViewController.h"
 
 @interface BarViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, RKObjectLoaderDelegate>
 {
