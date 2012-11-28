@@ -390,7 +390,6 @@
                                     <constraint firstItem="rJz-Vb-ow3" firstAttribute="top" secondItem="JFh-vw-zcf" secondAttribute="top" type="default" id="SWY-FI-PuJ"/>
                                     <constraint firstItem="R6i-OP-Sgc" firstAttribute="leading" secondItem="JFh-vw-zcf" secondAttribute="leading" type="default" id="U8Z-8E-Rmo"/>
                                     <constraint firstItem="Ltt-jK-OsS" firstAttribute="leading" secondItem="JFh-vw-zcf" secondAttribute="leading" constant="143" id="UpU-RS-Nz6"/>
-                                    <constraint firstItem="EsZ-dn-BG0" firstAttribute="top" secondItem="JFh-vw-zcf" secondAttribute="top" constant="155" id="WHj-JI-lge"/>
                                     <constraint firstItem="R6i-OP-Sgc" firstAttribute="bottom" secondItem="JFh-vw-zcf" secondAttribute="bottom" type="default" id="WaJ-RW-BrS"/>
                                     <constraint firstItem="R6i-OP-Sgc" firstAttribute="trailing" secondItem="JFh-vw-zcf" secondAttribute="trailing" type="default" id="ZaN-Yt-d4V"/>
                                     <constraint firstItem="tcL-8o-yNC" firstAttribute="top" secondItem="RP4-cP-gRs" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="b7c-Ap-Z16"/>
@@ -399,6 +398,7 @@
                                     <constraint firstItem="hmo-7Z-ass" firstAttribute="leading" secondItem="JFh-vw-zcf" secondAttribute="leading" type="default" id="jOT-uo-xc1"/>
                                     <constraint firstItem="R6i-OP-Sgc" firstAttribute="top" secondItem="JFh-vw-zcf" secondAttribute="top" constant="387" id="mPh-EZ-fYq"/>
                                     <constraint firstItem="vFL-VI-zzu" firstAttribute="top" secondItem="JFh-vw-zcf" secondAttribute="top" constant="359" id="oQe-NI-dNb"/>
+                                    <constraint firstItem="EsZ-dn-BG0" firstAttribute="top" secondItem="JFh-vw-zcf" secondAttribute="top" constant="276" id="yFw-Q0-ky2"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -686,8 +686,9 @@
     </scenes>
     <resources>
         <image name="bank_bg.png" width="320" height="100"/>
-        <image name="bar.jpg" width="320" height="480"/>
-        <image name="beers.png" width="30" height="30"/>
+        <image name="bar-features.png" width="320" height="100"/>
+        <image name="bar-index.png" width="320" height="100"/>
+        <image name="bar-view.png" width="320" height="100"/>
         <image name="facebook-connect-button.png" width="284" height="50"/>
         <image name="iconmonstr-details-large-view-icon.png" width="30" height="30"/>
         <image name="iconmonstr-home-icon.png" width="30" height="30"/>
