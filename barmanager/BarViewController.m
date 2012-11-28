@@ -14,7 +14,7 @@
 
 @implementation BarViewController
 
-@synthesize barName;
+@synthesize barName, cityName, barCapacity, barPopularity;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +30,9 @@
     [super viewDidLoad];
     
     [barName setText:[self.bar name]];
+    [cityName setText:[[self.bar.city objectAtIndex:0] name]];
+    [barCapacity setText:[[NSString alloc] initWithFormat:@"Bar uitbouwen ( huidige capaciteit: %@ )", [self.bar capacity]]];
+    [barPopularity setText:[[NSString alloc] initWithFormat:@" Bar specials ( huidige populariteit: %@ )", [self.bar popularity]]];
 
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/expansions.json", [self.bar barId]] delegate:self];
     [[RKObjectManager sharedManager] loadObjectsAtResourcePath: [NSString stringWithFormat: @"/api/bars/%@/features.json", [self.bar barId]] delegate:self];

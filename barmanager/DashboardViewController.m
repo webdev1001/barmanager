@@ -54,6 +54,8 @@
         [addBarButton setHidden:NO];
     } else {
         self.userBar = [city.user_bars objectAtIndex:0];
+        NSLog(@"POPULARITEEE %@", self.userBar.popularity);
+        self.userBar.city = [[NSArray alloc] initWithObjects:city, nil];
         [userBarButton setTitle:self.userBar.name forState:UIControlStateNormal];
         [userBarButton setHidden:NO];
         

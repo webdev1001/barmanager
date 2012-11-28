@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "Bar.h"
+#import "City.h"
 #import "BarViewCell.h"
 #import "Feature.h"
 
@@ -23,5 +24,8 @@
 @property (nonatomic, strong) IBOutlet UICollectionView *expansionCollectionView;
 @property (nonatomic, strong) IBOutlet UICollectionView *enlargementCollectionView;
 @property (strong, nonatomic) IBOutlet UILabel *barName;
+@property (strong, nonatomic) IBOutlet UILabel *cityName;
+@property (strong, nonatomic) IBOutlet UILabel *barCapacity;
+@property (strong, nonatomic) IBOutlet UILabel *barPopularity;
 
 @end
