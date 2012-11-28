@@ -7,12 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RestKit/RestKit.h>
 
-@interface AddFeatureViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+#import "DataModel.h"
+#import "Feature.h"
+
+@interface AddFeatureViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>
 {
+    DataModel *dataModel;
     IBOutlet UITableView *featuresTableView;
+    NSArray *features;
 }
 
+@property (nonatomic, retain) DataModel *dataModel;
 @property (strong, nonatomic) IBOutlet UITableView *featuresTableView;
 
 @end

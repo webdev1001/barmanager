@@ -10,7 +10,7 @@
 
 @implementation AddFeatureViewController
 
-@synthesize featuresTableView;
+@synthesize featuresTableView, dataModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,7 +23,37 @@
 
 - (void)viewDidLoad
 {
+    [self loadFeatures];
     [super viewDidLoad];
+}
+
+- (void)loadFeatures
+{
+    [[RKObjectManager sharedManager] loadObjectsAtResourcePath:@"/api/features.json" delegate:self];
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didLoadObjects:(NSArray *)objects
+{
+    if ([[objectLoader.URL path] isEqualToString:@"/api/features.json"]) {
+        NSLog(@"Loaded Features");
+        features = objects;
+        
+//        available_feature_count = [ features count ];
+//        
+//        [self.refreshControl endRefreshing];
+//        [self.tableView reloadData];
+    }
+}
+
+- (void)objectLoader:(RKObjectLoader *)objectLoader didFailWithError:(NSError *)error {
+    NSLog(@"Encountered an error: %@", error);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Fout"
+                                                    message:[error localizedDescription]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -72,10 +102,8 @@
     
     UIButton *imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [imageButton setFrame:[cell.contentView frame]];
-    [imageButton setFrame:CGRectMake(cell.bounds.size.width - 320, 0, 48, 48)];
-    [imageButton setBackgroundColor:[UIColor brownColor]];
-    [imageButton setBackgroundImage:[UIImage imageNamed:@"beers.png"] forState:UIControlStateNormal];
-    [imageButton setTitle:@"zaat" forState:UIControlStateNormal];
+    [imageButton setFrame:CGRectMake(cell.bounds.size.width - 40, 10, 28, 28)];
+    [imageButton setBackgroundImage:[UIImage imageNamed:@"toevoegen.png"] forState:UIControlStateNormal];
     [imageButton setTag:1234567];
     [cell.contentView addSubview:imageButton];
 }
