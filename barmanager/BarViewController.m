@@ -14,7 +14,7 @@
 
 @implementation BarViewController
 
-@synthesize barName;
+@synthesize barName, cityName, barCapacity, barPopularity;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

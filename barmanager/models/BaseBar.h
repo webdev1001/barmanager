@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSNumber *cityId;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, strong) NSNumber *capacity;
+@property (nonatomic, strong) NSNumber *popularity;
 @property (nonatomic, strong) NSString *latitude;
 @property (nonatomic, strong) NSString *longitude;
 

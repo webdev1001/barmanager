@@ -20,6 +20,7 @@
      @"city_id", @"cityId",
      @"name", @"name",
      @"capacity", @"capacity",
+     @"popularity", @"popularity",
      @"latitude", @"latitude",
      @"longitude", @"longitude",
      nil];

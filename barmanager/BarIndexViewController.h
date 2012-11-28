@@ -14,14 +14,17 @@
 #import "City.h"
 #import "BarViewController.h"
 
-@interface BarIndexViewController : UITableViewController <RKObjectLoaderDelegate>
+@interface BarIndexViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RKObjectLoaderDelegate>
 {
     DataModel *dataModel;
     NSArray *user_bars;
     int bar_count;
+    IBOutlet UITableView *barsTableView;
 }
 
 @property (nonatomic, retain) DataModel *dataModel;
+@property (strong, nonatomic) IBOutlet UITableView *barsTableView;
 @property (nonatomic, retain) Bar *bar;
+@property (nonatomic, retain) City *city;
 
 @end

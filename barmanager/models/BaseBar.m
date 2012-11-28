@@ -14,6 +14,7 @@
     @"city_id", @"cityId",
     @"name", @"name",
     @"capacity", @"capacity",
+    @"popularity", @"popularity",
     @"latitude", @"latitude",
     @"longitude", @"longitude",
     nil];
@@ -29,6 +30,7 @@
         self.cityId = [coder decodeObjectForKey:@"cityId"];
         self.name = [coder decodeObjectForKey:@"name"];
         self.capacity = [coder decodeObjectForKey:@"capacity"];
+        self.popularity = [coder decodeObjectForKey:@"popularity"];
         self.latitude = [coder decodeObjectForKey:@"latitude"];
         self.longitude = [coder decodeObjectForKey:@"longitude"];
     }
@@ -41,8 +43,9 @@
     [coder encodeObject:self.cityId forKey:@"cityId"];
     [coder encodeObject:self.name forKey:@"name"];
     [coder encodeObject:self.capacity forKey:@"capacity"];
-    [coder encodeObject:self.capacity forKey:@"latitude"];
-    [coder encodeObject:self.capacity forKey:@"longitude"];
+    [coder encodeObject:self.popularity forKey:@"popularity"];
+    [coder encodeObject:self.latitude forKey:@"latitude"];
+    [coder encodeObject:self.longitude forKey:@"longitude"];
 }
 
 @end
