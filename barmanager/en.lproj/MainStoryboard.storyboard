@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3006" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="63D-Ed-oFy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="63D-Ed-oFy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -156,7 +156,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nCx-ix-1Pl">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="356" id="TvP-D9-5x9"/>
+                                    <constraint firstAttribute="height" constant="355" id="KMP-HB-wWd"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BarCell" id="CI1-I3-eSK">
@@ -181,8 +181,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nCx-ix-1Pl" firstAttribute="bottom" secondItem="M4O-0F-LrZ" secondAttribute="bottom" type="default" id="5Qj-ub-EzL"/>
                             <constraint firstItem="Vem-JL-8cs" firstAttribute="leading" secondItem="M4O-0F-LrZ" secondAttribute="leading" type="default" id="6ZE-XT-Aqx"/>
+                            <constraint firstItem="nCx-ix-1Pl" firstAttribute="top" secondItem="M4O-0F-LrZ" secondAttribute="top" constant="99" id="7CN-b0-WXV"/>
                             <constraint firstItem="Vem-JL-8cs" firstAttribute="top" secondItem="M4O-0F-LrZ" secondAttribute="top" type="default" id="ici-g5-EKb"/>
                             <constraint firstItem="nCx-ix-1Pl" firstAttribute="trailing" secondItem="M4O-0F-LrZ" secondAttribute="trailing" type="default" id="x5e-zw-bm2"/>
                             <constraint firstItem="nCx-ix-1Pl" firstAttribute="leading" secondItem="M4O-0F-LrZ" secondAttribute="leading" type="default" id="y35-Wv-LGT"/>
