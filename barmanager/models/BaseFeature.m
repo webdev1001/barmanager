@@ -17,6 +17,7 @@
     [mapping mapKeyPathsToAttributes:
      @"id", @"featureId",
      @"name", @"name",
+     @"description", @"description",
      @"investment", @"investment",
      @"icon", @"icon",
      nil];
@@ -30,6 +31,7 @@
     if (self) {
         self.featureId = [coder decodeObjectForKey:@"featureId"];
         self.name = [coder decodeObjectForKey:@"name"];
+        self.description = [coder decodeObjectForKey:@"description"];
         self.investment = [coder decodeObjectForKey:@"investment"];
         self.icon = [coder decodeObjectForKey:@"icon"];
     }
@@ -40,6 +42,7 @@
 {
     [coder encodeObject:self.featureId forKey:@"featureId"];
     [coder encodeObject:self.name forKey:@"name"];
+    [coder encodeObject:self.description forKey:@"description"];
     [coder encodeObject:self.investment forKey:@"investment"];
     [coder encodeObject:self.icon forKey:@"icon"];
 }

@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSNumber *featureId;
 @property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *description;
 @property (nonatomic, retain) NSNumber *investment;
 @property (nonatomic, retain) NSString *icon;
 
